@@ -33,6 +33,9 @@ All colors MUST be HSL.
     --success: 142 100% 50%;
     --success-foreground: 220 13% 9%;
 
+    --orange: 24 100% 50%;
+    --orange-foreground: 0 0% 98%;
+
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
 
@@ -81,6 +84,9 @@ All colors MUST be HSL.
     --success: 142 100% 50%;
     --success-foreground: 220 13% 9%;
 
+    --orange: 24 100% 50%;
+    --orange-foreground: 220 13% 9%;
+
     --destructive: 0 63% 31%;
     --destructive-foreground: 0 0% 98%;
 
@@ -100,6 +106,24 @@ All colors MUST be HSL.
 }
 
 /* Typography and custom utilities */
+/* Animation utilities */
+@layer utilities {
+  .animate-fade-in {
+    animation: fade-in 0.6s ease-out forwards;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -107,6 +131,18 @@ All colors MUST be HSL.
 
   body {
     font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-fade-in {
+      animation: none;
+    }
+    
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
 
