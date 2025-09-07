@@ -1,6 +1,9 @@
 import { Helmet } from 'react-helmet-async';
 import { Hero } from '@/components/sections/Hero';
 import { Services } from '@/components/sections/Services';
+import { Statistics } from '@/components/sections/Statistics';
+import { SpecialService } from '@/components/sections/SpecialService';
+import { ConnectAgency } from '@/components/sections/ConnectAgency';
 import { defaultMeta } from '@/lib/seo';
 
 const HomePage = () => {
@@ -62,8 +65,9 @@ const HomePage = () => {
 
       <Hero />
       <Services />
-      
-      {/* Additional sections will be added in next steps */}
+      <Statistics />
+      <SpecialService />
+      <ConnectAgency />
     </>
   );
 };
