@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import { HeroSection } from '@/components/sections/HeroSection';
-import { ZiziCards } from '@/components/sections/ZiziCards';
+import { AMOCards } from '@/components/sections/ZiziCards';
 import { SpecialServices } from '@/components/sections/SpecialServices';
 import { ProcessSection } from '@/components/sections/ProcessSection';
 import { PricingSection } from '@/components/sections/PricingSection';
@@ -40,7 +40,7 @@ const HomePage = () => {
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Organization",
-            "name": "AMO AI Digital Agency",
+            "name": "AMO AI",
             "url": "https://amoai.agency",
             "logo": "https://amoai.agency/logo.png",
             "description": defaultMeta.description,
@@ -65,7 +65,7 @@ const HomePage = () => {
       </Helmet>
 
       <HeroSection />
-      <ZiziCards />
+      <AMOCards />
       <SpecialServices />
       <ProcessSection />
       <PricingSection />

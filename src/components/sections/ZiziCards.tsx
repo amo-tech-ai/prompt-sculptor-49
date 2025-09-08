@@ -1,14 +1,14 @@
 import { ArrowRight } from 'lucide-react';
 import { useFeaturedCaseStudies } from '@/hooks/useSupabase';
 
-export const ZiziCards = () => {
+export const AMOCards = () => {
   const { data: caseStudies, loading, error } = useFeaturedCaseStudies();
   return (
     <section className="relative py-24 overflow-hidden bg-white">
       {/* Subtle background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-gray-50/50 via-white to-gray-50/30" />
       
-      {/* Minimal floating shapes - Zizi style */}
+      {/* Minimal floating shapes - AMO AI style */}
       <div 
         className="absolute top-20 right-20 w-64 h-64 bg-gradient-to-br from-orange-200/20 to-orange-300/20 rounded-full blur-3xl opacity-30 animate-float" 
         style={{ animationDelay: '0.5s' }}

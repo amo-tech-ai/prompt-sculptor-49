@@ -42,12 +42,12 @@ export const Header = () => {
       >
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
-            {/* Logo - Zizi style */}
+            {/* Logo - AMO AI style */}
             <Link to="/" className="flex items-center space-x-3 font-heading font-bold text-2xl">
               <div className="w-10 h-10 bg-brand-orange rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-lg">Z</span>
+                <span className="text-white font-bold text-lg">A</span>
               </div>
-              <span className="text-brand-dark">ZIZI</span>
+              <span className="text-brand-dark">AMO AI</span>
             </Link>
 
             {/* Desktop Navigation */}
@@ -82,7 +82,7 @@ export const Header = () => {
               ))}
             </nav>
 
-            {/* Desktop CTA - Zizi style */}
+            {/* Desktop CTA - AMO AI style */}
             <div className="hidden md:flex items-center space-x-4">
               <Button variant="outline" size="sm" className="border-brand-orange text-brand-orange hover:bg-brand-orange hover:text-white" asChild>
                 <Link to="/contact">Sign In</Link>

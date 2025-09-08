@@ -62,7 +62,7 @@ export const HeroSection = () => {
             </div>
           </div>
 
-          {/* Right Column - Zizi style circular badge and social proof */}
+          {/* Right Column - AMO AI style circular badge and social proof */}
           <div className="text-center lg:text-left animate-slide-up" style={{ animationDelay: '200ms' }}>
             {/* Circular Badge with Text */}
             <div className="relative w-48 h-48 mx-auto mb-12">

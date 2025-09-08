@@ -110,7 +110,7 @@ export const Footer = () => {
         <div className="border-t border-border py-6">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-sm text-muted-foreground">
-              © 2024 AMO AI Digital Agency. All rights reserved.
+              © 2024 AMO AI. All rights reserved.
             </p>
             <div className="flex items-center space-x-6">
               <span className="text-xs text-muted-foreground">50+ Live Applications</span>

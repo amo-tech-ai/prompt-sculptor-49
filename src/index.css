@@ -36,11 +36,11 @@ All colors MUST be HSL.
     --orange: 24 100% 50%;
     --orange-foreground: 0 0% 98%;
     
-    /* Zizi Agency Brand Colors */
-    --zizi-orange: 24 100% 50%; /* #FF7A00 */
-    --zizi-orange-light: 24 100% 55%; /* #FF8A00 */
-    --zizi-divider: 0 0% 93%; /* #EDEDED */
-    --zizi-gray: 0 0% 96%; /* Light gray for backgrounds */
+    /* AMO AI Brand Colors */
+    --amo-orange: 24 100% 50%; /* #FF7A00 */
+    --amo-orange-light: 24 100% 55%; /* #FF8A00 */
+    --amo-divider: 0 0% 93%; /* #EDEDED */
+    --amo-gray: 0 0% 96%; /* Light gray for backgrounds */
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
@@ -59,8 +59,8 @@ All colors MUST be HSL.
     /* Shadows */
     --shadow-elegant: 0 10px 40px -10px hsl(214 100% 40% / 0.2);
     --shadow-glow: 0 0 40px hsl(191 100% 50% / 0.3);
-    --shadow-zizi-card: 0 8px 32px -8px hsl(0 0% 0% / 0.1);
-    --shadow-zizi-hover: 0 12px 48px -12px hsl(0 0% 0% / 0.15);
+    --shadow-amo-card: 0 8px 32px -8px hsl(0 0% 0% / 0.1);
+    --shadow-amo-hover: 0 12px 48px -12px hsl(0 0% 0% / 0.15);
 
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -146,28 +146,28 @@ All colors MUST be HSL.
     }
   }
 
-  /* Zizi-style glassy card */
-  .zizi-card {
+  /* AMO AI-style glassy card */
+  .amo-card {
     @apply bg-white/80 backdrop-blur-sm border border-white/20 rounded-[32px] p-6;
-    box-shadow: var(--shadow-zizi-card);
+    box-shadow: var(--shadow-amo-card);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .zizi-card:hover {
+  .amo-card:hover {
     transform: translateY(-6px);
-    box-shadow: var(--shadow-zizi-hover);
+    box-shadow: var(--shadow-amo-hover);
   }
 
-  .zizi-card:focus-within {
-    @apply ring-2 ring-zizi-orange ring-offset-2;
+  .amo-card:focus-within {
+    @apply ring-2 ring-amo-orange ring-offset-2;
   }
 
-  /* Zizi-style pill badges */
-  .zizi-pill {
+  /* AMO AI-style pill badges */
+  .amo-pill {
     @apply bg-white/60 backdrop-blur-sm border border-white/30 rounded-full px-3 py-1 text-xs font-medium text-gray-700;
   }
 
-  /* Utility classes for Zizi style */
+  /* Utility classes for AMO AI style */
   .glass-overlay {
     @apply bg-white/80 backdrop-blur-md;
   }
@@ -184,9 +184,9 @@ All colors MUST be HSL.
     @apply border-2 border-brand-orange text-brand-orange hover:bg-brand-orange hover:text-white;
   }
 
-  /* Zizi-style divider */
-  .zizi-divider {
-    border-color: hsl(var(--zizi-divider));
+  /* AMO AI-style divider */
+  .amo-divider {
+    border-color: hsl(var(--amo-divider));
   }
 
   /* Enhanced floating animations */
