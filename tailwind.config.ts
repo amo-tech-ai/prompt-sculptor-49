@@ -47,7 +47,7 @@ export default {
           DEFAULT: "hsl(var(--orange))",
           foreground: "hsl(var(--orange-foreground))",
         },
-        // Zizi Brand Colors - Modern Design
+        // AMO AI Brand Colors - Modern Design
         brand: {
           orange: "#FF6B35",
           orange2: "#FFB800", 
@@ -56,12 +56,12 @@ export default {
           light: "#FFF8F0",
           divider: "#EDEDED",
         },
-        "zizi-orange": {
-          DEFAULT: "hsl(var(--zizi-orange))",
-          light: "hsl(var(--zizi-orange-light))",
+        "amo-orange": {
+          DEFAULT: "hsl(var(--amo-orange))",
+          light: "hsl(var(--amo-orange-light))",
         },
-        "zizi-divider": "hsl(var(--zizi-divider))",
-        "zizi-gray": "hsl(var(--zizi-gray))",
+        "amo-divider": "hsl(var(--amo-divider))",
+        "amo-gray": "hsl(var(--amo-gray))",
         popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
@@ -84,8 +84,8 @@ export default {
         'elegant': 'var(--shadow-elegant)',
         'glow': 'var(--shadow-glow)',
         'card': '0 8px 24px rgba(0,0,0,0.06)',
-        'zizi-card': 'var(--shadow-zizi-card)',
-        'zizi-hover': 'var(--shadow-zizi-hover)',
+        'amo-card': 'var(--shadow-amo-card)',
+        'amo-hover': 'var(--shadow-amo-hover)',
       },
       transitionTimingFunction: {
         'smooth': 'var(--transition-smooth)',
@@ -97,8 +97,8 @@ export default {
         sm: "calc(var(--radius) - 4px)",
         xl: "28px",
         "2xl": "32px",
-        "zizi": "32px",
-        "zizi-sm": "28px",
+        "amo": "32px",
+        "amo-sm": "28px",
       },
       keyframes: {
         "accordion-down": {
