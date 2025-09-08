@@ -1,6 +1,8 @@
 import { ArrowRight } from 'lucide-react';
+import { useFeaturedCaseStudies } from '@/hooks/useSupabase';
 
 export const ZiziCards = () => {
+  const { data: caseStudies, loading, error } = useFeaturedCaseStudies();
   return (
     <section className="relative py-24 overflow-hidden bg-white">
       {/* Subtle background gradient */}
@@ -116,25 +118,53 @@ export const ZiziCards = () => {
               <div className="relative z-10">
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Platforms in Production</h3>
                 
-                <div className="space-y-4 mb-6">
-                  <div className="border-l-4 border-orange-400 pl-4">
-                    <h4 className="font-semibold text-gray-900">FashionOS</h4>
-                    <p className="text-sm text-orange-600 mb-1">Event Management Platform</p>
-                    <p className="text-sm text-gray-600">Reduced 3-day setup to 3 minutes. 90% of tasks automated.</p>
+                {loading ? (
+                  <div className="space-y-4 mb-6">
+                    <div className="animate-pulse">
+                      <div className="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
+                      <div className="h-3 bg-gray-200 rounded w-1/2 mb-1"></div>
+                      <div className="h-3 bg-gray-200 rounded w-full"></div>
+                    </div>
+                    <div className="animate-pulse">
+                      <div className="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
+                      <div className="h-3 bg-gray-200 rounded w-1/2 mb-1"></div>
+                      <div className="h-3 bg-gray-200 rounded w-full"></div>
+                    </div>
                   </div>
-                  
-                  <div className="border-l-4 border-orange-400 pl-4">
-                    <h4 className="font-semibold text-gray-900">I Love Medellín</h4>
-                    <p className="text-sm text-orange-600 mb-1">Tourism Marketplace</p>
-                    <p className="text-sm text-gray-600">Complete booking platform with AI concierge. Targeting $75K monthly revenue.</p>
+                ) : (
+                  <div className="space-y-4 mb-6">
+                    {caseStudies && caseStudies.length > 0 ? (
+                      caseStudies.slice(0, 3).map((caseStudy, index) => (
+                        <div key={caseStudy.id} className="border-l-4 border-orange-400 pl-4">
+                          <h4 className="font-semibold text-gray-900">{caseStudy.title}</h4>
+                          <p className="text-sm text-orange-600 mb-1">{caseStudy.industry || 'AI Platform'}</p>
+                          <p className="text-sm text-gray-600">{caseStudy.results || caseStudy.solution || 'Advanced AI-powered solution.'}</p>
+                        </div>
+                      ))
+                    ) : (
+                      // Fallback case studies
+                      <>
+                        <div className="border-l-4 border-orange-400 pl-4">
+                          <h4 className="font-semibold text-gray-900">FashionOS</h4>
+                          <p className="text-sm text-orange-600 mb-1">Event Management Platform</p>
+                          <p className="text-sm text-gray-600">Reduced 3-day setup to 3 minutes. 90% of tasks automated.</p>
+                        </div>
+                        
+                        <div className="border-l-4 border-orange-400 pl-4">
+                          <h4 className="font-semibold text-gray-900">I Love Medellín</h4>
+                          <p className="text-sm text-orange-600 mb-1">Tourism Marketplace</p>
+                          <p className="text-sm text-gray-600">Complete booking platform with AI concierge. Targeting $75K monthly revenue.</p>
+                        </div>
+                        
+                        <div className="border-l-4 border-orange-400 pl-4">
+                          <h4 className="font-semibold text-gray-900">Automotive Marketplace</h4>
+                          <p className="text-sm text-orange-600 mb-1">Multi-Dealer Platform</p>
+                          <p className="text-sm text-gray-600">Processing $4.3M in monthly transactions. 500+ dealers connected.</p>
+                        </div>
+                      </>
+                    )}
                   </div>
-                  
-                  <div className="border-l-4 border-orange-400 pl-4">
-                    <h4 className="font-semibold text-gray-900">Automotive Marketplace</h4>
-                    <p className="text-sm text-orange-600 mb-1">Multi-Dealer Platform</p>
-                    <p className="text-sm text-gray-600">Processing $4.3M in monthly transactions. 500+ dealers connected.</p>
-                  </div>
-                </div>
+                )}
 
                 {/* See All Projects button */}
                 <button className="bg-orange-400/80 hover:bg-orange-500/80 text-white font-medium px-6 py-3 rounded-full transition-all duration-300 hover:shadow-lg">

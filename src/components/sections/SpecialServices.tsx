@@ -1,32 +1,51 @@
 import { ArrowRight } from 'lucide-react';
+import { useServices } from '@/hooks/useSupabase';
 
 export const SpecialServices = () => {
-  const services = [
+  const { data: services, loading, error } = useServices();
+
+  // Fallback data in case of loading or error
+  const fallbackServices = [
     {
-      id: 1,
+      id: "1",
       number: "01",
       title: "AI & Intelligence",
-      description: "Claude 3 • GPT-4 • CrewAI • LangChain. Build agents that think, analyze, and execute complex workflows autonomously."
+      description: "Claude 3 • GPT-4 • CrewAI • LangChain. Build agents that think, analyze, and execute complex workflows autonomously.",
+      technologies: ["Claude 3", "GPT-4", "CrewAI", "LangChain"]
     },
     {
-      id: 2,
+      id: "2",
       number: "02", 
       title: "Development Platforms",
-      description: "Lovable • Webflow • React • Next.js. Ship faster with AI-powered development tools and modern frameworks."
+      description: "Lovable • Webflow • React • Next.js. Ship faster with AI-powered development tools and modern frameworks.",
+      technologies: ["Lovable", "Webflow", "React", "Next.js"]
     },
     {
-      id: 3,
+      id: "3",
       number: "03",
       title: "Backend & Data", 
-      description: "Supabase • PostgreSQL • Pinecone. Enterprise-grade infrastructure that scales with your business."
+      description: "Supabase • PostgreSQL • Pinecone. Enterprise-grade infrastructure that scales with your business.",
+      technologies: ["Supabase", "PostgreSQL", "Pinecone"]
     },
     {
-      id: 4,
+      id: "4",
       number: "04",
       title: "Automation & Integration",
-      description: "n8n • WhatsApp • Stripe • Zapier. Connect everything, automate anything with 400+ integrations."
+      description: "n8n • WhatsApp • Stripe • Zapier. Connect everything, automate anything with 400+ integrations.",
+      technologies: ["n8n", "WhatsApp", "Stripe", "Zapier"]
     }
   ];
+
+  // Use database services if available, otherwise fallback
+  const displayServices = services && services.length > 0 
+    ? services.slice(0, 4).map((service, index) => ({
+        id: service.id,
+        number: `0${index + 1}`,
+        title: service.name,
+        description: service.description || `${service.technologies?.join(' • ') || 'Advanced technology stack'}. ${service.description || 'Professional development services.'}`,
+        technologies: service.technologies || []
+      }))
+    : fallbackServices;
 
   return (
     <section className="relative py-24 overflow-hidden bg-brand-light">
@@ -60,7 +79,7 @@ export const SpecialServices = () => {
 
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {services.map((service, index) => (
+          {displayServices.map((service, index) => (
             <div 
               key={service.id}
               className="group cursor-pointer"
