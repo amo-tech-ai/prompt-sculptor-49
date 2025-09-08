@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { Service } from '@/data/services';
-import { Badge } from '@/components/ui/badge';
 
 interface ServiceCardProps {
   service: Service;
@@ -11,60 +10,63 @@ interface ServiceCardProps {
 export const ServiceCard = ({ service, index }: ServiceCardProps) => {
   return (
     <div 
-      className="group relative bg-white/80 backdrop-blur-sm border border-border hover:border-orange rounded-[28px] p-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 focus-within:border-orange"
+      className="group relative glass-overlay rounded-2xl p-6 border border-brand-divider hover:border-brand-orange shadow-card hover:shadow-lg hover:-translate-y-1 transition-all duration-300 animate-slide-up focus-within:ring-2 focus-within:ring-brand-orange focus-within:ring-offset-2"
       style={{
         animationDelay: `${index * 100}ms`
       }}
     >
       {/* Title */}
-      <h3 className="text-xl font-semibold mb-3 text-foreground">
+      <h3 className="text-xl font-semibold mb-4 text-brand-dark">
         <Link 
           to={service.href}
-          className="focus:outline-none focus:ring-2 focus:ring-orange focus:ring-offset-2 rounded-lg"
+          className="focus:outline-none focus:ring-2 focus:ring-brand-orange focus:ring-offset-2 rounded-lg"
         >
           {service.title}
         </Link>
       </h3>
 
       {/* Description */}
-      <p className="text-muted-foreground mb-4 text-sm leading-relaxed">
+      <p className="text-brand-gray mb-6 text-sm leading-relaxed">
         {service.description}
       </p>
 
-      {/* Deliverables */}
+      {/* Deliverables with thin dividers */}
       <div className="mb-6">
-        <h4 className="text-sm font-medium text-foreground mb-2">Deliverables:</h4>
-        <ul className="space-y-1">
+        <h4 className="text-sm font-medium text-brand-dark mb-3">Deliverables:</h4>
+        <div className="space-y-0">
           {service.deliverables.map((deliverable, idx) => (
-            <li key={idx} className="text-sm text-muted-foreground flex items-center">
-              <span className="w-1.5 h-1.5 bg-orange rounded-full mr-2 flex-shrink-0" />
-              {deliverable}
-            </li>
+            <div key={idx}>
+              <div className="text-sm text-brand-gray py-2">
+                {deliverable}
+              </div>
+              {idx < service.deliverables.length - 1 && (
+                <div className="border-t border-brand-divider" />
+              )}
+            </div>
           ))}
-        </ul>
+        </div>
       </div>
 
-      {/* Tech Badges */}
+      {/* Tech Pills */}
       <div className="flex flex-wrap gap-2 mb-6">
         {service.technologies.map((tech, idx) => (
-          <Badge 
+          <span 
             key={idx} 
-            variant="secondary" 
-            className="text-xs px-2 py-1 bg-muted/50 text-muted-foreground border-0"
+            className="bg-white/60 backdrop-blur-sm border border-white/30 rounded-full px-3 py-1 text-xs font-medium text-brand-gray"
           >
             {tech}
-          </Badge>
+          </span>
         ))}
       </div>
 
-      {/* CTA */}
+      {/* CTA with arrow nudge */}
       <div className="flex justify-end">
         <Link
           to={service.href}
-          className="inline-flex items-center text-sm font-medium text-orange hover:text-orange/80 transition-colors group/cta focus:outline-none focus:ring-2 focus:ring-orange focus:ring-offset-2 rounded-lg"
+          className="inline-flex items-center text-sm font-medium text-brand-orange hover:text-brand-orange2 transition-all duration-300 group/cta focus:outline-none focus:ring-2 focus:ring-brand-orange focus:ring-offset-2 rounded-lg"
         >
-          <span>Explore Service</span>
-          <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/cta:translate-x-1" />
+          <span>Explore →</span>
+          <div className="ml-2 w-2 h-2 bg-brand-orange rounded-full transition-transform group-hover/cta:translate-x-1 group-hover/cta:scale-110" />
         </Link>
       </div>
     </div>

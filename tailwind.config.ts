@@ -47,6 +47,21 @@ export default {
           DEFAULT: "hsl(var(--orange))",
           foreground: "hsl(var(--orange-foreground))",
         },
+        // Zizi Brand Colors - Modern Design
+        brand: {
+          orange: "#FF6B35",
+          orange2: "#FFB800", 
+          dark: "#1A1A1A",
+          gray: "#6B7280",
+          light: "#FFF8F0",
+          divider: "#EDEDED",
+        },
+        "zizi-orange": {
+          DEFAULT: "hsl(var(--zizi-orange))",
+          light: "hsl(var(--zizi-orange-light))",
+        },
+        "zizi-divider": "hsl(var(--zizi-divider))",
+        "zizi-gray": "hsl(var(--zizi-gray))",
         popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
@@ -68,6 +83,9 @@ export default {
       boxShadow: {
         'elegant': 'var(--shadow-elegant)',
         'glow': 'var(--shadow-glow)',
+        'card': '0 8px 24px rgba(0,0,0,0.06)',
+        'zizi-card': 'var(--shadow-zizi-card)',
+        'zizi-hover': 'var(--shadow-zizi-hover)',
       },
       transitionTimingFunction: {
         'smooth': 'var(--transition-smooth)',
@@ -77,6 +95,10 @@ export default {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+        xl: "28px",
+        "2xl": "32px",
+        "zizi": "32px",
+        "zizi-sm": "28px",
       },
       keyframes: {
         "accordion-down": {

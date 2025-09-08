@@ -35,6 +35,12 @@ All colors MUST be HSL.
 
     --orange: 24 100% 50%;
     --orange-foreground: 0 0% 98%;
+    
+    /* Zizi Agency Brand Colors */
+    --zizi-orange: 24 100% 50%; /* #FF7A00 */
+    --zizi-orange-light: 24 100% 55%; /* #FF8A00 */
+    --zizi-divider: 0 0% 93%; /* #EDEDED */
+    --zizi-gray: 0 0% 96%; /* Light gray for backgrounds */
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
@@ -53,6 +59,8 @@ All colors MUST be HSL.
     /* Shadows */
     --shadow-elegant: 0 10px 40px -10px hsl(214 100% 40% / 0.2);
     --shadow-glow: 0 0 40px hsl(191 100% 50% / 0.3);
+    --shadow-zizi-card: 0 8px 32px -8px hsl(0 0% 0% / 0.1);
+    --shadow-zizi-hover: 0 12px 48px -12px hsl(0 0% 0% / 0.15);
 
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -112,6 +120,10 @@ All colors MUST be HSL.
     animation: fade-in 0.6s ease-out forwards;
   }
 
+  .animate-slide-up {
+    animation: slide-up 0.6s ease-out forwards;
+  }
+
   @keyframes fade-in {
     from {
       opacity: 0;
@@ -121,6 +133,107 @@ All colors MUST be HSL.
       opacity: 1;
       transform: translateY(0);
     }
+  }
+
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Zizi-style glassy card */
+  .zizi-card {
+    @apply bg-white/80 backdrop-blur-sm border border-white/20 rounded-[32px] p-6;
+    box-shadow: var(--shadow-zizi-card);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .zizi-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-zizi-hover);
+  }
+
+  .zizi-card:focus-within {
+    @apply ring-2 ring-zizi-orange ring-offset-2;
+  }
+
+  /* Zizi-style pill badges */
+  .zizi-pill {
+    @apply bg-white/60 backdrop-blur-sm border border-white/30 rounded-full px-3 py-1 text-xs font-medium text-gray-700;
+  }
+
+  /* Utility classes for Zizi style */
+  .glass-overlay {
+    @apply bg-white/80 backdrop-blur-md;
+  }
+
+  .pill-button {
+    @apply rounded-full px-6 py-3 font-medium transition-all duration-300;
+  }
+
+  .pill-button-primary {
+    @apply bg-brand-orange text-white hover:bg-brand-orange2 hover:shadow-lg;
+  }
+
+  .pill-button-secondary {
+    @apply border-2 border-brand-orange text-brand-orange hover:bg-brand-orange hover:text-white;
+  }
+
+  /* Zizi-style divider */
+  .zizi-divider {
+    border-color: hsl(var(--zizi-divider));
+  }
+
+  /* Enhanced floating animations */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-20px) rotate(180deg);
+    }
+  }
+
+  @keyframes float-slow {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg) scale(1);
+    }
+    33% {
+      transform: translateY(-15px) rotate(2deg) scale(1.02);
+    }
+    66% {
+      transform: translateY(-10px) rotate(-2deg) scale(0.98);
+    }
+  }
+
+  @keyframes gradient-shift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-float-slow {
+    animation: float-slow 8s ease-in-out infinite;
+  }
+
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient-shift 4s ease infinite;
   }
 }
 

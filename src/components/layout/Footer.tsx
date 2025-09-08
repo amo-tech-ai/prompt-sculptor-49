@@ -17,7 +17,7 @@ export const Footer = () => {
                 <span className="text-foreground">AMO AI</span>
               </Link>
               <p className="text-sm text-muted-foreground max-w-sm">
-                Transform your business with AI automation. Turn 3-day processes into 3-minute solutions.
+                We specialize in rapid application development using Claude, GPT-4, CrewAI, Lovable, and 50+ cutting-edge technologies. From MVPs to enterprise solutions.
               </p>
               <div className="space-y-2">
                 <div className="flex items-center space-x-2 text-sm text-muted-foreground">
@@ -35,41 +35,53 @@ export const Footer = () => {
               </div>
             </div>
 
-            {/* Services */}
+            {/* Our Stack */}
             <div>
               <h3 className="font-semibold text-sm uppercase tracking-wider text-foreground mb-4">
-                Services
+                Our Stack
               </h3>
               <ul className="space-y-2">
-                {footerLinks.services.map((link) => (
-                  <li key={link.href}>
-                    <Link 
-                      to={link.href} 
-                      className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                    >
-                      {link.title}
-                    </Link>
-                  </li>
-                ))}
+                <li>
+                  <span className="text-sm text-muted-foreground">AI Development</span>
+                </li>
+                <li>
+                  <span className="text-sm text-muted-foreground">No-Code Platforms</span>
+                </li>
+                <li>
+                  <span className="text-sm text-muted-foreground">Backend Solutions</span>
+                </li>
+                <li>
+                  <span className="text-sm text-muted-foreground">Automation</span>
+                </li>
               </ul>
             </div>
 
-            {/* Company */}
+            {/* Resources */}
             <div>
               <h3 className="font-semibold text-sm uppercase tracking-wider text-foreground mb-4">
-                Company
+                Resources
               </h3>
               <ul className="space-y-2">
-                {footerLinks.company.map((link) => (
-                  <li key={link.href}>
-                    <Link 
-                      to={link.href} 
-                      className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                    >
-                      {link.title}
-                    </Link>
-                  </li>
-                ))}
+                <li>
+                  <Link to="/case-studies" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                    Case Studies
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/documentation" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                    Documentation
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/roi-calculator" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                    ROI Calculator
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/blog" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                    Blog
+                  </Link>
+                </li>
               </ul>
             </div>
 
@@ -101,9 +113,9 @@ export const Footer = () => {
               © 2024 AMO AI Digital Agency. All rights reserved.
             </p>
             <div className="flex items-center space-x-6">
-              <span className="text-xs text-muted-foreground">500+ Projects</span>
-              <span className="text-xs text-muted-foreground">90% Automation</span>
-              <span className="text-xs text-muted-foreground">3-Month ROI</span>
+              <span className="text-xs text-muted-foreground">50+ Live Applications</span>
+              <span className="text-xs text-muted-foreground">2-16 Week Delivery</span>
+              <span className="text-xs text-muted-foreground">Production-Ready Code</span>
             </div>
           </div>
         </div>

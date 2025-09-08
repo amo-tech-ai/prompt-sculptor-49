@@ -1,17 +1,8 @@
 export const mainNav = [
   { title: 'Home', href: '/' },
-  { 
-    title: 'Services', 
-    href: '/services',
-    children: [
-      { title: 'AI Applications', href: '/services/ai-applications' },
-      { title: 'Conversational AI', href: '/services/conversational-ai' },
-      { title: 'Automation', href: '/services/automation' },
-      { title: 'Multi-Agent', href: '/services/multi-agent' }
-    ]
-  },
-  { title: 'Portfolio', href: '/portfolio' },
-  { title: 'About', href: '/about' },
+  { title: 'Services', href: '/services' },
+  { title: 'Work', href: '/portfolio' },
+  { title: 'Process', href: '/process' },
   { title: 'Contact', href: '/contact' }
 ];
 

@@ -36,18 +36,18 @@ export const Header = () => {
       <header 
         className={`fixed top-0 w-full z-40 transition-all duration-300 ${
           isScrolled 
-            ? 'bg-background/95 backdrop-blur-md border-b border-border shadow-elegant' 
+            ? 'bg-white/95 backdrop-blur-md border-b border-brand-divider shadow-card' 
             : 'bg-transparent'
         }`}
       >
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
-            {/* Logo */}
-            <Link to="/" className="flex items-center space-x-2 font-heading font-bold text-xl">
-              <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">A</span>
+            {/* Logo - Zizi style */}
+            <Link to="/" className="flex items-center space-x-3 font-heading font-bold text-2xl">
+              <div className="w-10 h-10 bg-brand-orange rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-lg">Z</span>
               </div>
-              <span className="text-foreground">AMO AI</span>
+              <span className="text-brand-dark">ZIZI</span>
             </Link>
 
             {/* Desktop Navigation */}
@@ -56,8 +56,8 @@ export const Header = () => {
                 <div key={item.href} className="relative group">
                   <Link
                     to={item.href}
-                    className={`text-sm font-medium transition-colors hover:text-primary ${
-                      location.pathname === item.href ? 'text-primary' : 'text-muted-foreground'
+                    className={`text-base font-medium transition-colors hover:text-brand-orange ${
+                      location.pathname === item.href ? 'text-brand-orange' : 'text-brand-dark'
                     }`}
                   >
                     {item.title}
@@ -82,13 +82,13 @@ export const Header = () => {
               ))}
             </nav>
 
-            {/* Desktop CTA */}
+            {/* Desktop CTA - Zizi style */}
             <div className="hidden md:flex items-center space-x-4">
-              <Button variant="outline" size="sm" asChild>
-                <Link to="/contact">Get Quote</Link>
+              <Button variant="outline" size="sm" className="border-brand-orange text-brand-orange hover:bg-brand-orange hover:text-white" asChild>
+                <Link to="/contact">Sign In</Link>
               </Button>
-              <Button size="sm" asChild>
-                <Link to="/contact">Start Project</Link>
+              <Button size="sm" className="bg-brand-orange hover:bg-brand-orange2 text-white rounded-full px-6" asChild>
+                <Link to="/contact">Sign Up</Link>
               </Button>
             </div>
 

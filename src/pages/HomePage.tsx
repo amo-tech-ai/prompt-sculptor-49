@@ -1,8 +1,9 @@
 import { Helmet } from 'react-helmet-async';
-import { Hero } from '@/components/sections/Hero';
-import { Services } from '@/components/sections/Services';
-import { Statistics } from '@/components/sections/Statistics';
-import { SpecialService } from '@/components/sections/SpecialService';
+import { HeroSection } from '@/components/sections/HeroSection';
+import { ZiziCards } from '@/components/sections/ZiziCards';
+import { SpecialServices } from '@/components/sections/SpecialServices';
+import { ProcessSection } from '@/components/sections/ProcessSection';
+import { PricingSection } from '@/components/sections/PricingSection';
 import { ConnectAgency } from '@/components/sections/ConnectAgency';
 import { defaultMeta } from '@/lib/seo';
 
@@ -63,10 +64,11 @@ const HomePage = () => {
         </script>
       </Helmet>
 
-      <Hero />
-      <Services />
-      <Statistics />
-      <SpecialService />
+      <HeroSection />
+      <ZiziCards />
+      <SpecialServices />
+      <ProcessSection />
+      <PricingSection />
       <ConnectAgency />
     </>
   );
