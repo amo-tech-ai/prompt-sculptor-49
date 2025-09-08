@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import { HeroSection } from '@/components/sections/HeroSection';
-import { AMOCards } from '@/components/sections/ZiziCards';
+import { AMOCards } from '@/components/sections/AMOCards';
 import { SpecialServices } from '@/components/sections/SpecialServices';
 import { ProcessSection } from '@/components/sections/ProcessSection';
 import { PricingSection } from '@/components/sections/PricingSection';
