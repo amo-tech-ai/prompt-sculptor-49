@@ -3,6 +3,7 @@ export const mainNav = [
   { title: 'Services', href: '/services' },
   { title: 'Work', href: '/portfolio' },
   { title: 'Process', href: '/process' },
+  { title: 'AI Brief', href: '/brief' },
   { title: 'Contact', href: '/contact' }
 ];
 
