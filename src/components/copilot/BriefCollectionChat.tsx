@@ -83,8 +83,7 @@ export function BriefCollectionChat({ className }: BriefCollectionChatProps) {
           instructions={systemPrompt}
           labels={{
             placeholder: "Type your answer here...",
-            initial: "Starting discovery process...",
-            thinking: "Analyzing your response..."
+            initial: "Starting discovery process..."
           }}
         />
         
