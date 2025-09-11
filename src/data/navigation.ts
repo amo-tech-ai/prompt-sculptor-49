@@ -1,4 +1,10 @@
-export const mainNav = [
+export interface NavItem {
+  title: string;
+  href: string;
+  children?: NavItem[];
+}
+
+export const mainNav: NavItem[] = [
   { title: 'Home', href: '/' },
   { title: 'Services', href: '/services' },
   { title: 'Work', href: '/portfolio' },

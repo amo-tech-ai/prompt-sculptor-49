@@ -1,22 +1,44 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
-import { Service } from '@/data/services';
+import { ArrowRight, Clock, DollarSign, TrendingUp } from 'lucide-react';
 
 interface ServiceCardProps {
-  service: Service;
+  service: {
+    id: string;
+    title: string;
+    tagline: string;
+    description: string;
+    features: string[];
+    timeline: string;
+    startingPrice: string;
+    roi: string;
+    icon: React.ComponentType<any>;
+    href: string;
+  };
   index: number;
 }
 
 export const ServiceCard = ({ service, index }: ServiceCardProps) => {
+  const IconComponent = service.icon;
+
   return (
     <div 
-      className="group relative glass-overlay rounded-2xl p-6 border border-brand-divider hover:border-brand-orange shadow-card hover:shadow-lg hover:-translate-y-1 transition-all duration-300 animate-slide-up focus-within:ring-2 focus-within:ring-brand-orange focus-within:ring-offset-2"
+      className="group relative h-full min-h-[520px] bg-white/80 backdrop-blur-sm rounded-[28px] p-8 border border-gray-200 hover:border-brand-orange shadow-card hover:shadow-xl hover:-translate-y-2 transition-all duration-500 animate-slide-up focus-within:ring-2 focus-within:ring-brand-orange focus-within:ring-offset-2"
       style={{
-        animationDelay: `${index * 100}ms`
+        animationDelay: `${index * 150}ms`
       }}
     >
+      {/* ROI Badge */}
+      <div className="absolute top-6 right-6 bg-brand-orange text-white px-3 py-1 rounded-full text-xs font-bold">
+        {service.roi} ROI
+      </div>
+
+      {/* Icon Container */}
+      <div className="w-16 h-16 bg-brand-orange/10 group-hover:bg-brand-orange rounded-2xl flex items-center justify-center mb-6 transition-all duration-300">
+        <IconComponent className="h-8 w-8 text-brand-orange group-hover:text-white transition-colors duration-300" />
+      </div>
+
       {/* Title */}
-      <h3 className="text-xl font-semibold mb-4 text-brand-dark">
+      <h3 className="text-2xl font-bold mb-3 text-brand-dark group-hover:text-brand-orange transition-colors duration-300">
         <Link 
           to={service.href}
           className="focus:outline-none focus:ring-2 focus:ring-brand-orange focus:ring-offset-2 rounded-lg"
@@ -25,48 +47,50 @@ export const ServiceCard = ({ service, index }: ServiceCardProps) => {
         </Link>
       </h3>
 
+      {/* Tagline */}
+      <p className="text-brand-orange font-medium mb-4 text-sm">
+        {service.tagline}
+      </p>
+
       {/* Description */}
-      <p className="text-brand-gray mb-6 text-sm leading-relaxed">
+      <p className="text-brand-gray mb-6 leading-relaxed">
         {service.description}
       </p>
 
-      {/* Deliverables with thin dividers */}
+      {/* Features */}
       <div className="mb-6">
-        <h4 className="text-sm font-medium text-brand-dark mb-3">Deliverables:</h4>
-        <div className="space-y-0">
-          {service.deliverables.map((deliverable, idx) => (
-            <div key={idx}>
-              <div className="text-sm text-brand-gray py-2">
-                {deliverable}
-              </div>
-              {idx < service.deliverables.length - 1 && (
-                <div className="border-t border-brand-divider" />
-              )}
-            </div>
+        <h4 className="text-sm font-semibold text-brand-dark mb-3">Key Features:</h4>
+        <ul className="space-y-2">
+          {service.features.map((feature, idx) => (
+            <li key={idx} className="flex items-start space-x-2">
+              <div className="w-1.5 h-1.5 bg-brand-orange rounded-full mt-2 flex-shrink-0" />
+              <span className="text-sm text-brand-gray">{feature}</span>
+            </li>
           ))}
+        </ul>
+      </div>
+
+      {/* Bottom Section */}
+      <div className="mt-auto pt-6 border-t border-gray-100">
+        {/* Metrics */}
+        <div className="grid grid-cols-2 gap-4 mb-6">
+          <div className="flex items-center space-x-2">
+            <Clock className="h-4 w-4 text-brand-gray" />
+            <span className="text-sm font-medium text-brand-dark">{service.timeline}</span>
+          </div>
+          <div className="flex items-center space-x-2">
+            <DollarSign className="h-4 w-4 text-brand-gray" />
+            <span className="text-sm font-medium text-brand-dark">{service.startingPrice}</span>
+          </div>
         </div>
-      </div>
 
-      {/* Tech Pills */}
-      <div className="flex flex-wrap gap-2 mb-6">
-        {service.technologies.map((tech, idx) => (
-          <span 
-            key={idx} 
-            className="bg-white/60 backdrop-blur-sm border border-white/30 rounded-full px-3 py-1 text-xs font-medium text-brand-gray"
-          >
-            {tech}
-          </span>
-        ))}
-      </div>
-
-      {/* CTA with arrow nudge */}
-      <div className="flex justify-end">
+        {/* CTA */}
         <Link
           to={service.href}
-          className="inline-flex items-center text-sm font-medium text-brand-orange hover:text-brand-orange2 transition-all duration-300 group/cta focus:outline-none focus:ring-2 focus:ring-brand-orange focus:ring-offset-2 rounded-lg"
+          className="group/cta inline-flex items-center justify-between w-full bg-brand-orange/5 hover:bg-brand-orange text-brand-orange hover:text-white rounded-xl px-4 py-3 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-orange focus:ring-offset-2"
         >
-          <span>Explore →</span>
-          <div className="ml-2 w-2 h-2 bg-brand-orange rounded-full transition-transform group-hover/cta:translate-x-1 group-hover/cta:scale-110" />
+          <span className="font-semibold">Learn More</span>
+          <ArrowRight className="h-4 w-4 group-hover/cta:translate-x-1 transition-transform duration-300" />
         </Link>
       </div>
     </div>
