@@ -107,7 +107,7 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-const PORT = Number(process.env.PORT || 8001);
+const PORT = Number(process.env.PORT || 8003);
 
 app.listen(PORT, () => {
   console.log('╔════════════════════════════════════════════════════════════╗');

@@ -10,7 +10,7 @@ export default function BriefCollectionPage() {
   // Simple CopilotKit configuration
   const copilotKitConfig = {
     publicApiKey: import.meta.env.VITE_COPILOTKIT_PUBLIC_API_KEY,
-    runtimeUrl: "http://localhost:8001/api/copilotkit",
+    runtimeUrl: "http://localhost:8003/api/copilotkit",
   };
 
   return (
