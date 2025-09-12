@@ -7,18 +7,16 @@ import { ArrowLeft, MessageSquare, Clock, CheckCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export default function BriefCollectionPage() {
-  // Using CopilotKit Cloud for immediate functionality
-  const copilotKitApiKey = import.meta.env.VITE_COPILOTKIT_PUBLIC_API_KEY;
-  
-  // Fallback to self-hosted if no API key
-  const runtimeUrl = !copilotKitApiKey 
-    ? "http://localhost:8001/api/copilotkit" 
-    : undefined;
+  // Simple CopilotKit configuration
+  const copilotKitConfig = {
+    publicApiKey: import.meta.env.VITE_COPILOTKIT_PUBLIC_API_KEY,
+    runtimeUrl: "http://localhost:8001/api/copilotkit",
+  };
 
   return (
     <CopilotKit 
-      publicApiKey={copilotKitApiKey}
-      runtimeUrl={runtimeUrl}
+      publicApiKey={copilotKitConfig.publicApiKey}
+      runtimeUrl={copilotKitConfig.runtimeUrl}
     >
       <BriefStateProvider>
         <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50">
@@ -70,7 +68,6 @@ export default function BriefCollectionPage() {
                 
                 {/* Chat Interface */}
                 <div className="relative">
-                  {/* Gradient Border Effect */}
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-5"></div>
                   
                   <div className="relative h-[650px] bg-white">

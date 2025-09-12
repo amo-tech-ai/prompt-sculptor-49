@@ -2,8 +2,16 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, User, LogOut } from 'lucide-react';
 import { mainNav } from '@/data/navigation';
+import { SignedIn, SignedOut, SignInButton, UserButton, useUser } from '@clerk/clerk-react';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+  DropdownMenuSeparator,
+} from '@/components/ui/dropdown-menu';
 
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -84,12 +92,30 @@ export const Header = () => {
 
             {/* Desktop CTA - AMO AI style - responsive sizing */}
             <div className="hidden md:flex items-center space-x-3 lg:space-x-4">
-              <Button variant="outline" size="sm" className="border-brand-orange text-brand-orange hover:bg-brand-orange hover:text-white text-xs lg:text-sm px-3 lg:px-4" asChild>
-                <Link to="/contact">Sign In</Link>
-              </Button>
-              <Button size="sm" className="bg-brand-orange hover:bg-brand-orange2 text-white rounded-full px-4 lg:px-6 text-xs lg:text-sm" asChild>
-                <Link to="/contact">Sign Up</Link>
-              </Button>
+              <SignedOut>
+                <SignInButton mode="modal">
+                  <Button variant="outline" size="sm" className="border-brand-orange text-brand-orange hover:bg-brand-orange hover:text-white text-xs lg:text-sm px-3 lg:px-4">
+                    Sign In
+                  </Button>
+                </SignInButton>
+                <Button size="sm" className="bg-brand-orange hover:bg-brand-orange2 text-white rounded-full px-4 lg:px-6 text-xs lg:text-sm" asChild>
+                  <Link to="/brief">Start Project</Link>
+                </Button>
+              </SignedOut>
+              
+              <SignedIn>
+                <Button variant="outline" size="sm" className="text-xs lg:text-sm" asChild>
+                  <Link to="/projects">My Projects</Link>
+                </Button>
+                <UserButton 
+                  afterSignOutUrl="/"
+                  appearance={{
+                    elements: {
+                      avatarBox: "w-8 h-8 rounded-full",
+                    },
+                  }}
+                />
+              </SignedIn>
             </div>
 
             {/* Mobile Menu Trigger - responsive sizing */}
@@ -138,12 +164,32 @@ export const Header = () => {
                   ))}
                   
                   <div className="pt-4 sm:pt-6 space-y-3">
-                    <Button variant="outline" className="w-full text-sm sm:text-base" asChild>
-                      <Link to="/contact" onClick={() => setIsMobileOpen(false)}>Get Quote</Link>
-                    </Button>
-                    <Button className="w-full text-sm sm:text-base" asChild>
-                      <Link to="/contact" onClick={() => setIsMobileOpen(false)}>Start Project</Link>
-                    </Button>
+                    <SignedOut>
+                      <SignInButton mode="modal">
+                        <Button variant="outline" className="w-full text-sm sm:text-base">
+                          Sign In
+                        </Button>
+                      </SignInButton>
+                      <Button className="w-full text-sm sm:text-base" asChild>
+                        <Link to="/brief" onClick={() => setIsMobileOpen(false)}>Start Project</Link>
+                      </Button>
+                    </SignedOut>
+                    
+                    <SignedIn>
+                      <Button variant="outline" className="w-full text-sm sm:text-base" asChild>
+                        <Link to="/projects" onClick={() => setIsMobileOpen(false)}>My Projects</Link>
+                      </Button>
+                      <div className="flex justify-center pt-2">
+                        <UserButton 
+                          afterSignOutUrl="/"
+                          appearance={{
+                            elements: {
+                              avatarBox: "w-10 h-10",
+                            },
+                          }}
+                        />
+                      </div>
+                    </SignedIn>
                   </div>
                 </nav>
               </SheetContent>
