@@ -16,7 +16,8 @@ import {
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
-  const location = useLocation();
+const location = useLocation();
+  const hasClerk = Boolean(import.meta.env.VITE_CLERK_PUBLISHABLE_KEY);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -91,31 +92,41 @@ export const Header = () => {
             </nav>
 
             {/* Desktop CTA - AMO AI style - responsive sizing */}
-            <div className="hidden md:flex items-center space-x-3 lg:space-x-4">
-              <SignedOut>
-                <SignInButton mode="modal">
-                  <Button variant="outline" size="sm" className="border-brand-orange text-brand-orange hover:bg-brand-orange hover:text-white text-xs lg:text-sm px-3 lg:px-4">
-                    Sign In
+<div className="hidden md:flex items-center space-x-3 lg:space-x-4">
+              {hasClerk ? (
+                <>
+                  <SignedOut>
+                    <SignInButton mode="modal">
+                      <Button variant="outline" size="sm" className="border-brand-orange text-brand-orange hover:bg-brand-orange hover:text-white text-xs lg:text-sm px-3 lg:px-4">
+                        Sign In
+                      </Button>
+                    </SignInButton>
+                    <Button size="sm" className="bg-brand-orange hover:bg-brand-orange2 text-white rounded-full px-4 lg:px-6 text-xs lg:text-sm" asChild>
+                      <Link to="/brief">Start Project</Link>
+                    </Button>
+                  </SignedOut>
+                  
+                  <SignedIn>
+                    <Button variant="outline" size="sm" className="text-xs lg:text-sm" asChild>
+                      <Link to="/projects">My Projects</Link>
+                    </Button>
+                    <UserButton 
+                      afterSignOutUrl="/"
+                      appearance={{
+                        elements: {
+                          avatarBox: "w-8 h-8 rounded-full",
+                        },
+                      }}
+                    />
+                  </SignedIn>
+                </>
+              ) : (
+                <>
+                  <Button size="sm" className="bg-brand-orange hover:bg-brand-orange2 text-white rounded-full px-4 lg:px-6 text-xs lg:text-sm" asChild>
+                    <Link to="/brief">Start Project</Link>
                   </Button>
-                </SignInButton>
-                <Button size="sm" className="bg-brand-orange hover:bg-brand-orange2 text-white rounded-full px-4 lg:px-6 text-xs lg:text-sm" asChild>
-                  <Link to="/brief">Start Project</Link>
-                </Button>
-              </SignedOut>
-              
-              <SignedIn>
-                <Button variant="outline" size="sm" className="text-xs lg:text-sm" asChild>
-                  <Link to="/projects">My Projects</Link>
-                </Button>
-                <UserButton 
-                  afterSignOutUrl="/"
-                  appearance={{
-                    elements: {
-                      avatarBox: "w-8 h-8 rounded-full",
-                    },
-                  }}
-                />
-              </SignedIn>
+                </>
+              )}
             </div>
 
             {/* Mobile Menu Trigger - responsive sizing */}
@@ -163,33 +174,43 @@ export const Header = () => {
                     </div>
                   ))}
                   
-                  <div className="pt-4 sm:pt-6 space-y-3">
-                    <SignedOut>
-                      <SignInButton mode="modal">
-                        <Button variant="outline" className="w-full text-sm sm:text-base">
-                          Sign In
+<div className="pt-4 sm:pt-6 space-y-3">
+                    {hasClerk ? (
+                      <>
+                        <SignedOut>
+                          <SignInButton mode="modal">
+                            <Button variant="outline" className="w-full text-sm sm:text-base">
+                              Sign In
+                            </Button>
+                          </SignInButton>
+                          <Button className="w-full text-sm sm:text-base" asChild>
+                            <Link to="/brief" onClick={() => setIsMobileOpen(false)}>Start Project</Link>
+                          </Button>
+                        </SignedOut>
+                        
+                        <SignedIn>
+                          <Button variant="outline" className="w-full text-sm sm:text-base" asChild>
+                            <Link to="/projects" onClick={() => setIsMobileOpen(false)}>My Projects</Link>
+                          </Button>
+                          <div className="flex justify-center pt-2">
+                            <UserButton 
+                              afterSignOutUrl="/"
+                              appearance={{
+                                elements: {
+                                  avatarBox: "w-10 h-10",
+                                },
+                              }}
+                            />
+                          </div>
+                        </SignedIn>
+                      </>
+                    ) : (
+                      <>
+                        <Button className="w-full text-sm sm:text-base" asChild>
+                          <Link to="/brief" onClick={() => setIsMobileOpen(false)}>Start Project</Link>
                         </Button>
-                      </SignInButton>
-                      <Button className="w-full text-sm sm:text-base" asChild>
-                        <Link to="/brief" onClick={() => setIsMobileOpen(false)}>Start Project</Link>
-                      </Button>
-                    </SignedOut>
-                    
-                    <SignedIn>
-                      <Button variant="outline" className="w-full text-sm sm:text-base" asChild>
-                        <Link to="/projects" onClick={() => setIsMobileOpen(false)}>My Projects</Link>
-                      </Button>
-                      <div className="flex justify-center pt-2">
-                        <UserButton 
-                          afterSignOutUrl="/"
-                          appearance={{
-                            elements: {
-                              avatarBox: "w-10 h-10",
-                            },
-                          }}
-                        />
-                      </div>
-                    </SignedIn>
+                      </>
+                    )}
                   </div>
                 </nav>
               </SheetContent>

@@ -19,7 +19,7 @@ const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       staleTime: 5 * 60 * 1000, // 5 minutes
-      cacheTime: 10 * 60 * 1000, // 10 minutes
+      gcTime: 10 * 60 * 1000, // 10 minutes
       retry: 2,
       refetchOnWindowFocus: false,
     },
@@ -33,33 +33,44 @@ if (!clerkPubKey) {
   console.error("Missing Clerk publishable key. Add VITE_CLERK_PUBLISHABLE_KEY to .env.local");
 }
 
+const AppContent = () => (
+  <QueryClientProvider client={queryClient}>
+    <TooltipProvider>
+      <Toaster />
+      <Sonner />
+      <BrowserRouter>
+        <div className="min-h-screen flex flex-col">
+          <Header />
+          <main id="main-content" className="flex-1">
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/services" element={<ServicesPage />} />
+              <Route path="/process" element={<ProcessPage />} />
+              <Route path="/projects" element={<ProjectsPage />} />
+              <Route path="/brief" element={<BriefCollectionPage />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </BrowserRouter>
+    </TooltipProvider>
+  </QueryClientProvider>
+);
+
 const App = () => (
   <HelmetProvider>
-    <ClerkProvider publishableKey={clerkPubKey}>
-      <QueryClientProvider client={queryClient}>
-        <TooltipProvider>
-          <Toaster />
-          <Sonner />
-          <BrowserRouter>
-            <div className="min-h-screen flex flex-col">
-              <Header />
-              <main id="main-content" className="flex-1">
-                <Routes>
-                  <Route path="/" element={<HomePage />} />
-                  <Route path="/services" element={<ServicesPage />} />
-                  <Route path="/process" element={<ProcessPage />} />
-                  <Route path="/projects" element={<ProjectsPage />} />
-                  <Route path="/brief" element={<BriefCollectionPage />} />
-                  {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-                  <Route path="*" element={<NotFound />} />
-                </Routes>
-              </main>
-              <Footer />
-            </div>
-          </BrowserRouter>
-        </TooltipProvider>
-      </QueryClientProvider>
-    </ClerkProvider>
+    {clerkPubKey ? (
+      <ClerkProvider publishableKey={clerkPubKey}>
+        <AppContent />
+      </ClerkProvider>
+    ) : (
+      <>
+        {console.warn("Clerk disabled: Missing VITE_CLERK_PUBLISHABLE_KEY")}
+        <AppContent />
+      </>
+    )}
   </HelmetProvider>
 );
 
