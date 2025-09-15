@@ -1,6 +1,6 @@
 // AMO AI - CopilotKit + Strapi Integration
 import { useCopilotStrapiIntegration } from '@/hooks/useStrapi';
-import { CopilotProvider } from '@copilotkit/react-core';
+import { CopilotKit } from '@copilotkit/react-core';
 import { CopilotKitCSSProperties, CopilotSidebar } from '@copilotkit/react-ui';
 
 interface AMOCopilotProviderProps {
@@ -15,23 +15,13 @@ export const AMOCopilotProvider: React.FC<AMOCopilotProviderProps> = ({
   const { handleCopilotInteraction } = useCopilotStrapiIntegration();
 
   return (
-    <CopilotProvider 
+    <CopilotKit 
       runtimeUrl={runtimeUrl}
-      onInstructionsChange={(instructions) => {
-        // Log instructions changes to Strapi
-        handleCopilotInteraction(
-          `session_${Date.now()}`,
-          'Instructions updated',
-          instructions,
-          { type: 'instructions_change' },
-          { timestamp: new Date().toISOString() }
-        );
-      }}
     >
       <div style={{ "--copilot-kit-primary-color": "#2563eb" } as CopilotKitCSSProperties}>
         {children}
       </div>
-    </CopilotProvider>
+    </CopilotKit>
   );
 };
 

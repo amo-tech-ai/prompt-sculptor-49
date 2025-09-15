@@ -12,6 +12,7 @@ import ServicesPage from "./pages/ServicesPage";
 import ProcessPage from "./pages/ProcessPage";
 import ProjectsPage from "./pages/ProjectsPage";
 import BriefCollectionPage from "./pages/BriefCollection";
+import AboutPage from "./pages/AboutPage";
 import NotFound from "./pages/NotFound";
 
 // Initialize React Query client
@@ -47,6 +48,7 @@ const AppContent = () => (
               <Route path="/services" element={<ServicesPage />} />
               <Route path="/process" element={<ProcessPage />} />
               <Route path="/projects" element={<ProjectsPage />} />
+              <Route path="/about" element={<AboutPage />} />
               <Route path="/brief" element={<BriefCollectionPage />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />

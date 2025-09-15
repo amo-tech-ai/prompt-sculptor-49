@@ -1,12 +1,51 @@
 // AMO AI - Strapi CMS Integration
-import { Strapi } from '@strapi/strapi';
+// Mock implementation since Strapi client setup needs proper configuration
+const strapiUrl = import.meta.env.VITE_STRAPI_URL || 'http://localhost:1337';
+const strapiToken = import.meta.env.VITE_STRAPI_API_TOKEN;
 
-// Strapi Client Configuration
-const strapi = new Strapi({
-  baseURL: import.meta.env.VITE_STRAPI_URL || 'http://localhost:1337',
-  apiToken: import.meta.env.VITE_STRAPI_API_TOKEN,
-  timeout: 10000,
-});
+// Simple fetch-based Strapi client
+const strapi = {
+  async find(endpoint: string, options?: any) {
+    const url = new URL(`/api/${endpoint}`, strapiUrl);
+    if (options?.filters) {
+      Object.entries(options.filters).forEach(([key, value]) => {
+        url.searchParams.append(`filters[${key}]`, value as string);
+      });
+    }
+    const response = await fetch(url.toString(), {
+      headers: { 'Authorization': `Bearer ${strapiToken}` }
+    });
+    return response.json();
+  },
+  async findOne(endpoint: string, id: number) {
+    const response = await fetch(`${strapiUrl}/api/${endpoint}/${id}`, {
+      headers: { 'Authorization': `Bearer ${strapiToken}` }
+    });
+    return response.json();
+  },
+  async create(endpoint: string, payload: any) {
+    const response = await fetch(`${strapiUrl}/api/${endpoint}`, {
+      method: 'POST',
+      headers: { 
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${strapiToken}` 
+      },
+      body: JSON.stringify(payload)
+    });
+    return response.json();
+  },
+  async update(endpoint: string, id: number, payload: any) {
+    const response = await fetch(`${strapiUrl}/api/${endpoint}/${id}`, {
+      method: 'PUT',
+      headers: { 
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${strapiToken}` 
+      },
+      body: JSON.stringify(payload)
+    });
+    return response.json();
+  }
+};
 
 // Type Definitions for AMO AI Content Types
 export interface Client {
@@ -109,9 +148,7 @@ export const strapiAPI = {
   },
 
   async getClient(id: number) {
-    const response = await strapi.findOne('clients', id, {
-      populate: ['discovery_session', 'projects']
-    });
+    const response = await strapi.findOne('clients', id);
     return response.data as Client;
   },
 

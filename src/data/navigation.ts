@@ -8,6 +8,7 @@ export const mainNav: NavItem[] = [
   { title: 'Home', href: '/' },
   { title: 'Services', href: '/services' },
   { title: 'Projects', href: '/projects' },
+  { title: 'About', href: '/about' },
   { title: 'Process', href: '/process' },
   { title: 'AI Brief', href: '/brief' },
   { title: 'Contact', href: '/contact' }
