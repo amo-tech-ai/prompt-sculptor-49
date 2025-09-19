@@ -1,10 +1,14 @@
 import { Helmet } from 'react-helmet-async';
 import { HeroSection } from '@/components/sections/HeroSection';
+import { UpdatedSpecialServices } from '@/components/sections/UpdatedSpecialServices';
 import { AMOCards } from '@/components/sections/AMOCards';
-import { SpecialServices } from '@/components/sections/SpecialServices';
-import { ProcessSection } from '@/components/sections/ProcessSection';
+import { PlatformsInProduction } from '@/components/sections/PlatformsInProduction';
+import { ServicePillars } from '@/components/sections/ServicePillars';
+import { TechStackShowcase } from '@/components/sections/TechStackShowcase';
+import { JourneyToSuccess } from '@/components/sections/JourneyToSuccess';
 import { PricingSection } from '@/components/sections/PricingSection';
-import { ConnectAgency } from '@/components/sections/ConnectAgency';
+import { AIBriefTool } from '@/components/sections/AIBriefTool';
+import { FinalCTA } from '@/components/sections/FinalCTA';
 import { defaultMeta } from '@/lib/seo';
 
 const HomePage = () => {
@@ -65,11 +69,15 @@ const HomePage = () => {
       </Helmet>
 
       <HeroSection />
+      <UpdatedSpecialServices />
       <AMOCards />
-      <SpecialServices />
-      <ProcessSection />
+      <PlatformsInProduction />
+      <ServicePillars />
+      <TechStackShowcase />
+      <JourneyToSuccess />
       <PricingSection />
-      <ConnectAgency />
+      <AIBriefTool />
+      <FinalCTA />
     </>
   );
 };

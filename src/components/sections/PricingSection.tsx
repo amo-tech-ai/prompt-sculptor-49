@@ -3,47 +3,48 @@ import { Check, ArrowRight } from 'lucide-react';
 export const PricingSection = () => {
   const pricingTiers = [
     {
-      name: "Starter Package",
-      price: "$15,000 - $30,000",
-      description: "Perfect for MVPs and proof of concepts",
+      name: "MVP / Proof of Concept",
+      price: "$15K–$30K",
+      description: "Perfect for validating your AI idea with a working prototype",
       features: [
-        "Single AI integration",
-        "Basic automation",
+        "Core AI functionality",
+        "Basic user interface",
+        "Essential integrations",
         "2-4 week delivery",
-        "Email support",
-        "Basic documentation"
+        "User testing & feedback",
+        "Technical documentation"
       ],
-      cta: "Get Started",
+      cta: "Start MVP",
       popular: false
     },
     {
-      name: "Professional Platform",
-      price: "$50,000 - $150,000",
-      description: "Complete applications with multiple features",
+      name: "Production Ready",
+      price: "$50K–$150K",
+      description: "Full-featured AI application ready for market launch",
       features: [
-        "Full-stack development",
-        "AI agents & workflows",
-        "6-12 week delivery",
-        "Priority support",
-        "Complete documentation",
-        "Training & onboarding",
-        "3 months maintenance"
+        "Complete AI platform",
+        "Advanced integrations",
+        "Scalable architecture",
+        "4-8 week delivery",
+        "ROI tracking & analytics",
+        "3 months support",
+        "Performance optimization"
       ],
-      cta: "Get Started",
+      cta: "Most Popular",
       popular: true
     },
     {
-      name: "Enterprise Solution",
-      price: "$200,000+",
-      description: "Complex systems for large organizations",
+      name: "Enterprise",
+      price: "$200K+",
+      description: "Comprehensive AI transformation with dedicated team",
       features: [
-        "Custom architecture",
-        "Unlimited integrations",
-        "Dedicated team",
-        "24/7 support",
-        "Custom training",
-        "Ongoing maintenance",
-        "SLA guarantees"
+        "AI agents + RAG Knowledge Base",
+        "Custom workflow automation",
+        "Enterprise integrations",
+        "Dedicated project team",
+        "Advanced security & compliance",
+        "1 year support & maintenance",
+        "Team training included"
       ],
       cta: "Contact Us",
       popular: false
@@ -73,7 +74,7 @@ export const PricingSection = () => {
             Investment Levels
           </h2>
           <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed px-4 sm:px-0">
-            Transparent Pricing, Clear Value. Choose the package that fits your project scope and budget.
+            Investment levels designed for ROI. Every project pays for itself within 3 months.
           </p>
         </div>
 
@@ -138,10 +139,17 @@ export const PricingSection = () => {
 
         {/* Bottom Note - responsive text sizing */}
         <div className="text-center mt-8 sm:mt-12">
-          <p className="text-sm sm:text-base text-gray-600 px-4 sm:px-0">
-            All projects include source code, documentation, and deployment. 
-            <span className="text-orange-600 font-semibold"> Custom quotes available for unique requirements.</span>
+          <p className="text-sm sm:text-base text-gray-600 px-4 sm:px-0 mb-4">
+            All plans include strategy consultation, implementation, and post-launch support.
           </p>
+          <div className="inline-flex items-center gap-3 bg-orange-50 border border-orange-200 rounded-full px-6 py-3">
+            <span className="text-sm font-semibold text-gray-900">
+              📊 Want to calculate your ROI? 
+            </span>
+            <a href="/roi-calculator" className="text-orange-600 hover:text-orange-700 transition-colors font-medium">
+              Use our ROI Calculator →
+            </a>
+          </div>
         </div>
       </div>
     </section>

@@ -23,14 +23,21 @@ export const HeroSection = () => {
             </h1>
 
             {/* Subheadline - responsive text sizing */}
-            <p className="text-lg sm:text-xl md:text-2xl text-brand-gray mb-8 sm:mb-12 max-w-[60ch] leading-relaxed">
-              We build intelligent systems using Claude, GPT-4, and modern automation platforms. From $15K MVPs to $250K enterprise solutions.
+            <p className="text-lg sm:text-xl md:text-2xl text-brand-gray mb-6 sm:mb-8 max-w-[60ch] leading-relaxed">
+              We build intelligent systems with Claude, GPT-4, and CopilotKit. From $15K MVPs to enterprise solutions, we deliver production-ready apps in 2–8 weeks.
             </p>
+
+            {/* ROI Proof */}
+            <div className="bg-brand-orange/10 border border-brand-orange/20 rounded-2xl px-6 py-4 mb-8 sm:mb-12 max-w-2xl">
+              <p className="text-lg font-semibold text-brand-dark">
+                293% average ROI in 3 months. $4.3M in monthly client revenue already delivered.
+              </p>
+            </div>
 
             {/* CTAs - responsive spacing and sizing */}
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 mb-12 sm:mb-16">
               <Link 
-                to="/contact" 
+                to="/brief-collection" 
                 className="pill-button pill-button-primary inline-flex items-center justify-center space-x-2 text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4"
               >
                 <span>Start Your Project</span>
@@ -38,26 +45,26 @@ export const HeroSection = () => {
               </Link>
               
               <Link 
-                to="/portfolio" 
+                to="/projects" 
                 className="pill-button pill-button-secondary inline-flex items-center justify-center text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4"
               >
-                See Our Work
+                See 50+ Live Projects
               </Link>
             </div>
 
-            {/* Trust Indicators - responsive layout */}
-            <div className="flex flex-col sm:flex-row sm:flex-wrap gap-4 sm:gap-6 lg:gap-8">
-              <div className="flex items-center space-x-3 text-brand-gray">
-                <div className="w-3 h-3 bg-brand-orange rounded-full flex-shrink-0" />
-                <span className="font-medium text-base sm:text-lg">✓ 50+ Live Applications</span>
-              </div>
-              <div className="flex items-center space-x-3 text-brand-gray">
-                <div className="w-3 h-3 bg-brand-orange rounded-full flex-shrink-0" />
-                <span className="font-medium text-base sm:text-lg">✓ 2-16 Week Delivery</span>
-              </div>
-              <div className="flex items-center space-x-3 text-brand-gray">
-                <div className="w-3 h-3 bg-brand-orange rounded-full flex-shrink-0" />
-                <span className="font-medium text-base sm:text-lg">✓ Production-Ready Code</span>
+            {/* Trust Logos */}
+            <div className="max-w-5xl">
+              <p className="text-brand-gray/70 text-sm mb-6">Trusted by companies worldwide • Built with enterprise-grade technologies</p>
+              <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-9 gap-6 items-center justify-items-center opacity-80 hover:opacity-100 transition-opacity">
+                <img src="/src/assets/logos/claude-logo.png" alt="Claude AI" className="h-8 md:h-10 object-contain filter grayscale hover:grayscale-0 transition-all" />
+                <img src="/src/assets/logos/openai-logo.svg" alt="OpenAI" className="h-8 md:h-10 object-contain filter grayscale hover:grayscale-0 transition-all" />
+                <img src="/src/assets/logos/supabase-logo.svg" alt="Supabase" className="h-8 md:h-10 object-contain filter grayscale hover:grayscale-0 transition-all" />
+                <img src="/src/assets/logos/webflow-logo.svg" alt="Webflow" className="h-8 md:h-10 object-contain filter grayscale hover:grayscale-0 transition-all" />
+                <img src="/src/assets/logos/shopify-logo.svg" alt="Shopify" className="h-8 md:h-10 object-contain filter grayscale hover:grayscale-0 transition-all" />
+                <img src="/src/assets/logos/stripe-logo.svg" alt="Stripe" className="h-8 md:h-10 object-contain filter grayscale hover:grayscale-0 transition-all" />
+                <img src="/src/assets/logos/whatsapp-logo.png" alt="WhatsApp" className="h-8 md:h-10 object-contain filter grayscale hover:grayscale-0 transition-all" />
+                <img src="/src/assets/logos/crewai-logo.svg" alt="CrewAI" className="h-8 md:h-10 object-contain filter grayscale hover:grayscale-0 transition-all" />
+                <div className="text-brand-gray font-medium text-sm hover:text-brand-orange transition-colors">CopilotKit</div>
               </div>
             </div>
           </div>
