@@ -9,6 +9,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import HomePage from "./pages/HomePage";
 import ServicesPage from "./pages/ServicesPage";
+import ServiceDetailPage from "./pages/ServiceDetailPage";
 import ProcessPage from "./pages/ProcessPage";
 import ProjectsPage from "./pages/ProjectsPage";
 import BriefCollectionPage from "./pages/BriefCollection";
@@ -46,6 +47,7 @@ const AppContent = () => (
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/services" element={<ServicesPage />} />
+              <Route path="/services/:serviceId" element={<ServiceDetailPage />} />
               <Route path="/process" element={<ProcessPage />} />
               <Route path="/projects" element={<ProjectsPage />} />
               <Route path="/about" element={<AboutPage />} />
