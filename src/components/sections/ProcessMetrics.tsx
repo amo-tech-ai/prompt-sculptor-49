@@ -26,8 +26,8 @@ export const ProcessMetrics = () => {
       value: counts.projects,
       suffix: '',
       icon: Target,
-      color: 'text-blue-600',
-      bgColor: 'bg-blue-50',
+      color: 'text-foreground',
+      bgColor: 'bg-muted',
       description: 'Successful AI applications launched'
     },
     {

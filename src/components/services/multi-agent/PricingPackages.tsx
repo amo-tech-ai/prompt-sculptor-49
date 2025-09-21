@@ -127,7 +127,7 @@ export const PricingPackages = () => {
             <p className="text-muted-foreground">
               A logistics company invested <span className="font-semibold text-primary">$125K</span> → 
               saved <span className="font-semibold text-green-600">$725K</span> in labor + 
-              generated <span className="font-semibold text-blue-600">$500K</span> in new revenue within the first year.
+              generated <span className="font-semibold text-foreground">$500K</span> in new revenue within the first year.
             </p>
           </div>
         </div>

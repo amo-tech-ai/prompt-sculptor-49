@@ -15,8 +15,8 @@ export const Capabilities = () => {
       icon: Users,
       title: "Task Delegation",
       description: "Agents collaborate like a human team, each with a clear specialty.",
-      color: "text-blue-500",
-      bgColor: "bg-blue-500/10"
+      color: "text-foreground",
+      bgColor: "bg-muted"
     },
     {
       icon: Plug,

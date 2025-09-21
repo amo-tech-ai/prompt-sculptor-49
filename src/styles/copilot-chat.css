@@ -15,7 +15,7 @@
 }
 
 .copilotKitMessage[data-role="user"] .copilotKitMessageContent {
-  @apply bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-2xl px-5 py-3 max-w-[80%] shadow-md;
+  @apply bg-gradient-to-r from-foreground to-primary text-white rounded-2xl px-5 py-3 max-w-[80%] shadow-md;
 }
 
 /* Assistant Messages */
@@ -33,7 +33,7 @@
 }
 
 .copilotKitInputField {
-  @apply bg-gray-50 border-gray-300 rounded-xl px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all;
+  @apply bg-gray-50 border-gray-300 rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary focus:border-transparent transition-all;
 }
 
 .copilotKitInputField::placeholder {
@@ -41,7 +41,7 @@
 }
 
 .copilotKitSendButton {
-  @apply bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white rounded-xl px-6 py-3 font-medium transition-all transform hover:scale-105 active:scale-95;
+  @apply bg-gradient-to-r from-primary to-accent hover:from-foreground hover:to-primary text-white rounded-xl px-6 py-3 font-medium transition-all transform hover:scale-105 active:scale-95;
 }
 
 /* Thinking/Loading State */
@@ -50,8 +50,8 @@
 }
 
 .copilotKitThinking::before {
-  content: "";
-  @apply w-2 h-2 bg-blue-500 rounded-full animate-pulse;
+      content: "";
+      @apply w-2 h-2 bg-foreground rounded-full animate-pulse;
 }
 
 /* Scrollbar Styling */
@@ -73,7 +73,7 @@
 }
 
 .copilotKitMessage[data-role="assistant"] .copilotKitAvatar {
-  @apply bg-gradient-to-br from-blue-500 to-purple-500;
+  @apply bg-gradient-to-br from-primary to-accent;
 }
 
 .copilotKitMessage[data-role="user"] .copilotKitAvatar {
@@ -118,7 +118,7 @@
 }
 
 .copilotKitMessageContent blockquote {
-  @apply border-l-4 border-blue-500 pl-4 py-2 my-3 bg-blue-50 rounded-r-lg;
+  @apply border-l-4 border-primary pl-4 py-2 my-3 bg-muted rounded-r-lg;
 }
 
 /* Animation Classes */

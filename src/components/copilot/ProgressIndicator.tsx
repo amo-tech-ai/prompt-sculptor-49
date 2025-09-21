@@ -34,7 +34,7 @@ export function ProgressIndicator() {
   const progressPercentage = calculateProgress();
 
   return (
-    <div className="w-full bg-gradient-to-r from-blue-50 to-purple-50 border-b p-6">
+    <div className="w-full bg-gradient-to-r from-muted to-secondary border-b p-6">
       {/* Header with Progress */}
       <div className="flex justify-between items-center mb-4">
         <div>
@@ -45,7 +45,7 @@ export function ProgressIndicator() {
         </div>
         <div className="text-right">
           <div className="flex items-center gap-3">
-            <div className="text-3xl font-bold text-blue-600">
+            <div className="text-3xl font-bold text-foreground">
               {progressPercentage}%
             </div>
             <div className="text-sm text-gray-500">
@@ -63,7 +63,7 @@ export function ProgressIndicator() {
       <div className="relative mb-6">
         <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
           <div 
-            className="h-full bg-gradient-to-r from-blue-500 to-purple-500 rounded-full transition-all duration-500 ease-out relative"
+            className="h-full bg-gradient-to-r from-primary to-accent rounded-full transition-all duration-500 ease-out relative"
             style={{ width: `${progressPercentage}%` }}
           >
             <div className="absolute inset-0 bg-white/20 animate-pulse"></div>
@@ -76,7 +76,7 @@ export function ProgressIndicator() {
         {/* Connection Line */}
         <div className="absolute top-5 left-0 right-0 h-0.5 bg-gray-200" />
         <div 
-          className="absolute top-5 left-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-500"
+          className="absolute top-5 left-0 h-0.5 bg-gradient-to-r from-primary to-accent transition-all duration-500"
           style={{ width: `${(currentIndex / (stages.length - 1)) * 100}%` }}
         />
         
@@ -86,9 +86,9 @@ export function ProgressIndicator() {
             <div className={cn(
               "relative z-10 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 transform",
               index < currentIndex 
-                ? "bg-gradient-to-r from-blue-500 to-purple-500 text-white scale-100" 
+                ? "bg-gradient-to-r from-primary to-accent text-white scale-100" 
                 : index === currentIndex
-                ? "bg-gradient-to-r from-blue-500 to-purple-500 text-white scale-110 shadow-lg ring-4 ring-blue-100"
+                ? "bg-gradient-to-r from-primary to-accent text-white scale-110 shadow-lg ring-4 ring-primary/20"
                 : "bg-white border-2 border-gray-300 text-gray-400 scale-90"
             )}>
               {index < currentIndex ? (
@@ -110,7 +110,7 @@ export function ProgressIndicator() {
                 : "text-gray-400 opacity-70"
             )}>
               <div className={cn(
-                index === currentIndex && "font-bold text-blue-600"
+                index === currentIndex && "font-bold text-foreground"
               )}>
                 {stageItem.label}
               </div>
@@ -138,7 +138,7 @@ export function ProgressIndicator() {
         <div className="bg-white rounded-lg p-3 shadow-sm border border-gray-100">
           <div className="flex items-center justify-between">
             <span className="text-sm font-medium text-gray-700">Current Stage:</span>
-            <span className="text-sm font-bold text-blue-600">
+            <span className="text-sm font-bold text-foreground">
               {stages[currentIndex]?.label}
             </span>
           </div>

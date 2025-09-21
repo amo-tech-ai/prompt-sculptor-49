@@ -52,20 +52,9 @@ export const HeroSection = () => {
               </Link>
             </div>
 
-            {/* Trust Logos */}
+            {/* Trust Statement */}
             <div className="max-w-5xl">
-              <p className="text-brand-gray/70 text-sm mb-6">Trusted by companies worldwide • Built with enterprise-grade technologies</p>
-              <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-9 gap-6 items-center justify-items-center opacity-80 hover:opacity-100 transition-opacity">
-                <img src="/src/assets/logos/claude-logo.png" alt="Claude AI" className="h-8 md:h-10 object-contain filter grayscale hover:grayscale-0 transition-all" />
-                <img src="/src/assets/logos/openai-logo.svg" alt="OpenAI" className="h-8 md:h-10 object-contain filter grayscale hover:grayscale-0 transition-all" />
-                <img src="/src/assets/logos/supabase-logo.svg" alt="Supabase" className="h-8 md:h-10 object-contain filter grayscale hover:grayscale-0 transition-all" />
-                <img src="/src/assets/logos/webflow-logo.svg" alt="Webflow" className="h-8 md:h-10 object-contain filter grayscale hover:grayscale-0 transition-all" />
-                <img src="/src/assets/logos/shopify-logo.svg" alt="Shopify" className="h-8 md:h-10 object-contain filter grayscale hover:grayscale-0 transition-all" />
-                <img src="/src/assets/logos/stripe-logo.svg" alt="Stripe" className="h-8 md:h-10 object-contain filter grayscale hover:grayscale-0 transition-all" />
-                <img src="/src/assets/logos/whatsapp-logo.png" alt="WhatsApp" className="h-8 md:h-10 object-contain filter grayscale hover:grayscale-0 transition-all" />
-                <img src="/src/assets/logos/crewai-logo.svg" alt="CrewAI" className="h-8 md:h-10 object-contain filter grayscale hover:grayscale-0 transition-all" />
-                <div className="text-brand-gray font-medium text-sm hover:text-brand-orange transition-colors">CopilotKit</div>
-              </div>
+              <p className="text-brand-gray/70 text-sm text-center">Trusted by companies worldwide • Built with enterprise-grade technologies</p>
             </div>
           </div>
 
@@ -88,9 +77,9 @@ export const HeroSection = () => {
               <p className="text-base sm:text-lg text-brand-gray mb-4 sm:mb-6">Trusted by 50+ Companies Building the Future</p>
               <div className="flex justify-center items-center space-x-3">
                 <div className="flex -space-x-1 sm:-space-x-2">
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 bg-blue-500 rounded-full border-2 border-white" />
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 bg-green-500 rounded-full border-2 border-white" />
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 bg-purple-500 rounded-full border-2 border-white" />
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 bg-foreground rounded-full border-2 border-white" />
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 bg-brand-orange rounded-full border-2 border-white" />
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 bg-muted-foreground rounded-full border-2 border-white" />
                 </div>
                 <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 text-brand-orange" />
               </div>

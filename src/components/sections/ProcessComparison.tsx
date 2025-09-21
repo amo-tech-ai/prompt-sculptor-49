@@ -199,7 +199,7 @@ export const ProcessComparison = () => {
               <div className="text-gray-600">On-Time Rate</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-blue-600 mb-2">$200K+</div>
+              <div className="text-4xl font-bold text-foreground mb-2">$200K+</div>
               <div className="text-gray-600">Average Savings</div>
             </div>
           </div>

@@ -9,8 +9,8 @@ export const Journey = () => {
       weeks: "Weeks 1–4",
       title: "Foundation",
       description: "Map workflows, design your first agent team, and launch pilot agents for your biggest bottleneck.",
-      color: "text-blue-500",
-      bgColor: "bg-blue-500/10"
+      color: "text-foreground",
+      bgColor: "bg-muted"
     },
     {
       icon: Network,

@@ -49,7 +49,7 @@ export default function BriefCollectionPage() {
             <div className="max-w-5xl mx-auto">
               {/* Hero Section */}
               <div className="text-center mb-10">
-                <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium mb-4">
+                <div className="inline-flex items-center gap-2 bg-muted text-foreground px-4 py-2 rounded-full text-sm font-medium mb-4">
                   <CheckCircle className="h-4 w-4" />
                   <span>AI-Powered Discovery Process</span>
                 </div>
@@ -80,7 +80,7 @@ export default function BriefCollectionPage() {
                   <div className="flex items-center justify-between text-sm">
                     <div className="flex items-center gap-4">
                       <span className="text-gray-500">Need help?</span>
-                      <button className="text-blue-600 hover:text-blue-700 font-medium">
+                      <button className="text-foreground hover:text-primary font-medium">
                         Contact Support
                       </button>
                     </div>
@@ -94,7 +94,7 @@ export default function BriefCollectionPage() {
               {/* Trust Indicators */}
               <div className="mt-8 grid grid-cols-3 gap-4 text-center">
                 <div className="bg-white rounded-lg p-4 shadow-sm border border-gray-100">
-                  <div className="text-2xl font-bold text-blue-600">293%</div>
+                  <div className="text-2xl font-bold text-foreground">293%</div>
                   <div className="text-sm text-gray-600">Average ROI</div>
                 </div>
                 <div className="bg-white rounded-lg p-4 shadow-sm border border-gray-100">

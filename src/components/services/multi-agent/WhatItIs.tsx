@@ -43,8 +43,8 @@ export const WhatItIs = () => {
               
               <div className="space-y-4">
                 {[
-                  { icon: Brain, label: "Research", color: "text-blue-500" },
-                  { icon: Zap, label: "Analyze", color: "text-purple-500" },
+                  { icon: Brain, label: "Research", color: "text-foreground" },
+                  { icon: Zap, label: "Analyze", color: "text-brand-orange" },
                   { icon: Users, label: "Decide", color: "text-green-500" },
                   { icon: Zap, label: "Act", color: "text-orange-500" },
                   { icon: Brain, label: "Report", color: "text-pink-500" }
