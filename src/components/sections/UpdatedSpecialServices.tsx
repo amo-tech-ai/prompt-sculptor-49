@@ -6,25 +6,25 @@ import { Link } from 'react-router-dom';
 
 export const UpdatedSpecialServices = () => {
   return (
-    <section className="py-24 bg-gradient-to-br from-background via-secondary/30 to-background relative overflow-hidden">
+    <section className="py-24 bg-primary text-primary-foreground relative overflow-hidden">
       {/* Background decorations */}
-      <div className="absolute top-20 left-10 w-20 h-20 bg-primary/10 rounded-full blur-xl animate-pulse" />
-      <div className="absolute bottom-20 right-10 w-32 h-32 bg-accent/10 rounded-full blur-xl animate-pulse delay-1000" />
+      <div className="absolute top-20 left-10 w-20 h-20 bg-amo-orange/20 rounded-full blur-xl animate-pulse" />
+      <div className="absolute bottom-20 right-10 w-32 h-32 bg-amo-orange/30 rounded-full blur-xl animate-pulse delay-1000" />
       
       <div className="container mx-auto px-4">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div className="text-center mb-16">
-            <Badge variant="outline" className="mb-4 px-4 py-2">
+            <Badge variant="outline" className="mb-4 px-4 py-2 border-amo-orange text-amo-orange">
               Core AI Services
             </Badge>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-primary-foreground">
               We Design and Launch{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-amo-orange to-amo-orange-light">
                 AI-Powered Platforms
               </span>
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
+            <p className="text-lg text-primary-foreground/80 max-w-3xl mx-auto mb-8">
               We design and launch AI-powered platforms with Webflow, Shopify, Claude, OpenAI, CrewAI, 
               CopilotKit, WhatsApp, and Stripe. From MVPs to enterprise, we deliver scalable, user-friendly solutions.
             </p>
@@ -59,8 +59,8 @@ export const UpdatedSpecialServices = () => {
           </div>
 
           {/* Real-world proof */}
-          <div className="bg-gradient-to-r from-primary/5 via-accent/5 to-primary/5 rounded-3xl p-8 lg:p-12 text-center">
-            <blockquote className="text-xl md:text-2xl font-medium text-foreground mb-4 italic">
+          <div className="bg-gradient-to-r from-amo-orange/10 via-amo-orange/5 to-amo-orange/10 rounded-3xl p-8 lg:p-12 text-center border border-amo-orange/20">
+            <blockquote className="text-xl md:text-2xl font-medium text-primary-foreground mb-4 italic">
               "From a Shopify store with WhatsApp order updates to a Webflow marketplace powered by Claude assistants — 
               we help businesses launch faster and scale smarter."
             </blockquote>
