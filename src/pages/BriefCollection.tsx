@@ -1,115 +1,91 @@
-import { CopilotKit } from "@copilotkit/react-core";
-import { BriefStateProvider } from "@/lib/copilot/global-state";
-import { BriefCollectionChat } from "@/components/copilot/BriefCollectionChat";
-import { ProgressIndicator } from "@/components/copilot/ProgressIndicator";
+import { Helmet } from 'react-helmet-async';
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, MessageSquare, Clock, CheckCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export default function BriefCollectionPage() {
-  // Simple CopilotKit configuration
-  const copilotKitConfig = {
-    publicApiKey: import.meta.env.VITE_COPILOTKIT_PUBLIC_API_KEY,
-    runtimeUrl: "http://localhost:8001/api/copilotkit",
-  };
-
   return (
-    <CopilotKit 
-      publicApiKey={copilotKitConfig.publicApiKey}
-      runtimeUrl={copilotKitConfig.runtimeUrl}
-    >
-      <BriefStateProvider>
-        <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50">
-          {/* Header Section */}
-          <div className="bg-white border-b shadow-sm">
-            <div className="container mx-auto px-4 py-4">
-              <div className="flex items-center justify-between">
-                <Link to="/">
-                  <Button variant="ghost" size="sm" className="gap-2">
-                    <ArrowLeft className="h-4 w-4" />
-                    Back to Home
-                  </Button>
-                </Link>
-                <div className="flex items-center gap-6 text-sm text-gray-600">
-                  <div className="flex items-center gap-2">
-                    <Clock className="h-4 w-4" />
-                    <span>Est. 15-20 min</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <MessageSquare className="h-4 w-4" />
-                    <span>AI-Guided Process</span>
-                  </div>
+    <>
+      <Helmet>
+        <title>Create Your Project Brief - AMO AI</title>
+        <meta name="description" content="Get started with our AI-powered project brief creation tool" />
+      </Helmet>
+      
+      <div className="min-h-screen bg-background">
+        {/* Header Section */}
+        <div className="bg-card border-b">
+          <div className="container mx-auto px-4 py-4">
+            <div className="flex items-center justify-between">
+              <Link to="/">
+                <Button variant="ghost" size="sm" className="gap-2">
+                  <ArrowLeft className="h-4 w-4" />
+                  Back to Home
+                </Button>
+              </Link>
+              <div className="flex items-center gap-6 text-sm text-muted-foreground">
+                <div className="flex items-center gap-2">
+                  <Clock className="h-4 w-4" />
+                  <span>Est. 15-20 min</span>
                 </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Main Content */}
-          <div className="container mx-auto px-4 py-8">
-            <div className="max-w-5xl mx-auto">
-              {/* Hero Section */}
-              <div className="text-center mb-10">
-                <div className="inline-flex items-center gap-2 bg-muted text-foreground px-4 py-2 rounded-full text-sm font-medium mb-4">
-                  <CheckCircle className="h-4 w-4" />
-                  <span>AI-Powered Discovery Process</span>
-                </div>
-                <h1 className="text-4xl font-bold text-gray-900 mb-3 bg-gradient-to-r from-gray-900 to-blue-600 bg-clip-text text-transparent">
-                  Create Your Project Brief
-                </h1>
-                <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                  Our AI consultant will guide you through a comprehensive discovery process
-                  to understand your needs and deliver a tailored solution
-                </p>
-              </div>
-              
-              {/* Progress Card */}
-              <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
-                <ProgressIndicator />
-                
-                {/* Chat Interface */}
-                <div className="relative">
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-5"></div>
-                  
-                  <div className="relative h-[650px] bg-white">
-                    <BriefCollectionChat className="h-full" />
-                  </div>
-                </div>
-
-                {/* Bottom Help Section */}
-                <div className="bg-gray-50 border-t px-6 py-4">
-                  <div className="flex items-center justify-between text-sm">
-                    <div className="flex items-center gap-4">
-                      <span className="text-gray-500">Need help?</span>
-                      <button className="text-foreground hover:text-primary font-medium">
-                        Contact Support
-                      </button>
-                    </div>
-                    <div className="text-gray-500">
-                      Your data is secure and confidential
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Trust Indicators */}
-              <div className="mt-8 grid grid-cols-3 gap-4 text-center">
-                <div className="bg-white rounded-lg p-4 shadow-sm border border-gray-100">
-                  <div className="text-2xl font-bold text-foreground">293%</div>
-                  <div className="text-sm text-gray-600">Average ROI</div>
-                </div>
-                <div className="bg-white rounded-lg p-4 shadow-sm border border-gray-100">
-                  <div className="text-2xl font-bold text-green-600">2-8 weeks</div>
-                  <div className="text-sm text-gray-600">Delivery Time</div>
-                </div>
-                <div className="bg-white rounded-lg p-4 shadow-sm border border-gray-100">
-                  <div className="text-2xl font-bold text-purple-600">90%</div>
-                  <div className="text-sm text-gray-600">Automation Level</div>
+                <div className="flex items-center gap-2">
+                  <MessageSquare className="h-4 w-4" />
+                  <span>AI-Guided Process</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </BriefStateProvider>
-    </CopilotKit>
+
+        {/* Main Content */}
+        <div className="container mx-auto px-4 py-8">
+          <div className="max-w-5xl mx-auto">
+            {/* Hero Section */}
+            <div className="text-center mb-10">
+              <div className="inline-flex items-center gap-2 bg-orange/10 text-orange px-4 py-2 rounded-full text-sm font-medium mb-4">
+                <CheckCircle className="h-4 w-4" />
+                <span>AI-Powered Discovery Process</span>
+              </div>
+              <h1 className="text-4xl font-bold mb-3 bg-gradient-to-r from-foreground to-orange bg-clip-text text-transparent">
+                Create Your Project Brief
+              </h1>
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                Our AI consultant will guide you through a comprehensive discovery process
+                to understand your needs and deliver a tailored solution
+              </p>
+            </div>
+            
+            {/* Coming Soon Message */}
+            <div className="bg-card rounded-2xl shadow-xl overflow-hidden border p-12 text-center">
+              <h2 className="text-2xl font-bold text-foreground mb-4">AI Brief Tool Coming Soon</h2>
+              <p className="text-muted-foreground mb-6">
+                Our AI-powered project brief creation tool is currently in development. 
+                In the meantime, please contact us directly to discuss your project.
+              </p>
+              <Link to="/">
+                <Button className="bg-orange hover:bg-orange/90 text-white">
+                  Contact Us Today
+                </Button>
+              </Link>
+            </div>
+
+            {/* Trust Indicators */}
+            <div className="mt-8 grid grid-cols-3 gap-4 text-center">
+              <div className="bg-card rounded-lg p-4 shadow-sm border">
+                <div className="text-2xl font-bold text-orange">293%</div>
+                <div className="text-sm text-muted-foreground">Average ROI</div>
+              </div>
+              <div className="bg-card rounded-lg p-4 shadow-sm border">
+                <div className="text-2xl font-bold text-foreground">2-8 weeks</div>
+                <div className="text-sm text-muted-foreground">Delivery Time</div>
+              </div>
+              <div className="bg-card rounded-lg p-4 shadow-sm border">
+                <div className="text-2xl font-bold text-foreground">100%</div>
+                <div className="text-sm text-muted-foreground">Success Rate</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }

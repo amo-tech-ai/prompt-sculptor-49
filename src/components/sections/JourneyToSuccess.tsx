@@ -1,134 +1,209 @@
 import { Badge } from '@/components/ui/badge';
 import { Card } from '@/components/ui/card';
-import { CheckCircle, Clock, Users, Rocket } from 'lucide-react';
+import { Search, FileText, Wrench, Rocket, Clock, CheckCircle, TrendingUp } from 'lucide-react';
 
 export const JourneyToSuccess = () => {
   const steps = [
     {
-      icon: Users,
+      icon: Search,
       title: "Discovery",
-      duration: "2 days",
-      description: "AI-powered wizard replaces long calls",
+      duration: "2 Days",
+      value: "Faster Discovery",
+      description: "AI wizard replaces long calls",
       highlight: "30 minutes vs 2.5-hour calls",
-      progress: 25
+      color: "text-orange",
+      bgColor: "bg-orange/10",
+      borderColor: "border-orange/20"
     },
     {
-      icon: CheckCircle,
+      icon: FileText,
       title: "Prototype",
-      duration: "2 weeks",
+      duration: "2 Weeks",
+      value: "Real User Feedback",
       description: "Working prototype tested with users",
-      highlight: "Real user feedback",
-      progress: 50
+      highlight: "Validated with real users",
+      color: "text-foreground",
+      bgColor: "bg-muted/50",
+      borderColor: "border-border"
     },
     {
-      icon: Clock,
+      icon: Wrench,
       title: "Build",
-      duration: "3–6 weeks",
-      description: "Weekly sprints with feedback",
-      highlight: "Agile development",
-      progress: 85
+      duration: "3–6 Weeks",
+      value: "Agile Development",
+      description: "Agile sprints with feedback",
+      highlight: "Weekly iterations",
+      color: "text-orange",
+      bgColor: "bg-orange/10",
+      borderColor: "border-orange/20"
     },
     {
       icon: Rocket,
       title: "Launch",
       duration: "Ongoing",
+      value: "Continuous Improvement",
       description: "Scaling + continuous improvement",
-      highlight: "Post-launch support",
-      progress: 100
+      highlight: "Post-launch optimization",
+      color: "text-foreground",
+      bgColor: "bg-muted/50",
+      borderColor: "border-border"
+    }
+  ];
+
+  const results = [
+    {
+      icon: Clock,
+      metric: "2–8 Weeks",
+      comparison: "vs 6+ months",
+      label: "Time to Market"
+    },
+    {
+      icon: CheckCircle,
+      metric: "100%",
+      comparison: "Success Rate",
+      label: "Project Delivery"
+    },
+    {
+      icon: TrendingUp,
+      metric: "293%",
+      comparison: "ROI within 3 months",
+      label: "Return on Investment"
     }
   ];
 
   return (
-    <section className="py-24 bg-gradient-to-br from-background via-secondary/30 to-background">
+    <section className="py-24 bg-background">
       <div className="container mx-auto px-4">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div className="text-center mb-16">
-            <Badge variant="outline" className="mb-4 px-4 py-2">
+            <Badge variant="outline" className="mb-4 px-4 py-2 border-orange text-orange">
               Our Process
             </Badge>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
               Journey to{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-foreground to-orange">
                 AI Success
               </span>
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
-              A proven 8-week process that transforms ideas into production-ready AI applications.
-            </p>
+          </div>
+
+          {/* Timeline - Desktop Horizontal */}
+          <div className="hidden lg:block relative mb-16">
+            {/* Timeline line */}
+            <div className="absolute top-1/2 left-8 right-8 h-1 bg-muted rounded-full transform -translate-y-1/2 z-0" />
+            <div className="absolute top-1/2 left-8 h-1 bg-gradient-to-r from-orange to-foreground rounded-full transform -translate-y-1/2 z-10" style={{ width: 'calc(100% - 4rem)' }} />
             
-            {/* Highlight Feature */}
-            <div className="inline-flex items-center gap-3 bg-gradient-to-r from-accent/10 to-primary/10 border border-accent/20 rounded-full px-6 py-3 mb-8">
-              <span className="text-sm font-semibold text-foreground">
-                ✨ AI Discovery Wizard: 30 minutes vs 2.5-hour calls
-              </span>
+            <div className="grid grid-cols-4 gap-8 relative z-20">
+              {steps.map((step, index) => (
+                <Card 
+                  key={index}
+                  className={`p-6 text-center hover:shadow-lg transition-all duration-300 hover:-translate-y-2 group ${step.bgColor} ${step.borderColor} border-2 relative overflow-hidden`}
+                >
+                  {/* Timeline dot */}
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-8 h-8 bg-orange rounded-full border-4 border-background flex items-center justify-center z-30">
+                    <span className="text-xs font-bold text-white">{index + 1}</span>
+                  </div>
+                  
+                  <div className="mt-4">
+                    <div className={`${step.bgColor} w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform`}>
+                      <step.icon className={`w-8 h-8 ${step.color}`} />
+                    </div>
+                    
+                    <h3 className="text-xl font-bold text-foreground mb-2">
+                      {step.title}
+                    </h3>
+                    
+                    <div className="mb-3">
+                      <Badge variant="secondary" className="text-xs font-semibold">
+                        {step.duration}
+                      </Badge>
+                    </div>
+                    
+                    <div className="text-sm font-bold text-orange mb-2">
+                      → {step.value}
+                    </div>
+                    
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {step.description}
+                    </p>
+                  </div>
+                </Card>
+              ))}
             </div>
           </div>
 
-          {/* Progress Timeline */}
-          <div className="relative mb-16">
-            {/* Progress Bar Background */}
-            <div className="absolute top-1/2 left-0 right-0 h-2 bg-secondary rounded-full transform -translate-y-1/2 z-0" />
-            
-            {/* Steps */}
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
+          {/* Timeline - Mobile Vertical */}
+          <div className="block lg:hidden mb-16">
+            <div className="space-y-8">
               {steps.map((step, index) => (
-                <div key={index} className="flex flex-col items-center">
-                  {/* Step Card */}
-                  <Card className="p-6 w-full max-w-xs hover:shadow-lg transition-all duration-300 hover:-translate-y-2 group border-0 bg-gradient-to-br from-card to-card/50 relative">
-                    {/* Progress indicator */}
-                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                      <div className={`w-8 h-8 rounded-full bg-gradient-to-r from-primary to-accent flex items-center justify-center border-4 border-background`}>
-                        <span className="text-xs font-bold text-white">{index + 1}</span>
-                      </div>
+                <div key={index} className="relative">
+                  {/* Vertical line */}
+                  {index < steps.length - 1 && (
+                    <div className="absolute left-8 top-20 w-0.5 h-16 bg-muted" />
+                  )}
+                  
+                  <Card className={`p-6 ml-16 ${step.bgColor} ${step.borderColor} border-2 relative`}>
+                    {/* Timeline dot */}
+                    <div className="absolute -left-20 top-6 w-8 h-8 bg-orange rounded-full border-4 border-background flex items-center justify-center">
+                      <span className="text-xs font-bold text-white">{index + 1}</span>
                     </div>
                     
-                    <div className="mt-4 text-center">
-                      <div className={`bg-primary/10 w-12 h-12 rounded-xl flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform`}>
-                        <step.icon className="w-6 h-6 text-primary" />
+                    <div className="flex items-start gap-4">
+                      <div className={`${step.bgColor} w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0`}>
+                        <step.icon className={`w-6 h-6 ${step.color}`} />
                       </div>
                       
-                      <h3 className="text-xl font-bold text-foreground mb-2">
-                        {step.title}
-                      </h3>
-                      
-                      <Badge variant="secondary" className="mb-3 text-xs">
-                        {step.duration}
-                      </Badge>
-                      
-                      <p className="text-sm text-muted-foreground mb-3 leading-relaxed">
-                        {step.description}
-                      </p>
-                      
-                      <div className="inline-flex items-center text-xs font-medium text-accent bg-accent/10 px-3 py-1 rounded-full">
-                        {step.highlight}
+                      <div className="flex-1">
+                        <h3 className="text-lg font-bold text-foreground mb-1">
+                          {step.title}
+                        </h3>
+                        
+                        <Badge variant="secondary" className="text-xs mb-2">
+                          {step.duration}
+                        </Badge>
+                        
+                        <div className="text-sm font-bold text-orange mb-2">
+                          → {step.value}
+                        </div>
+                        
+                        <p className="text-sm text-muted-foreground">
+                          {step.description}
+                        </p>
                       </div>
                     </div>
                   </Card>
                 </div>
               ))}
             </div>
-            
-            {/* Animated Progress Line */}
-            <div className="absolute top-1/2 left-0 h-2 bg-gradient-to-r from-primary to-accent rounded-full transform -translate-y-1/2 z-10 animate-pulse" style={{ width: '100%' }} />
           </div>
 
-          {/* Bottom Stats */}
-          <div className="grid md:grid-cols-3 gap-8 text-center">
-            <div className="p-6">
-              <div className="text-3xl sm:text-4xl font-bold text-primary mb-2">2-8</div>
-              <div className="text-lg font-medium text-foreground mb-1">Weeks Total</div>
-              <div className="text-sm text-muted-foreground">vs 6+ months traditional</div>
-            </div>
-            <div className="p-6">
-              <div className="text-3xl sm:text-4xl font-bold text-accent mb-2">100%</div>
-              <div className="text-lg font-medium text-foreground mb-1">Success Rate</div>
-              <div className="text-sm text-muted-foreground">Every project delivered</div>
-            </div>
-            <div className="p-6">
-              <div className="text-3xl sm:text-4xl font-bold text-orange mb-2">293%</div>
-              <div className="text-lg font-medium text-foreground mb-1">Average ROI</div>
-              <div className="text-sm text-muted-foreground">Within 3 months</div>
+          {/* Results Track */}
+          <div className="bg-muted/30 rounded-2xl p-8 mb-8">
+            <h3 className="text-center text-lg font-semibold text-foreground mb-8">
+              Results You Can Expect
+            </h3>
+            
+            <div className="grid md:grid-cols-3 gap-8">
+              {results.map((result, index) => (
+                <div key={index} className="text-center">
+                  <div className="inline-flex items-center justify-center w-12 h-12 bg-orange/10 rounded-xl mb-4">
+                    <result.icon className="w-6 h-6 text-orange" />
+                  </div>
+                  
+                  <div className="text-2xl md:text-3xl font-bold text-foreground mb-1">
+                    {result.metric}
+                  </div>
+                  
+                  <div className="text-sm font-medium text-orange mb-1">
+                    {result.comparison}
+                  </div>
+                  
+                  <div className="text-sm text-muted-foreground">
+                    {result.label}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
