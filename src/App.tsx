@@ -4,7 +4,6 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
-import { ClerkProvider } from "@clerk/clerk-react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import HomePage from "./pages/HomePage";
@@ -12,7 +11,6 @@ import ServicesPage from "./pages/ServicesPage";
 import ServiceDetailPage from "./pages/ServiceDetailPage";
 import ProcessPage from "./pages/ProcessPage";
 import ProjectsPage from "./pages/ProjectsPage";
-import BriefCollectionPage from "./pages/BriefCollection";
 import AboutPage from "./pages/AboutPage";
 import NotFound from "./pages/NotFound";
 
@@ -27,13 +25,6 @@ const queryClient = new QueryClient({
     },
   },
 });
-
-// Get Clerk publishable key from environment
-const clerkPubKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
-
-if (!clerkPubKey) {
-  console.error("Missing Clerk publishable key. Add VITE_CLERK_PUBLISHABLE_KEY to .env.local");
-}
 
 const AppContent = () => (
   <QueryClientProvider client={queryClient}>
@@ -51,7 +42,6 @@ const AppContent = () => (
               <Route path="/process" element={<ProcessPage />} />
               <Route path="/projects" element={<ProjectsPage />} />
               <Route path="/about" element={<AboutPage />} />
-              <Route path="/brief" element={<BriefCollectionPage />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
@@ -65,16 +55,7 @@ const AppContent = () => (
 
 const App = () => (
   <HelmetProvider>
-    {clerkPubKey ? (
-      <ClerkProvider publishableKey={clerkPubKey}>
-        <AppContent />
-      </ClerkProvider>
-    ) : (
-      <>
-        {console.warn("Clerk disabled: Missing VITE_CLERK_PUBLISHABLE_KEY")}
-        <AppContent />
-      </>
-    )}
+    <AppContent />
   </HelmetProvider>
 );
 
