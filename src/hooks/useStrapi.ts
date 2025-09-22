@@ -201,7 +201,7 @@ export const useUpdateProposalStatus = () => {
   });
 };
 
-// Utility hook for CopilotKit integration
+// Utility hook for AI Assistant integration
 export const useCopilotStrapiIntegration = () => {
   const logInteraction = useLogAIInteraction();
   const createClient = useCreateClient();
@@ -226,7 +226,7 @@ export const useCopilotStrapiIntegration = () => {
         created_at: new Date().toISOString(),
       });
     } catch (error) {
-      console.error('Failed to log CopilotKit interaction:', error);
+      console.error('Failed to log AI Assistant interaction:', error);
     }
   };
 

@@ -24,7 +24,7 @@ export const HeroSection = () => {
 
             {/* Subheadline - responsive text sizing */}
             <p className="text-lg sm:text-xl md:text-2xl text-brand-gray mb-6 sm:mb-8 max-w-[60ch] leading-relaxed">
-              We build intelligent systems with Claude, GPT-4, and CopilotKit. From $15K MVPs to enterprise solutions, we deliver production-ready apps in 2–8 weeks.
+              We build intelligent systems with Claude, GPT-4, and AI Tools. From $15K MVPs to enterprise solutions, we deliver production-ready apps in 2–8 weeks.
             </p>
 
             {/* ROI Proof */}

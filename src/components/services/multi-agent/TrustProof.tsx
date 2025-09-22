@@ -28,7 +28,7 @@ export const TrustProof = () => {
   ];
 
   const techLogos = [
-    { src: copilotKitLogo, alt: "CopilotKit", name: "CopilotKit" },
+    { src: copilotKitLogo, alt: "AI Tools", name: "AI Tools" },
     { src: crewAILogo, alt: "CrewAI", name: "CrewAI" },
     { src: supabaseLogo, alt: "Supabase", name: "Supabase" },
     { src: stripeLogo, alt: "Stripe", name: "Stripe" },

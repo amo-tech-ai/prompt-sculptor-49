@@ -14,7 +14,7 @@ export const AboutWhyChooseUs = () => {
     {
       icon: Brain,
       title: "Cutting-Edge Expertise",
-      description: "Claude, GPT-4, Supabase, CrewAI, CopilotKit, and modern AI stack",
+      description: "Claude, GPT-4, Supabase, CrewAI, AI Tools, and modern AI stack",
       highlight: "Latest AI technologies",
       color: "text-primary",
       bgColor: "bg-primary/10"

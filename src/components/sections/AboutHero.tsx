@@ -37,7 +37,7 @@ export const AboutHero = () => {
 
         {/* CTA buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <Link to="/brief-collection">
+          <Link to="/contact">
             <Button size="lg" className="group">
               Get Started Today
               <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />

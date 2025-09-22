@@ -48,7 +48,7 @@ export const ServicesGrid = () => {
       id: 'multi-agent-ai-systems',
       title: 'Multi-Agent AI Systems',
       tagline: 'Collaborative AI agents working in harmony',
-      description: 'Orchestrate multiple AI agents using CopilotKit, CrewAI, and LangChain to handle complex business workflows autonomously.',
+      description: 'Orchestrate multiple AI agents using AI Tools, CrewAI, and LangChain to handle complex business workflows autonomously.',
       features: [
         'Agent task delegation',
         'Cross-system integration',

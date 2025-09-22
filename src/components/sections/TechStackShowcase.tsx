@@ -6,7 +6,7 @@ export const TechStackShowcase = () => {
     { name: 'Claude', logo: '/src/assets/logos/claude-logo.png', url: '#' },
     { name: 'OpenAI', logo: '/src/assets/logos/openai-logo.svg', url: '#' },
     { name: 'CrewAI', logo: '/src/assets/logos/crewai-logo.svg', url: '#' },
-    { name: 'CopilotKit', logo: null, url: '#' },
+    { name: 'AI Tools', logo: null, url: '#' },
     { name: 'Webflow', logo: '/src/assets/logos/webflow-logo.svg', url: '#' },
     { name: 'Shopify', logo: '/src/assets/logos/shopify-logo.svg', url: '#' },
     { name: 'Supabase', logo: '/src/assets/logos/supabase-logo.svg', url: '#' },

@@ -33,7 +33,7 @@ export const Services = () => {
     {
       id: 4,
       title: "Multi-Agent Systems",
-      description: "AI agents collaborating on complex tasks (CopilotKit, CrewAI, LangChain).",
+      description: "AI agents collaborating on complex tasks (AI Tools, CrewAI, LangChain).",
       features: ["Agent orchestration", "Task delegation", "Performance monitoring"],
       icon: Users,
       gradient: "from-purple-400 to-pink-500",

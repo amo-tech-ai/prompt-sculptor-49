@@ -71,7 +71,7 @@ export const AIBriefTool = () => {
               </div>
 
               <Button size="lg" asChild className="shadow-lg">
-                <Link to="/brief-collection" className="flex items-center space-x-2">
+                <Link to="/contact" className="flex items-center space-x-2">
                   <span>Start My AI Project Brief</span>
                   <ArrowRight className="h-5 w-5" />
                 </Link>

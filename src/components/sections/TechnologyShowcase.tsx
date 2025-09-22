@@ -4,7 +4,7 @@ const techCategories = [
   {
     category: "AI & Machine Learning",
     technologies: [
-      { name: "CopilotKit", description: "AI-powered conversations" },
+      { name: "AI Tools", description: "AI-powered conversations" },
       { name: "OpenAI", description: "GPT models & embeddings" },
       { name: "Claude", description: "Advanced AI reasoning" },
       { name: "Qdrant", description: "Vector database" },

@@ -47,13 +47,13 @@ export const services: Service[] = [
   {
     id: 'multi-agent-systems',
     title: 'Multi-Agent Systems',
-    description: 'AI agents collaborating on complex tasks (CopilotKit, CrewAI, LangChain).',
+    description: 'AI agents collaborating on complex tasks (AI Tools, CrewAI, LangChain).',
     deliverables: [
       'Multi-step reasoning',
       'Automated decisions',
       'Orchestration engine'
     ],
-    technologies: ['CopilotKit', 'CrewAI', 'LangChain', 'LangGraph'],
+    technologies: ['AI Tools', 'CrewAI', 'LangChain', 'LangGraph'],
     href: '/services/multi-agent-systems'
   },
   {

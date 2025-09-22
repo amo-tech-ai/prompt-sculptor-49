@@ -36,7 +36,7 @@ export const FinalCTA = () => {
               className="bg-primary hover:bg-primary/90 font-semibold px-8 py-6 text-lg shadow-lg"
               asChild
             >
-              <Link to="/brief-collection" className="flex items-center space-x-2">
+              <Link to="/contact" className="flex items-center space-x-2">
                 <Calendar className="h-5 w-5" />
                 <span>Schedule a 30-min Call</span>
                 <ArrowRight className="h-5 w-5" />

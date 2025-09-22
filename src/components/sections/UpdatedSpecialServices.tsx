@@ -26,7 +26,7 @@ export const UpdatedSpecialServices = () => {
             </h2>
             <p className="text-lg text-primary-foreground/80 max-w-3xl mx-auto mb-8">
               We design and launch AI-powered platforms with Webflow, Shopify, Claude, OpenAI, CrewAI, 
-              CopilotKit, WhatsApp, and Stripe. From MVPs to enterprise, we deliver scalable, user-friendly solutions.
+              AI Tools, WhatsApp, and Stripe. From MVPs to enterprise, we deliver scalable, user-friendly solutions.
             </p>
           </div>
 
