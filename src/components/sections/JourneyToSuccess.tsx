@@ -6,44 +6,44 @@ export const JourneyToSuccess = () => {
   const steps = [
     {
       icon: Search,
-      title: "Discovery",
-      duration: "2 Days",
-      value: "Faster Discovery",
-      description: "AI wizard replaces long calls",
-      detail: "30 minutes vs 2.5-hour calls",
+      title: "Design Sprint",
+      duration: "Week 1-2",
+      value: "Discovery & Wireframing",
+      description: "Deep discovery sessions, user journey mapping, wireframing and visual design",
+      detail: "Complete wireframes & interactive prototype",
       color: "text-orange",
       accentColor: "border-orange bg-orange",
       cardBg: "bg-card/50"
     },
     {
       icon: FileText,
-      title: "Prototype",
-      duration: "2 Weeks",
-      value: "Real User Feedback",
-      description: "Working prototype tested with users",
-      detail: "Validated with real users",
+      title: "Rapid Build",
+      duration: "Week 3-5",
+      value: "Core Development",
+      description: "Database design, AI model integration, frontend development in parallel streams",
+      detail: "Fully functional core application",
       color: "text-purple-500",
       accentColor: "border-purple-500 bg-purple-500",
       cardBg: "bg-purple-500/5"
     },
     {
       icon: Wrench,
-      title: "Build",
-      duration: "3–6 Weeks",
-      value: "Agile Development",
-      description: "Agile sprints with feedback",
-      detail: "Weekly iterations",
+      title: "Integration & Testing",
+      duration: "Week 6-7",
+      value: "Quality Assurance",
+      description: "Third-party integrations, comprehensive testing, performance optimization",
+      detail: "Production-ready application",
       color: "text-blue-500",
       accentColor: "border-blue-500 bg-blue-500",
       cardBg: "bg-blue-500/5"
     },
     {
       icon: Rocket,
-      title: "Launch",
-      duration: "Ongoing",
-      value: "Continuous Improvement",
-      description: "Scaling + continuous improvement",
-      detail: "Post-launch optimization",
+      title: "Launch & Scale",
+      duration: "Week 8",
+      value: "Go Live",
+      description: "Production deployment, monitoring setup, user training and scaling preparation",
+      detail: "Live application with full support",
       color: "text-green-500",
       accentColor: "border-green-500 bg-green-500",
       cardBg: "bg-green-500/5"
@@ -53,7 +53,7 @@ export const JourneyToSuccess = () => {
   const results = [
     {
       icon: Clock,
-      metric: "2–8 Weeks",
+      metric: "8 Weeks",
       comparison: "vs 6+ months",
       label: "Time to Market"
     },
@@ -65,7 +65,7 @@ export const JourneyToSuccess = () => {
     },
     {
       icon: TrendingUp,
-      metric: "293%",
+      metric: "340%",
       comparison: "ROI within 3 months",
       label: "Return on Investment"
     }
@@ -81,13 +81,13 @@ export const JourneyToSuccess = () => {
               Our Process
             </Badge>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              Journey to{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange to-orange/70">
-                AI Success
-              </span>
+                8 Weeks.
+              </span>{' '}
+              Not 8 Months.
             </h2>
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              A proven 8-week process that transforms ideas into production-ready AI applications
+              While others take 6+ months to deliver, we launch complete AI applications in just 8 weeks. Our proven process eliminates delays, reduces scope creep, and gets you to market faster than you thought possible.
             </p>
           </div>
 

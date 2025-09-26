@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 export const FinalCTA = () => {
   return (
-    <section className="py-24 bg-gradient-to-br from-primary/5 via-accent/5 to-orange/5 relative overflow-hidden">
+    <section className="py-24 bg-foreground text-background relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute top-0 left-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl animate-pulse" />
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-pulse delay-1000" />
@@ -13,20 +13,20 @@ export const FinalCTA = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           {/* Header */}
-          <Badge variant="outline" className="mb-6 px-4 py-2">
+          <Badge variant="outline" className="mb-6 px-4 py-2 border-background/20 text-background">
             Ready to Transform?
           </Badge>
           
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-background">
             Ready to Build{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange to-orange/70">
               Something Extraordinary?
             </span>
           </h2>
           
-          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg text-background/70 mb-8 max-w-2xl mx-auto leading-relaxed">
             Join the companies already transforming their business with AI. 
-            From idea to production in just 2-8 weeks.
+            From idea to production in just 8 weeks.
           </p>
 
           {/* CTA Buttons */}
@@ -74,14 +74,14 @@ export const FinalCTA = () => {
           </div>
 
           {/* Success Stats */}
-          <div className="bg-white/50 backdrop-blur-sm border border-white/20 rounded-2xl px-8 py-6 max-w-2xl mx-auto">
-            <p className="text-lg font-semibold text-foreground">
-              50+ live apps, $4.3M monthly revenue delivered.
-            </p>
-            <p className="text-sm text-muted-foreground mt-2">
-              Ready to be our next success story?
-            </p>
-          </div>
+            <div className="bg-background/10 backdrop-blur-sm border border-background/20 rounded-2xl px-8 py-6 max-w-2xl mx-auto">
+              <p className="text-lg font-semibold text-background">
+                50+ live apps, $4.3M monthly revenue delivered.
+              </p>
+              <p className="text-sm text-background/60 mt-2">
+                Ready to be our next success story?
+              </p>
+            </div>
         </div>
       </div>
     </section>

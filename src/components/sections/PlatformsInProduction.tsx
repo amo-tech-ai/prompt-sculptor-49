@@ -36,21 +36,21 @@ export const PlatformsInProduction = () => {
   ];
 
   return (
-    <section className="py-24 bg-background">
+    <section className="py-24 bg-foreground text-background">
       <div className="container mx-auto px-4">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div className="text-center mb-16">
-            <Badge variant="outline" className="mb-4 px-4 py-2">
+            <Badge variant="outline" className="mb-4 px-4 py-2 border-background/20 text-background">
               Live Success Stories
             </Badge>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-background">
               Platforms in{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange to-orange/70">
                 Production
               </span>
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-lg text-background/70 max-w-3xl mx-auto">
               Real applications generating real revenue for real businesses across multiple industries.
             </p>
           </div>
@@ -60,14 +60,14 @@ export const PlatformsInProduction = () => {
             {platforms.map((platform, index) => (
               <Card 
                 key={index} 
-                className="p-8 hover:shadow-lg transition-all duration-300 hover:-translate-y-2 group border-0 bg-gradient-to-br from-card to-card/50"
+                className="p-8 hover:shadow-lg transition-all duration-300 hover:-translate-y-2 group border-0 bg-background/10 backdrop-blur-sm"
               >
                 <div className={`${platform.bgColor} w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
                   <platform.icon className={`w-8 h-8 ${platform.color}`} />
                 </div>
                 
                 <div className="flex items-center gap-3 mb-4">
-                  <h3 className="text-2xl font-bold text-foreground">
+                  <h3 className="text-2xl font-bold text-background">
                     {platform.name}
                   </h3>
                   <Badge variant="secondary" className={`${platform.color} font-medium`}>
@@ -75,12 +75,12 @@ export const PlatformsInProduction = () => {
                   </Badge>
                 </div>
                 
-                <p className="text-muted-foreground mb-4 leading-relaxed">
+                <p className="text-background/70 mb-4 leading-relaxed">
                   {platform.description}
                 </p>
                 
-                <div className="border-l-4 border-primary/30 pl-4 mb-6">
-                  <p className="font-semibold text-foreground text-sm">
+                <div className="border-l-4 border-orange/50 pl-4 mb-6">
+                  <p className="font-semibold text-background text-sm">
                     {platform.metrics}
                   </p>
                 </div>
