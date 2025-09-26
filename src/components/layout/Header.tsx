@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Menu, X } from 'lucide-react';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
+import { Menu, ChevronDown } from 'lucide-react';
 import { mainNav } from '@/data/navigation';
 
 export const Header = () => {
@@ -42,17 +43,38 @@ export const Header = () => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             {mainNav.map((item) => (
-              <Link
-                key={item.href}
-                to={item.href}
-                className={`text-sm font-medium transition-colors hover:text-blue-600 ${
-                  location.pathname === item.href
-                    ? 'text-blue-600'
-                    : 'text-gray-600'
-                }`}
-              >
-                {item.title}
-              </Link>
+              item.children ? (
+                <DropdownMenu key={item.href}>
+                  <DropdownMenuTrigger className="flex items-center text-sm font-medium transition-colors hover:text-blue-600 text-gray-600 cursor-pointer">
+                    {item.title}
+                    <ChevronDown className="ml-1 h-4 w-4" />
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="start" className="w-56">
+                    {item.children.map((child) => (
+                      <DropdownMenuItem key={child.href} asChild>
+                        <Link
+                          to={child.href}
+                          className="w-full text-sm font-medium transition-colors hover:text-blue-600"
+                        >
+                          {child.title}
+                        </Link>
+                      </DropdownMenuItem>
+                    ))}
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              ) : (
+                <Link
+                  key={item.href}
+                  to={item.href}
+                  className={`text-sm font-medium transition-colors hover:text-blue-600 ${
+                    location.pathname === item.href
+                      ? 'text-blue-600'
+                      : 'text-gray-600'
+                  }`}
+                >
+                  {item.title}
+                </Link>
+              )
             ))}
           </nav>
 
@@ -74,18 +96,42 @@ export const Header = () => {
             <SheetContent side="right" className="w-[300px] sm:w-[400px]">
               <div className="flex flex-col space-y-4 mt-6">
                 {mainNav.map((item) => (
-                  <Link
-                    key={item.href}
-                    to={item.href}
-                    className={`text-lg font-medium transition-colors hover:text-blue-600 ${
-                      location.pathname === item.href
-                        ? 'text-blue-600'
-                        : 'text-gray-600'
-                    }`}
-                    onClick={() => setIsMobileOpen(false)}
-                  >
-                    {item.title}
-                  </Link>
+                  item.children ? (
+                    <div key={item.href} className="space-y-2">
+                      <div className="text-lg font-medium text-gray-900">
+                        {item.title}
+                      </div>
+                      <div className="pl-4 space-y-2">
+                        {item.children.map((child) => (
+                          <Link
+                            key={child.href}
+                            to={child.href}
+                            className={`block text-md font-medium transition-colors hover:text-blue-600 ${
+                              location.pathname === child.href
+                                ? 'text-blue-600'
+                                : 'text-gray-600'
+                            }`}
+                            onClick={() => setIsMobileOpen(false)}
+                          >
+                            {child.title}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  ) : (
+                    <Link
+                      key={item.href}
+                      to={item.href}
+                      className={`text-lg font-medium transition-colors hover:text-blue-600 ${
+                        location.pathname === item.href
+                          ? 'text-blue-600'
+                          : 'text-gray-600'
+                      }`}
+                      onClick={() => setIsMobileOpen(false)}
+                    >
+                      {item.title}
+                    </Link>
+                  )
                 ))}
                 <div className="pt-4">
                   <Button asChild className="w-full">
