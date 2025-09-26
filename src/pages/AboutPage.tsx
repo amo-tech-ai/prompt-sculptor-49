@@ -2,7 +2,6 @@ import { Helmet } from "react-helmet-async";
 import { AboutHero } from "@/components/sections/AboutHero";
 import { AboutMission } from "@/components/sections/AboutMission";
 import { AboutWhyChooseUs } from "@/components/sections/AboutWhyChooseUs";
-import { AboutTeam } from "@/components/sections/AboutTeam";
 import { AboutProcess } from "@/components/sections/AboutProcess";
 import { AboutTrustedBy } from "@/components/sections/AboutTrustedBy";
 import { AboutCTA } from "@/components/sections/AboutCTA";
@@ -35,7 +34,6 @@ const AboutPage = () => {
         <AboutHero />
         <AboutMission />
         <AboutWhyChooseUs />
-        <AboutTeam />
         <AboutProcess />
         <AboutTrustedBy />
         <AboutCTA />

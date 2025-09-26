@@ -38,14 +38,14 @@ export const AboutWhyChooseUs = () => {
   ];
 
   return (
-    <section className="py-24 bg-background">
+    <section className="py-24 bg-foreground">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold text-background mb-4">
             Why Choose AMO AI?
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-lg text-background/70 max-w-3xl mx-auto">
             We combine speed, expertise, and results to deliver AI solutions that 
             actually move the needle for your business.
           </p>
@@ -56,21 +56,21 @@ export const AboutWhyChooseUs = () => {
           {features.map((feature, index) => (
             <Card 
               key={index} 
-              className="p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-2 group border-0 bg-gradient-to-br from-card to-card/50"
+              className="p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-2 group border-0 bg-background/10 backdrop-blur-sm"
             >
               <div className={`${feature.bgColor} w-12 h-12 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
                 <feature.icon className={`w-6 h-6 ${feature.color}`} />
               </div>
               
-              <h3 className="text-xl font-semibold text-foreground mb-3">
+              <h3 className="text-xl font-semibold text-background mb-3">
                 {feature.title}
               </h3>
               
-              <p className="text-muted-foreground mb-4 leading-relaxed">
+              <p className="text-background/70 mb-4 leading-relaxed">
                 {feature.description}
               </p>
               
-              <div className={`inline-flex items-center text-sm font-medium ${feature.color} bg-white/50 px-3 py-1 rounded-full`}>
+              <div className={`inline-flex items-center text-sm font-medium ${feature.color} bg-background/20 px-3 py-1 rounded-full`}>
                 {feature.highlight}
               </div>
             </Card>
@@ -78,22 +78,22 @@ export const AboutWhyChooseUs = () => {
         </div>
 
         {/* Bottom stats */}
-        <div className="mt-20 bg-gradient-to-r from-primary/5 via-accent/5 to-orange/5 rounded-3xl p-8 lg:p-12">
+        <div className="mt-20 bg-background/10 backdrop-blur-sm rounded-3xl p-8 lg:p-12 border border-background/20">
           <div className="grid md:grid-cols-3 gap-8 text-center">
             <div>
-              <div className="text-4xl sm:text-5xl font-bold text-primary mb-2">50+</div>
-              <div className="text-lg font-medium text-foreground mb-1">Live Applications</div>
-              <div className="text-sm text-muted-foreground">Across 12+ industries</div>
+              <div className="text-4xl sm:text-5xl font-bold text-orange mb-2">50+</div>
+              <div className="text-lg font-medium text-background mb-1">Live Applications</div>
+              <div className="text-sm text-background/70">Across 12+ industries</div>
             </div>
             <div>
-              <div className="text-4xl sm:text-5xl font-bold text-accent mb-2">90%</div>
-              <div className="text-lg font-medium text-foreground mb-1">Process Automation</div>
-              <div className="text-sm text-muted-foreground">Average efficiency gain</div>
+              <div className="text-4xl sm:text-5xl font-bold text-orange mb-2">90%</div>
+              <div className="text-lg font-medium text-background mb-1">Process Automation</div>
+              <div className="text-sm text-background/70">Average efficiency gain</div>
             </div>
             <div>
               <div className="text-4xl sm:text-5xl font-bold text-orange mb-2">3</div>
-              <div className="text-lg font-medium text-foreground mb-1">Month ROI</div>
-              <div className="text-sm text-muted-foreground">Average payback period</div>
+              <div className="text-lg font-medium text-background mb-1">Month ROI</div>
+              <div className="text-sm text-background/70">Average payback period</div>
             </div>
           </div>
         </div>

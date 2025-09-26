@@ -4,9 +4,9 @@ import { ArrowRight, Eye, Sparkles } from 'lucide-react';
 
 export const ProjectsHero = () => {
   return (
-    <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-foreground">
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-hero" />
+      <div className="absolute inset-0 bg-foreground" />
       
       {/* Animated background elements */}
       <div className="absolute inset-0 opacity-30">

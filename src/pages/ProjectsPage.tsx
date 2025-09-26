@@ -1,8 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { ProjectsHero } from '@/components/sections/ProjectsHero';
 import { FeaturedProjects } from '@/components/sections/FeaturedProjects';
-import { PortfolioStatistics } from '@/components/sections/PortfolioStatistics';
-import { TechnologyShowcase } from '@/components/sections/TechnologyShowcase';
+import { TechStackShowcase } from '@/components/sections/TechStackShowcase';
 import { ProjectsCTA } from '@/components/sections/ProjectsCTA';
 
 const ProjectsPage = () => {
@@ -67,8 +66,7 @@ const ProjectsPage = () => {
 
       <ProjectsHero />
       <FeaturedProjects />
-      <PortfolioStatistics />
-      <TechnologyShowcase />
+      <TechStackShowcase />
       <ProjectsCTA />
     </>
   );
