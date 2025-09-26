@@ -1,121 +1,225 @@
 import { Link } from 'react-router-dom';
 import { footerLinks } from '@/data/navigation';
-import { Mail, MapPin, Phone } from 'lucide-react';
+import { Mail, MapPin, Phone, MessageCircle, Linkedin, Twitter, Github, Youtube } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 export const Footer = () => {
   return (
-    <footer className="bg-card border-t border-border" role="contentinfo">
+    <footer className="bg-primary text-primary-foreground border-t border-border/20" role="contentinfo">
       <div className="container mx-auto px-4">
-        <div className="py-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* Company Info */}
-            <div className="space-y-4">
-              <Link to="/" className="flex items-center space-x-2 font-heading font-bold text-xl">
-                <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">A</span>
+        <div className="py-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
+            {/* Brand & Identity */}
+            <div className="lg:col-span-2 space-y-6">
+              <Link to="/" className="flex items-center space-x-3 font-heading font-bold text-2xl">
+                <div className="w-10 h-10 bg-gradient-primary rounded-xl flex items-center justify-center shadow-lg">
+                  <span className="text-white font-bold text-lg">A</span>
                 </div>
-                <span className="text-foreground">AMO AI</span>
+                <span className="text-primary-foreground">AMO AI</span>
               </Link>
-              <p className="text-sm text-muted-foreground max-w-sm">
-                We specialize in rapid application development using Claude, GPT-4, CrewAI, Lovable, and 50+ cutting-edge technologies. From MVPs to enterprise solutions.
+              
+              <p className="text-lg font-medium text-primary-foreground/90 max-w-md leading-relaxed">
+                We build AI-powered platforms with speed, automation, and reliability.
               </p>
-              <div className="space-y-2">
-                <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-                  <Mail className="h-4 w-4" />
-                  <span>hello@amoai.com</span>
-                </div>
-                <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-                  <Phone className="h-4 w-4" />
-                  <span>+1 (555) 123-4567</span>
-                </div>
-                <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-                  <MapPin className="h-4 w-4" />
-                  <span>San Francisco, CA</span>
-                </div>
+              
+              {/* Contact Info */}
+              <div className="space-y-3">
+                <a 
+                  href="mailto:info@amoai.co" 
+                  className="flex items-center space-x-3 text-primary-foreground/80 hover:text-amo-orange transition-colors group"
+                >
+                  <Mail className="h-5 w-5 group-hover:scale-110 transition-transform" />
+                  <span className="font-medium">info@amoai.co</span>
+                </a>
+                <a 
+                  href="tel:+14168003103" 
+                  className="flex items-center space-x-3 text-primary-foreground/80 hover:text-amo-orange transition-colors group"
+                >
+                  <Phone className="h-5 w-5 group-hover:scale-110 transition-transform" />
+                  <span className="font-medium">+1 416-800-3103</span>
+                </a>
+                <a 
+                  href="https://wa.me/14168003103" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-3 text-primary-foreground/80 hover:text-green-400 transition-colors group"
+                >
+                  <MessageCircle className="h-5 w-5 group-hover:scale-110 transition-transform" />
+                  <span className="font-medium">Chat on WhatsApp</span>
+                </a>
+              </div>
+
+              {/* Social Media Icons */}
+              <div className="flex items-center space-x-4 pt-2">
+                <a 
+                  href="#" 
+                  className="w-10 h-10 bg-primary-foreground/10 hover:bg-amo-orange rounded-lg flex items-center justify-center transition-all hover:scale-110"
+                  aria-label="LinkedIn"
+                >
+                  <Linkedin className="h-5 w-5" />
+                </a>
+                <a 
+                  href="#" 
+                  className="w-10 h-10 bg-primary-foreground/10 hover:bg-amo-orange rounded-lg flex items-center justify-center transition-all hover:scale-110"
+                  aria-label="Twitter"
+                >
+                  <Twitter className="h-5 w-5" />
+                </a>
+                <a 
+                  href="#" 
+                  className="w-10 h-10 bg-primary-foreground/10 hover:bg-amo-orange rounded-lg flex items-center justify-center transition-all hover:scale-110"
+                  aria-label="GitHub"
+                >
+                  <Github className="h-5 w-5" />
+                </a>
+                <a 
+                  href="#" 
+                  className="w-10 h-10 bg-primary-foreground/10 hover:bg-amo-orange rounded-lg flex items-center justify-center transition-all hover:scale-110"
+                  aria-label="YouTube"
+                >
+                  <Youtube className="h-5 w-5" />
+                </a>
+              </div>
+
+              {/* CTA Button */}
+              <div className="pt-4">
+                <Button 
+                  size="lg" 
+                  className="bg-amo-orange hover:bg-amo-orange-light text-primary font-semibold px-8 py-3 rounded-full shadow-lg hover:shadow-xl transition-all"
+                >
+                  📩 Book a Consultation
+                </Button>
               </div>
             </div>
 
-            {/* Our Stack */}
-            <div>
-              <h3 className="font-semibold text-sm uppercase tracking-wider text-foreground mb-4">
-                Our Stack
+            {/* Tech Stack */}
+            <div className="space-y-6">
+              <h3 className="font-bold text-lg text-primary-foreground border-b-2 border-amo-orange pb-2 mb-4">
+                Solutions
               </h3>
-              <ul className="space-y-2">
+              <ul className="space-y-3">
                 <li>
-                  <span className="text-sm text-muted-foreground">AI Development</span>
+                  <span className="text-primary-foreground/80 hover:text-amo-orange transition-colors cursor-pointer font-medium">
+                    AI Development
+                  </span>
                 </li>
                 <li>
-                  <span className="text-sm text-muted-foreground">No-Code Platforms</span>
+                  <span className="text-primary-foreground/80 hover:text-amo-orange transition-colors cursor-pointer font-medium">
+                    Process Automation
+                  </span>
                 </li>
                 <li>
-                  <span className="text-sm text-muted-foreground">Backend Solutions</span>
+                  <span className="text-primary-foreground/80 hover:text-amo-orange transition-colors cursor-pointer font-medium">
+                    Event Systems
+                  </span>
                 </li>
                 <li>
-                  <span className="text-sm text-muted-foreground">Automation</span>
+                  <span className="text-primary-foreground/80 hover:text-amo-orange transition-colors cursor-pointer font-medium">
+                    Multi-Agent Systems
+                  </span>
+                </li>
+                <li>
+                  <span className="text-primary-foreground/80 hover:text-amo-orange transition-colors cursor-pointer font-medium">
+                    Backend APIs
+                  </span>
                 </li>
               </ul>
             </div>
 
             {/* Resources */}
-            <div>
-              <h3 className="font-semibold text-sm uppercase tracking-wider text-foreground mb-4">
+            <div className="space-y-6">
+              <h3 className="font-bold text-lg text-primary-foreground border-b-2 border-amo-orange pb-2 mb-4">
                 Resources
               </h3>
-              <ul className="space-y-2">
+              <ul className="space-y-3">
                 <li>
-                  <Link to="/case-studies" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  <Link 
+                    to="/case-studies" 
+                    className="text-primary-foreground/80 hover:text-amo-orange transition-colors font-medium block"
+                  >
                     Case Studies
                   </Link>
                 </li>
                 <li>
-                  <Link to="/documentation" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                    Documentation
+                  <Link 
+                    to="/blog" 
+                    className="text-primary-foreground/80 hover:text-amo-orange transition-colors font-medium block"
+                  >
+                    Blog
                   </Link>
                 </li>
                 <li>
-                  <Link to="/roi-calculator" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  <Link 
+                    to="/roi-calculator" 
+                    className="text-primary-foreground/80 hover:text-amo-orange transition-colors font-medium block"
+                  >
                     ROI Calculator
                   </Link>
                 </li>
                 <li>
-                  <Link to="/blog" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                    Blog
+                  <Link 
+                    to="/documentation" 
+                    className="text-primary-foreground/80 hover:text-amo-orange transition-colors font-medium block"
+                  >
+                    Documentation
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    to="/faq" 
+                    className="text-primary-foreground/80 hover:text-amo-orange transition-colors font-medium block"
+                  >
+                    FAQ & Support
                   </Link>
                 </li>
               </ul>
             </div>
 
-            {/* Legal */}
-            <div>
-              <h3 className="font-semibold text-sm uppercase tracking-wider text-foreground mb-4">
+            {/* Legal & Compliance */}
+            <div className="space-y-6">
+              <h3 className="font-bold text-lg text-primary-foreground border-b-2 border-amo-orange pb-2 mb-4">
                 Legal
               </h3>
-              <ul className="space-y-2">
+              <ul className="space-y-3">
                 {footerLinks.legal.map((link) => (
                   <li key={link.href}>
                     <Link 
                       to={link.href} 
-                      className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                      className="text-primary-foreground/80 hover:text-amo-orange transition-colors font-medium block"
                     >
                       {link.title}
                     </Link>
                   </li>
                 ))}
+                <li>
+                  <Link 
+                    to="/legal/compliance" 
+                    className="text-primary-foreground/80 hover:text-amo-orange transition-colors font-medium block"
+                  >
+                    Compliance
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-border py-6">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-sm text-muted-foreground">
-              © 2024 AMO AI. All rights reserved.
+        <div className="border-t border-primary-foreground/20 py-8">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+            <p className="text-primary-foreground/70 font-medium">
+              © 2025 AMO AI – All Rights Reserved
             </p>
-            <div className="flex items-center space-x-6">
-              <span className="text-xs text-muted-foreground">50+ Live Applications</span>
-              <span className="text-xs text-muted-foreground">2-16 Week Delivery</span>
-              <span className="text-xs text-muted-foreground">Production-Ready Code</span>
+            <div className="flex flex-wrap items-center justify-center gap-6 text-sm">
+              <span className="text-primary-foreground/80 font-medium bg-primary-foreground/10 px-3 py-1 rounded-full">
+                50+ Live Applications
+              </span>
+              <span className="text-primary-foreground/80 font-medium bg-primary-foreground/10 px-3 py-1 rounded-full">
+                8-Week Delivery
+              </span>
+              <span className="text-primary-foreground/80 font-medium bg-primary-foreground/10 px-3 py-1 rounded-full">
+                Production-Ready Code
+              </span>
             </div>
           </div>
         </div>
