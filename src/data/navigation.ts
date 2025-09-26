@@ -19,7 +19,8 @@ export const footerLinks = {
     { title: 'AI Web Applications', href: '/services/ai-applications' },
     { title: 'Conversational AI', href: '/services/conversational-ai' },
     { title: 'Process Automation', href: '/services/automation' },
-    { title: 'Multi-Agent Systems', href: '/services/multi-agent' }
+    { title: 'Multi-Agent Systems', href: '/services/multi-agent' },
+    { title: 'WhatsApp Automation', href: '/services/whatsapp-automation' }
   ],
   company: [
     { title: 'About Us', href: '/about' },

@@ -13,6 +13,7 @@ import ProcessPage from "./pages/ProcessPage";
 import ProjectsPage from "./pages/ProjectsPage";
 import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
+import { WhatsAppAutomationPage } from "./pages/WhatsAppAutomationPage";
 import NotFound from "./pages/NotFound";
 
 // Initialize React Query client
@@ -39,6 +40,7 @@ const AppContent = () => (
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/services" element={<ServicesPage />} />
+              <Route path="/services/whatsapp-automation" element={<WhatsAppAutomationPage />} />
               <Route path="/services/:serviceId" element={<ServiceDetailPage />} />
               <Route path="/process" element={<ProcessPage />} />
               <Route path="/projects" element={<ProjectsPage />} />
