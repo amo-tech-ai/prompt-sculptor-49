@@ -11,7 +11,8 @@ export const mainNav: NavItem[] = [
     href: '/services',
     children: [
       { title: 'WhatsApp Automation', href: '/services/whatsapp-automation' },
-      { title: 'CopilotKit AI', href: '/services/copilotkit' }
+      { title: 'CopilotKit AI', href: '/services/copilotkit' },
+      { title: 'CrewAI Multi-Agent', href: '/services/crewai' }
     ]
   },
   { title: 'Projects', href: '/projects' },
@@ -28,7 +29,8 @@ export const footerLinks = {
     { title: 'Process Automation', href: '/services/automation' },
     { title: 'Multi-Agent Systems', href: '/services/multi-agent' },
     { title: 'WhatsApp Automation', href: '/services/whatsapp-automation' },
-    { title: 'CopilotKit AI', href: '/services/copilotkit' }
+    { title: 'CopilotKit AI', href: '/services/copilotkit' },
+    { title: 'CrewAI Multi-Agent', href: '/services/crewai' }
   ],
   company: [
     { title: 'About Us', href: '/about' },
