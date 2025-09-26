@@ -3,17 +3,17 @@ import { ArrowRight, Calendar, Zap } from 'lucide-react';
 
 export const ProcessHero = () => {
   return (
-    <section className="relative py-20 sm:py-24 lg:py-32 overflow-hidden">
-      {/* Background gradient matching homepage */}
-      <div className="absolute inset-0 bg-gradient-to-br from-orange-50/80 via-white to-orange-50/60" />
+    <section className="relative py-20 sm:py-24 lg:py-32 overflow-hidden bg-gray-900">
+      {/* Background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-900" />
       
       {/* Floating decorative shapes */}
       <div 
-        className="absolute top-20 left-20 w-64 h-64 bg-gradient-to-br from-orange-100/30 to-orange-200/20 rounded-full blur-3xl opacity-60"
+        className="absolute top-20 left-20 w-64 h-64 bg-gradient-to-br from-orange-500/20 to-orange-600/10 rounded-full blur-3xl opacity-60"
         aria-hidden="true"
       />
       <div 
-        className="absolute bottom-20 right-20 w-80 h-80 bg-gradient-to-br from-orange-100/20 to-orange-200/15 rounded-full blur-3xl opacity-40"
+        className="absolute bottom-20 right-20 w-80 h-80 bg-gradient-to-br from-orange-400/10 to-orange-500/5 rounded-full blur-3xl opacity-40"
         style={{ animationDelay: '1s' }}
         aria-hidden="true"
       />
@@ -21,26 +21,26 @@ export const ProcessHero = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-4xl mx-auto">
           {/* Timeline visual element */}
-          <div className="inline-flex items-center space-x-4 mb-8 bg-white/80 backdrop-blur-sm rounded-full px-6 py-3 border border-orange-200">
-            <Calendar className="h-5 w-5 text-orange-500" />
-            <span className="text-orange-700 font-semibold">Week 1</span>
+          <div className="inline-flex items-center space-x-4 mb-8 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 border border-orange-500/30">
+            <Calendar className="h-5 w-5 text-orange-400" />
+            <span className="text-orange-300 font-semibold">Week 1</span>
             <ArrowRight className="h-4 w-4 text-orange-400" />
-            <span className="text-orange-700 font-semibold">Week 8</span>
-            <Zap className="h-5 w-5 text-orange-500" />
+            <span className="text-orange-300 font-semibold">Week 8</span>
+            <Zap className="h-5 w-5 text-orange-400" />
           </div>
 
           {/* Main headline */}
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-6">
-            <span className="text-orange-500">8 Weeks.</span><br />
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6">
+            <span className="text-orange-400">8 Weeks.</span><br />
             Not 8 Months.
           </h1>
 
           {/* Supporting text */}
-          <p className="text-xl sm:text-2xl text-gray-600 mb-4 leading-relaxed">
+          <p className="text-xl sm:text-2xl text-gray-300 mb-4 leading-relaxed">
             While others take 6+ months to deliver, we launch complete AI applications in just 8 weeks.
           </p>
           
-          <p className="text-lg text-gray-500 mb-12 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-400 mb-12 max-w-2xl mx-auto">
             Our proven process eliminates delays, reduces scope creep, and gets you to market faster than you thought possible.
           </p>
 
@@ -57,20 +57,20 @@ export const ProcessHero = () => {
             <Button 
               variant="outline" 
               size="lg"
-              className="border-orange-300 text-orange-700 hover:bg-orange-50 px-8 py-4 text-lg rounded-xl"
+              className="border-orange-400/30 text-orange-300 hover:bg-orange-500/10 px-8 py-4 text-lg rounded-xl"
             >
               See Live Examples
             </Button>
           </div>
 
           {/* Trust indicator */}
-          <div className="mt-16 pt-8 border-t border-gray-200">
-            <p className="text-sm text-gray-500 mb-4">Trusted by innovative companies</p>
+          <div className="mt-16 pt-8 border-t border-gray-700">
+            <p className="text-sm text-gray-400 mb-4">Trusted by innovative companies</p>
             <div className="flex justify-center items-center space-x-8 opacity-60">
-              <span className="text-gray-400 font-semibold">MotoMatch</span>
-              <span className="text-gray-400 font-semibold">Fashionistas</span>
-              <span className="text-gray-400 font-semibold">RainfallTech</span>
-              <span className="text-gray-400 font-semibold">TechFlow</span>
+              <span className="text-gray-300 font-semibold">MotoMatch</span>
+              <span className="text-gray-300 font-semibold">Fashionistas</span>
+              <span className="text-gray-300 font-semibold">RainfallTech</span>
+              <span className="text-gray-300 font-semibold">TechFlow</span>
             </div>
           </div>
         </div>

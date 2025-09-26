@@ -98,14 +98,14 @@ export const ProcessPhases = () => {
   ];
 
   return (
-    <section className="py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-gray-50 to-white">
+    <section className="py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-gray-900 via-black to-gray-900">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
-            Phase-by-Phase <span className="text-orange-500">Breakdown</span>
+          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
+            Phase-by-Phase <span className="text-orange-400">Breakdown</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             See exactly what happens each week and what you'll receive at every milestone.
           </p>
         </div>
@@ -125,7 +125,7 @@ export const ProcessPhases = () => {
                 `}
               >
                 {/* Content Side */}
-                <div className="flex-1 space-y-6">
+                <div className="flex-1 space-y-6 bg-white rounded-2xl p-8">
                   {/* Phase Header */}
                   <div className="flex items-center space-x-4 mb-6">
                     <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center">
@@ -180,7 +180,7 @@ export const ProcessPhases = () => {
                   </div>
 
                   {/* Real Example */}
-                  <div className="border-l-4 border-orange-500 pl-6 py-2 bg-white rounded-r-lg">
+                  <div className="border-l-4 border-orange-500 pl-6 py-2 bg-orange-50 rounded-r-lg">
                     <h5 className="font-semibold text-gray-900 mb-2">Real Project Example</h5>
                     <p className="text-gray-600 italic">{phase.example}</p>
                   </div>

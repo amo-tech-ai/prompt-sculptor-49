@@ -110,15 +110,15 @@ export const ProcessMetrics = () => {
   return (
     <section 
       ref={sectionRef}
-      className="py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-gray-50 to-white"
+      className="py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-gray-900 via-black to-gray-900"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
-            Proven <span className="text-orange-500">Track Record</span>
+          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
+            Proven <span className="text-orange-400">Track Record</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             Numbers don't lie. Our 8-week process consistently delivers results that exceed expectations.
           </p>
         </div>
@@ -180,7 +180,7 @@ export const ProcessMetrics = () => {
         {/* Bottom Section with Additional Context */}
         <div className="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left: Testimonial */}
-          <div className="bg-orange-50 rounded-2xl p-8 border border-orange-200">
+          <div className="bg-white rounded-2xl p-8 border border-gray-200">
             <div className="flex items-start space-x-4">
               <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
                 <span className="text-white font-bold text-lg">"</span>
@@ -201,7 +201,7 @@ export const ProcessMetrics = () => {
           </div>
 
           {/* Right: Comparison Chart */}
-          <div className="space-y-6">
+          <div className="space-y-6 bg-white rounded-2xl p-8 border border-gray-200">
             <h3 className="text-2xl font-bold text-gray-900 mb-6">
               Industry Comparison
             </h3>
