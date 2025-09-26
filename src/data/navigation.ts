@@ -6,7 +6,14 @@ export interface NavItem {
 
 export const mainNav: NavItem[] = [
   { title: 'Home', href: '/' },
-  { title: 'Services', href: '/services' },
+  { 
+    title: 'Services', 
+    href: '/services',
+    children: [
+      { title: 'WhatsApp Automation', href: '/services/whatsapp-automation' },
+      { title: 'CopilotKit AI', href: '/services/copilotkit' }
+    ]
+  },
   { title: 'Projects', href: '/projects' },
   { title: 'About', href: '/about' },
   { title: 'Process', href: '/process' },
@@ -20,7 +27,8 @@ export const footerLinks = {
     { title: 'Conversational AI', href: '/services/conversational-ai' },
     { title: 'Process Automation', href: '/services/automation' },
     { title: 'Multi-Agent Systems', href: '/services/multi-agent' },
-    { title: 'WhatsApp Automation', href: '/services/whatsapp-automation' }
+    { title: 'WhatsApp Automation', href: '/services/whatsapp-automation' },
+    { title: 'CopilotKit AI', href: '/services/copilotkit' }
   ],
   company: [
     { title: 'About Us', href: '/about' },
