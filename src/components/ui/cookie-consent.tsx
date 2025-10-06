@@ -17,11 +17,10 @@ export function CookieConsent() {
     localStorage.setItem("cookie-consent", "accepted");
     setShowBanner(false);
     
-    // Initialize analytics here after consent
-    if (import.meta.env.PROD) {
-      // TODO: Initialize Google Analytics or Plausible
-      console.log("Analytics initialized after consent");
-    }
+    // Initialize analytics after consent
+    import('@/lib/analytics').then(({ initAnalytics }) => {
+      initAnalytics();
+    });
   };
 
   const handleDecline = () => {

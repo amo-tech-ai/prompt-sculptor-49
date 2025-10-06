@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useWizardState } from "@/hooks/useWizardState";
 import { useSubmitBrief } from "@/hooks/wizard/useSubmitBrief";
@@ -20,6 +20,7 @@ import { BreezeInput } from "@/components/wizard/BreezeInput";
 import { BreezeCard } from "@/components/wizard/BreezeCard";
 import { ErrorAlert } from "@/components/wizard/ErrorAlert";
 import { validateEmail } from "@/lib/validation";
+import { analytics } from "@/lib/analytics";
 
 export default function BriefWizard() {
   const navigate = useNavigate();
@@ -27,6 +28,11 @@ export default function BriefWizard() {
   const { submitBrief, isSubmitting } = useSubmitBrief();
   const [userEmail, setUserEmail] = useState("");
   const [emailError, setEmailError] = useState<string>("");
+
+  // Track wizard started
+  useEffect(() => {
+    analytics.briefStarted();
+  }, []);
 
   const projectVisionStage = useProjectVisionStage({
     data: state.projectVision,
@@ -65,6 +71,8 @@ export default function BriefWizard() {
     const result = await submitBrief(state, userEmail);
     
     if (result.success) {
+      // Track successful submission
+      analytics.briefSubmitted(result.briefId || 'unknown');
       reset();
       navigate(`/brief/success?id=${result.briefId}`);
     }
