@@ -42,6 +42,17 @@ All colors MUST be HSL.
     --amo-divider: 0 0% 93%; /* #EDEDED */
     --amo-gray: 0 0% 96%; /* Light gray for backgrounds */
 
+    /* Breeze-inspired Wizard Colors */
+    --breeze-cream: 32 43% 96%; /* #FBF7F4 - warm cream background */
+    --breeze-peach: 25 95% 93%; /* #FFEEE6 - soft peach */
+    --breeze-orange: 20 100% 65%; /* #FF894C - primary orange */
+    --breeze-orange-hover: 20 100% 60%; /* #FF7A33 - darker orange */
+    --breeze-text: 210 11% 15%; /* #222831 - charcoal text */
+    --breeze-text-muted: 210 9% 45%; /* #6B7280 - muted text */
+    --breeze-border: 30 20% 88%; /* #E5DDD8 - subtle border */
+    --breeze-success: 142 76% 36%; /* #15803D - green */
+    --breeze-info: 199 89% 48%; /* #0EA5E9 - blue */
+
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
 

@@ -62,6 +62,18 @@ export default {
         },
         "amo-divider": "hsl(var(--amo-divider))",
         "amo-gray": "hsl(var(--amo-gray))",
+        // Breeze-inspired Wizard Colors
+        breeze: {
+          cream: "hsl(var(--breeze-cream))",
+          peach: "hsl(var(--breeze-peach))",
+          orange: "hsl(var(--breeze-orange))",
+          "orange-hover": "hsl(var(--breeze-orange-hover))",
+          text: "hsl(var(--breeze-text))",
+          "text-muted": "hsl(var(--breeze-text-muted))",
+          border: "hsl(var(--breeze-border))",
+          success: "hsl(var(--breeze-success))",
+          info: "hsl(var(--breeze-info))",
+        },
         popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
