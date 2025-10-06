@@ -163,6 +163,39 @@
 
 ---
 
+## 📊 CRM System (0%) 🔴
+
+**Status:** Planning Phase - Documentation Complete  
+**Start Date:** TBD (Q1 2025)  
+**Priority:** High (Post-MVP Brief Wizard)
+
+### Planning Documents Complete
+- 🟢 Master implementation plan (8-12 weeks)
+- 🟢 Complete database schema (12 tables)
+- 🟢 Authentication & security plan
+- 🟢 Real-world use cases & examples
+
+### Stage 1: Foundation (Not Started)
+- 🔴 Database schema migration
+- 🔴 User roles system (Admin, Sales, Viewer)
+- 🔴 Authentication (Email + Google OAuth)
+- 🔴 Basic navigation & dashboard shell
+
+### Stage 2: Core Modules (Not Started)
+- 🔴 Clients module with CRUD
+- 🔴 Deals pipeline (Kanban view)
+- 🔴 Invoices management
+
+### Stage 3-7: Advanced Features (Not Started)
+- 🔴 Edge functions & automation
+- 🔴 AI features integration
+- 🔴 Third-party integrations
+- 🔴 Reporting & analytics
+
+**See:** `docs/crm/` folder for complete planning documentation
+
+---
+
 ## 🚀 Phase 2: Website Brief Wizard (0%) 🔴
 
 ### 2.1 Website Brief Core Features
