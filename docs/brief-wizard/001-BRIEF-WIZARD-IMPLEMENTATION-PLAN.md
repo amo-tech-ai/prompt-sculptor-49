@@ -558,8 +558,10 @@ const stage6Schema = z.object({
 - [ ] **Step 2.1**: Create wizard container (30 min)
   - [ ] `src/pages/wizard/BriefWizardContainer.tsx`
   - [ ] Initialize `useWizardState` with `"brief"` type
-  - [ ] Set up global CopilotKit context
+  - [ ] Set up global CopilotKit context (NO `available` prop - always available)
+  - [ ] Initialize ALL 6 stage hooks (they control themselves via `available`)
   - [ ] Create stage rendering logic
+  - [ ] Follow CopilotKit State Machine pattern from cookbook
 
 - [ ] **Step 2.2**: Create stage hooks (1.5 hours)
   - [ ] `src/hooks/stages/brief/useProjectVisionStage.ts`
@@ -568,12 +570,14 @@ const stage6Schema = z.object({
   - [ ] `src/hooks/stages/brief/useConstraintsTimelineStage.ts`
   - [ ] `src/hooks/stages/brief/useBudgetInvestmentStage.ts`
   - [ ] `src/hooks/stages/brief/useContactReviewStage.ts`
-  - Each hook needs:
-    - [ ] CopilotKit instructions
-    - [ ] Readable context
-    - [ ] Update actions
-    - [ ] Complete stage action
-    - [ ] Validation logic
+  - Each hook MUST follow CopilotKit State Machine pattern:
+    - [ ] Calculate `isActive = currentStage === TargetStage`
+    - [ ] `useCopilotAdditionalInstructions` with `available: isActive ? "available" : "disabled"`
+    - [ ] `useCopilotReadable` with `available: isActive ? "available" : "disabled"`
+    - [ ] `useCopilotAction` for data updates with `available: isActive ? "available" : "disabled"`
+    - [ ] `useCopilotAction` for `completeStage` with transition via `goToNext()`
+    - [ ] Validation logic in `canAdvance()` function
+    - [ ] Return validation state for UI to use
 
 ---
 
@@ -652,6 +656,20 @@ const stage6Schema = z.object({
 ---
 
 ## 🤖 AI INTEGRATION STRATEGY
+
+### CopilotKit State Machine Pattern
+
+This wizard follows the **official CopilotKit State Machine pattern** as documented in:
+- **Reference**: `docs/brief-wizard/copilotkit-state-machine-cookbook.md`
+- **Live Example**: https://state-machine-copilot.vercel.app/
+- **Source**: https://github.com/CopilotKit/CopilotKit/tree/main/examples/copilot-state-machine
+
+**Key Implementation Principles:**
+1. ✅ Each stage has dedicated hook with conditional `available` prop
+2. ✅ Only active stage's instructions, context, and actions are available to AI
+3. ✅ Clear transitions via `goToNext()` - can be LLM-driven or button-driven
+4. ✅ All stage hooks initialized in container (controlled via `available`)
+5. ✅ Global context provides overall wizard state without `available` prop
 
 ### CopilotKit Instructions Per Stage
 
@@ -735,13 +753,48 @@ Your role:
 Be thorough and ensure they feel confident in the submission.
 ```
 
+### State Machine Architecture Diagram
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│  Brief Wizard Container (Parent Component)                  │
+│                                                              │
+│  • Manages global state (currentStage, data)                │
+│  • Global CopilotKit context (NO available prop)            │
+│  • Initializes ALL stage hooks simultaneously               │
+│                                                              │
+│  ┌──────────────────────────────────────────────────────┐  │
+│  │ Stage Hook Pattern (6 total hooks)                   │  │
+│  │                                                       │  │
+│  │  const isActive = currentStage === TargetStage;      │  │
+│  │                                                       │  │
+│  │  • useCopilotAdditionalInstructions({                │  │
+│  │      available: isActive ? "available" : "disabled"  │  │
+│  │    })                                                 │  │
+│  │                                                       │  │
+│  │  • useCopilotReadable({                              │  │
+│  │      available: isActive ? "available" : "disabled"  │  │
+│  │    })                                                 │  │
+│  │                                                       │  │
+│  │  • useCopilotAction("updateData", {                  │  │
+│  │      available: isActive ? "available" : "disabled"  │  │
+│  │    })                                                 │  │
+│  │                                                       │  │
+│  │  • useCopilotAction("completeStage", {               │  │
+│  │      available: isActive ? "available" : "disabled",  │  │
+│  │      handler: () => goToNext() // Transition!        │  │
+│  │    })                                                 │  │
+│  └──────────────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────────┘
+
+Result: AI only sees/uses hooks from the CURRENT stage!
+```
+
 ### AI Actions Available in Each Stage
 
 **Readable Context** (All Stages):
-- Current wizard progress
-- All collected data so far
-- Validation state
-- User interaction history
+- **Global Context** (always available): Current wizard progress, stage number
+- **Stage-Specific Context** (only when active): Stage data, completion status, validation errors
 
 **Actions** (All Stages):
 - `updateStageData` - Update current stage fields
