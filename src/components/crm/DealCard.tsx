@@ -10,6 +10,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Building2, DollarSign, Calendar, MoreVertical, Edit, Trash2 } from 'lucide-react';
 import { format } from 'date-fns';
+import { useNavigate } from 'react-router-dom';
 
 interface Deal {
   id: string;
@@ -32,8 +33,13 @@ interface DealCardProps {
 }
 
 export function DealCard({ deal, onEdit, onDelete }: DealCardProps) {
+  const navigate = useNavigate();
+  
   return (
-    <Card className="p-4 hover:shadow-md transition-shadow cursor-pointer bg-card">
+    <Card 
+      className="p-4 hover:shadow-md transition-shadow cursor-pointer bg-card"
+      onClick={() => navigate(`/crm/deals/${deal.id}`)}
+    >
       <div className="space-y-3">
         <div className="flex items-start justify-between">
           <div className="flex-1 min-w-0">
@@ -48,18 +54,29 @@ export function DealCard({ deal, onEdit, onDelete }: DealCardProps) {
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon" className="h-8 w-8 flex-shrink-0">
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                className="h-8 w-8 flex-shrink-0"
+                onClick={(e) => e.stopPropagation()}
+              >
                 <MoreVertical className="h-4 w-4" />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuItem onClick={() => onEdit(deal)}>
+              <DropdownMenuItem onClick={(e) => {
+                e.stopPropagation();
+                onEdit(deal);
+              }}>
                 <Edit className="mr-2 h-4 w-4" />
                 Edit
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem
-                onClick={() => onDelete(deal)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onDelete(deal);
+                }}
                 className="text-destructive focus:text-destructive"
               >
                 <Trash2 className="mr-2 h-4 w-4" />

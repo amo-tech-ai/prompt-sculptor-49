@@ -32,6 +32,7 @@ interface DealDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   deal?: Deal | null;
+  onSuccess?: () => void;
 }
 
 const dealSchema = z.object({
@@ -46,7 +47,7 @@ const dealSchema = z.object({
   notes: z.string().max(5000).optional()
 });
 
-export function DealDialog({ open, onOpenChange, deal }: DealDialogProps) {
+export function DealDialog({ open, onOpenChange, deal, onSuccess }: DealDialogProps) {
   const queryClient = useQueryClient();
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -129,6 +130,7 @@ export function DealDialog({ open, onOpenChange, deal }: DealDialogProps) {
       queryClient.invalidateQueries({ queryKey: ['deals'] });
       onOpenChange(false);
       resetForm();
+      if (onSuccess) onSuccess();
     } catch (error) {
       if (error instanceof z.ZodError) {
         const fieldErrors: Record<string, string> = {};

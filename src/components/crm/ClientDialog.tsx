@@ -27,7 +27,8 @@ interface ClientDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   client?: Client | null;
-  industries: Array<{ name: string }>;
+  industries?: Array<{ name: string }>;
+  onSuccess?: () => void;
 }
 
 const clientSchema = z.object({
@@ -41,7 +42,7 @@ const clientSchema = z.object({
   notes: z.string().max(5000).optional()
 });
 
-export function ClientDialog({ open, onOpenChange, client, industries }: ClientDialogProps) {
+export function ClientDialog({ open, onOpenChange, client, industries = [], onSuccess }: ClientDialogProps) {
   const queryClient = useQueryClient();
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -87,6 +88,7 @@ export function ClientDialog({ open, onOpenChange, client, industries }: ClientD
       queryClient.invalidateQueries({ queryKey: ['clients'] });
       onOpenChange(false);
       resetForm();
+      if (onSuccess) onSuccess();
     } catch (error) {
       if (error instanceof z.ZodError) {
         const fieldErrors: Record<string, string> = {};

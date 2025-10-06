@@ -29,7 +29,9 @@ import LoginPage from "./pages/crm/LoginPage";
 import SignupPage from "./pages/crm/SignupPage";
 import DashboardPage from "./pages/crm/DashboardPage";
 import ClientsPage from "./pages/crm/ClientsPage";
+import ClientDetailPage from "./pages/crm/ClientDetailPage";
 import DealsPage from "./pages/crm/DealsPage";
+import DealDetailPage from "./pages/crm/DealDetailPage";
 import InvoicesPage from "./pages/crm/InvoicesPage";
 
 // Initialize React Query client
@@ -79,7 +81,9 @@ const AppContent = () => {
                   <Route path="/crm/signup" element={<SignupPage />} />
                   <Route path="/crm/dashboard" element={<DashboardPage />} />
                   <Route path="/crm/clients" element={<ClientsPage />} />
+                  <Route path="/crm/clients/:id" element={<ClientDetailPage />} />
                   <Route path="/crm/deals" element={<DealsPage />} />
+                  <Route path="/crm/deals/:id" element={<DealDetailPage />} />
                   <Route path="/crm/invoices" element={<InvoicesPage />} />
                   {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                   <Route path="*" element={<NotFound />} />

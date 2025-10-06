@@ -9,6 +9,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Building2, Mail, Phone, Globe, MoreVertical, Edit, Trash2 } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 interface Client {
   id: string;
@@ -29,6 +30,8 @@ interface ClientCardProps {
 }
 
 export function ClientCard({ client, onEdit, onDelete }: ClientCardProps) {
+  const navigate = useNavigate();
+  
   const getStatusColor = (status: string) => {
     const colors = {
       prospect: 'bg-yellow-500/10 text-yellow-500 border-yellow-500/20',
@@ -40,7 +43,10 @@ export function ClientCard({ client, onEdit, onDelete }: ClientCardProps) {
   };
 
   return (
-    <Card className="p-4 hover:shadow-md transition-shadow">
+    <Card 
+      className="p-4 hover:shadow-md transition-shadow cursor-pointer"
+      onClick={() => navigate(`/crm/clients/${client.id}`)}
+    >
       <div className="flex items-start justify-between">
         <div className="flex items-start gap-4 flex-1">
           <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
@@ -104,18 +110,29 @@ export function ClientCard({ client, onEdit, onDelete }: ClientCardProps) {
 
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" size="icon" className="h-8 w-8">
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              className="h-8 w-8"
+              onClick={(e) => e.stopPropagation()}
+            >
               <MoreVertical className="h-4 w-4" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuItem onClick={() => onEdit(client)}>
+            <DropdownMenuItem onClick={(e) => {
+              e.stopPropagation();
+              onEdit(client);
+            }}>
               <Edit className="mr-2 h-4 w-4" />
               Edit
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem
-              onClick={() => onDelete(client)}
+              onClick={(e) => {
+                e.stopPropagation();
+                onDelete(client);
+              }}
               className="text-destructive focus:text-destructive"
             >
               <Trash2 className="mr-2 h-4 w-4" />
