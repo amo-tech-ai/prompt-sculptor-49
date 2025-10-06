@@ -3,6 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { useWizardState } from "@/hooks/useWizardState";
 import { useSubmitBrief } from "@/hooks/wizard/useSubmitBrief";
 import { BriefWizardStage } from "@/types/wizard";
+import { CopilotKit } from "@copilotkit/react-core";
+import { CopilotSidebar } from "@copilotkit/react-ui";
+import "@copilotkit/react-ui/styles.css";
 import { WizardProgress } from "@/components/wizard/WizardProgress";
 import { NavigationFooter } from "@/components/wizard/NavigationFooter";
 import { ProjectVisionStage } from "@/components/wizard/stages/ProjectVisionStage";
@@ -177,27 +180,39 @@ export default function BriefWizard() {
     }
   };
 
+  const copilotUrl = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/copilotkit`;
+
   return (
-    <div className="min-h-screen bg-breeze-bg">
-      <div className="max-w-4xl mx-auto px-4 py-8">
-        <WizardProgress
-          currentStage={state.currentStage}
-          completedStages={Array.from(completedStages)}
-        />
+    <CopilotKit runtimeUrl={copilotUrl}>
+      <CopilotSidebar
+        defaultOpen={false}
+        labels={{
+          title: "AI Project Assistant",
+          initial: "Hi! I'm here to help you create a comprehensive project brief. Ask me anything or I can suggest improvements to your brief.",
+        }}
+      >
+        <div className="min-h-screen bg-breeze-bg">
+          <div className="max-w-4xl mx-auto px-4 py-8">
+            <WizardProgress
+              currentStage={state.currentStage}
+              completedStages={Array.from(completedStages)}
+            />
 
-        <div className="mt-8">
-          {renderStage()}
+            <div className="mt-8">
+              {renderStage()}
+            </div>
+
+            <NavigationFooter
+              onBack={previousStage}
+              onNext={state.currentStage === BriefWizardStage.Review ? undefined : nextStage}
+              onSubmit={state.currentStage === BriefWizardStage.Review ? handleSubmit : undefined}
+              canGoBack={canGoBack()}
+              canGoNext={canContinue()}
+              loading={isSubmitting}
+            />
+          </div>
         </div>
-
-        <NavigationFooter
-          onBack={previousStage}
-          onNext={state.currentStage === BriefWizardStage.Review ? undefined : nextStage}
-          onSubmit={state.currentStage === BriefWizardStage.Review ? handleSubmit : undefined}
-          canGoBack={canGoBack()}
-          canGoNext={canContinue()}
-          loading={isSubmitting}
-        />
-      </div>
-    </div>
+      </CopilotSidebar>
+    </CopilotKit>
   );
 }

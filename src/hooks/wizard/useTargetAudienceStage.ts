@@ -1,5 +1,6 @@
 import { useCallback } from "react";
 import { TargetAudienceData } from "@/types/wizard";
+import { useCopilotAction, useCopilotReadable } from "@copilotkit/react-core";
 
 interface UseTargetAudienceStageProps {
   data: TargetAudienceData;
@@ -7,6 +8,29 @@ interface UseTargetAudienceStageProps {
 }
 
 export function useTargetAudienceStage({ data, onUpdate }: UseTargetAudienceStageProps) {
+  // Provide context to AI
+  useCopilotReadable({
+    description: "Current target audience data",
+    value: data,
+  });
+
+  // AI action to suggest pain points
+  useCopilotAction({
+    name: "suggestPainPoints",
+    description: "Suggest relevant pain points for the target audience",
+    parameters: [
+      {
+        name: "painPoints",
+        type: "string[]",
+        description: "Array of suggested pain points",
+        required: true,
+      },
+    ],
+    handler: async ({ painPoints }) => {
+      painPoints.forEach((point: string) => addPainPoint(point));
+    },
+  });
+
   const updateField = useCallback(
     (field: keyof TargetAudienceData, value: any) => {
       onUpdate({ [field]: value });
