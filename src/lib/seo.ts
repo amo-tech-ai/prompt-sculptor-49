@@ -10,7 +10,7 @@ export const defaultMeta = {
     siteName: 'AMO AI',
     images: [
       {
-        url: 'https://amoai.agency/og-image.png',
+        url: 'https://amoai.agency/og-image.webp',
         width: 1200,
         height: 630,
         alt: 'AMO AI - AI Automation Specialists'

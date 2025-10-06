@@ -46,7 +46,7 @@ const HomePage = () => {
             "@type": "Organization",
             "name": "AMO AI",
             "url": "https://amoai.agency",
-            "logo": "https://amoai.agency/logo.png",
+            "logo": "https://amoai.agency/logo.webp",
             "description": defaultMeta.description,
             "contactPoint": {
               "@type": "ContactPoint",

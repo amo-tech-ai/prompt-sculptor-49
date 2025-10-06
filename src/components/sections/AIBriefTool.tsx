@@ -82,9 +82,12 @@ export const AIBriefTool = () => {
             <div>
               <Card className="p-1 shadow-2xl bg-gradient-to-br from-card to-card/50 border-0">
                 <img 
-                  src="/src/assets/ai-brief-tool.png" 
+                  src="/src/assets/ai-brief-tool.webp" 
                   alt="AI Project Brief Tool Interface" 
                   className="w-full h-auto rounded-lg"
+                  loading="lazy"
+                  width="1280"
+                  height="720"
                 />
               </Card>
               

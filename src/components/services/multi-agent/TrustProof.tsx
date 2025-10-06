@@ -6,7 +6,7 @@ import copilotKitLogo from '@/assets/logos/webflow-logo.svg';
 import crewAILogo from '@/assets/logos/crewai-logo.svg';
 import supabaseLogo from '@/assets/logos/supabase-logo.svg';
 import stripeLogo from '@/assets/logos/stripe-logo.svg';
-import whatsappLogo from '@/assets/logos/whatsapp-logo.png';
+import whatsappLogo from '@/assets/logos/whatsapp-logo.webp';
 
 export const TrustProof = () => {
   const stats = [
