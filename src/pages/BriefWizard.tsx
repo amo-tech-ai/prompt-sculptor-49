@@ -1,4 +1,7 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useWizardState } from "@/hooks/useWizardState";
+import { useSubmitBrief } from "@/hooks/wizard/useSubmitBrief";
 import { BriefWizardStage } from "@/types/wizard";
 import { WizardProgress } from "@/components/wizard/WizardProgress";
 import { NavigationFooter } from "@/components/wizard/NavigationFooter";
@@ -13,9 +16,14 @@ import { useTargetAudienceStage } from "@/hooks/wizard/useTargetAudienceStage";
 import { useFeaturesStage } from "@/hooks/wizard/useFeaturesStage";
 import { useDesignPreferencesStage } from "@/hooks/wizard/useDesignPreferencesStage";
 import { useTimelineStage } from "@/hooks/wizard/useTimelineStage";
+import { BreezeInput } from "@/components/wizard/BreezeInput";
+import { BreezeCard } from "@/components/wizard/BreezeCard";
 
 export default function BriefWizard() {
-  const { state, updateStage, nextStage, previousStage, canGoBack, completedStages } = useWizardState();
+  const navigate = useNavigate();
+  const { state, updateStage, nextStage, previousStage, canGoBack, completedStages, reset } = useWizardState();
+  const { submitBrief, isSubmitting } = useSubmitBrief();
+  const [userEmail, setUserEmail] = useState("");
 
   const projectVisionStage = useProjectVisionStage({
     data: state.projectVision,
@@ -42,6 +50,15 @@ export default function BriefWizard() {
     onUpdate: (data) => updateStage(state.currentStage, { timeline: { ...state.timeline, ...data } }),
   });
 
+  const handleSubmit = async () => {
+    const result = await submitBrief(state, userEmail);
+    
+    if (result.success) {
+      reset();
+      navigate(`/brief/success?id=${result.briefId}`);
+    }
+  };
+
   const canContinue = () => {
     switch (state.currentStage) {
       case BriefWizardStage.ProjectVision:
@@ -55,7 +72,7 @@ export default function BriefWizard() {
       case BriefWizardStage.Timeline:
         return timelineStage.canAdvance();
       case BriefWizardStage.Review:
-        return true;
+        return userEmail.trim().length > 0 && userEmail.includes("@");
       default:
         return false;
     }
@@ -100,10 +117,25 @@ export default function BriefWizard() {
         );
       case BriefWizardStage.Review:
         return (
-          <ReviewStage
-            data={state}
-            onEdit={(stage) => console.log("Edit", stage)}
-          />
+          <div className="space-y-6">
+            <ReviewStage
+              data={state}
+              onEdit={(stage: BriefWizardStage) => {
+                updateStage(stage, {});
+              }}
+            />
+            <BreezeCard>
+              <BreezeInput
+                label="Your Email Address"
+                type="email"
+                placeholder="your@email.com"
+                value={userEmail}
+                onChange={(e) => setUserEmail(e.target.value)}
+                required
+                helperText="We'll use this to send you the proposal and stay in touch"
+              />
+            </BreezeCard>
+          </div>
         );
       default:
         return <div>Stage not implemented yet</div>;
@@ -125,9 +157,10 @@ export default function BriefWizard() {
         <NavigationFooter
           onBack={previousStage}
           onNext={state.currentStage === BriefWizardStage.Review ? undefined : nextStage}
-          onSubmit={state.currentStage === BriefWizardStage.Review ? () => console.log("Submit") : undefined}
+          onSubmit={state.currentStage === BriefWizardStage.Review ? handleSubmit : undefined}
           canGoBack={canGoBack()}
           canGoNext={canContinue()}
+          loading={isSubmitting}
         />
       </div>
     </div>

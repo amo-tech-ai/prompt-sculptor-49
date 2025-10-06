@@ -14,7 +14,90 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      briefs: {
+        Row: {
+          audience_age: string | null
+          audience_location: string | null
+          brand_guidelines: string | null
+          budget: string
+          color_preferences: string | null
+          created_at: string
+          desired_launch_date: string | null
+          desired_outcomes: string[]
+          id: string
+          inspiration_urls: string[] | null
+          integrations: string[] | null
+          must_have_features: string[]
+          nice_to_have_features: string[] | null
+          pain_points: string[]
+          primary_audience: string
+          priority: string
+          problem_statement: string
+          project_description: string
+          project_goals: string[]
+          project_name: string
+          special_requirements: string | null
+          style: string
+          submission_status: string | null
+          updated_at: string
+          user_email: string | null
+        }
+        Insert: {
+          audience_age?: string | null
+          audience_location?: string | null
+          brand_guidelines?: string | null
+          budget: string
+          color_preferences?: string | null
+          created_at?: string
+          desired_launch_date?: string | null
+          desired_outcomes?: string[]
+          id?: string
+          inspiration_urls?: string[] | null
+          integrations?: string[] | null
+          must_have_features?: string[]
+          nice_to_have_features?: string[] | null
+          pain_points?: string[]
+          primary_audience: string
+          priority: string
+          problem_statement: string
+          project_description: string
+          project_goals?: string[]
+          project_name: string
+          special_requirements?: string | null
+          style: string
+          submission_status?: string | null
+          updated_at?: string
+          user_email?: string | null
+        }
+        Update: {
+          audience_age?: string | null
+          audience_location?: string | null
+          brand_guidelines?: string | null
+          budget?: string
+          color_preferences?: string | null
+          created_at?: string
+          desired_launch_date?: string | null
+          desired_outcomes?: string[]
+          id?: string
+          inspiration_urls?: string[] | null
+          integrations?: string[] | null
+          must_have_features?: string[]
+          nice_to_have_features?: string[] | null
+          pain_points?: string[]
+          primary_audience?: string
+          priority?: string
+          problem_statement?: string
+          project_description?: string
+          project_goals?: string[]
+          project_name?: string
+          special_requirements?: string | null
+          style?: string
+          submission_status?: string | null
+          updated_at?: string
+          user_email?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

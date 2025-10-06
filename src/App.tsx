@@ -18,6 +18,7 @@ import CopilotKitServicesPage from "./pages/CopilotKitServicesPage";
 import CrewAIServicesPage from "./pages/CrewAIServicesPage";
 import NotFound from "./pages/NotFound";
 import BriefWizard from "./pages/BriefWizard";
+import BriefSuccess from "./pages/BriefSuccess";
 
 // Initialize React Query client
 const queryClient = new QueryClient({
@@ -51,7 +52,8 @@ const AppContent = () => (
               <Route path="/projects" element={<ProjectsPage />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/contact" element={<ContactPage />} />
-              <Route path="/brief" element={<BriefWizard />} />
+          <Route path="/brief" element={<BriefWizard />} />
+          <Route path="/brief/success" element={<BriefSuccess />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
