@@ -2,13 +2,48 @@ import { WizardStateData } from "@/types/wizard";
 import { BreezeCard } from "@/components/wizard/BreezeCard";
 import { BreezeButton } from "@/components/wizard/BreezeButton";
 import { CheckCircle, Download, Mail } from "lucide-react";
+import { generateBriefPDF } from "@/lib/pdfGenerator";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
+import { useState } from "react";
 
 interface ReviewStageProps {
   data: WizardStateData;
   onEdit: (stage: string) => void;
+  userEmail?: string;
 }
 
-export function ReviewStage({ data }: ReviewStageProps) {
+export function ReviewStage({ data, userEmail }: ReviewStageProps) {
+  const [isEmailingSending, setIsEmailingSending] = useState(false);
+
+  const handleDownloadPDF = () => {
+    try {
+      generateBriefPDF(data);
+      toast.success("PDF downloaded successfully!");
+    } catch (error) {
+      console.error("Error generating PDF:", error);
+      toast.error("Failed to generate PDF");
+    }
+  };
+
+  const handleEmailBrief = async () => {
+    if (!userEmail) {
+      toast.error("Please enter your email address first");
+      return;
+    }
+
+    setIsEmailingSending(true);
+    try {
+      // We'll need to submit first to get a briefId, or store temporarily
+      toast.info("Please submit the brief first to email a copy");
+    } catch (error) {
+      console.error("Error sending email:", error);
+      toast.error("Failed to send email");
+    } finally {
+      setIsEmailingSending(false);
+    }
+  };
+
   return (
     <div className="space-y-6">
       <div className="text-center mb-8">
@@ -152,11 +187,21 @@ export function ReviewStage({ data }: ReviewStageProps) {
           <BreezeCard padding="md">
             <h3 className="text-lg font-semibold text-breeze-text mb-4">Next Steps</h3>
             <div className="space-y-3">
-              <BreezeButton variant="outline" fullWidth>
+              <BreezeButton 
+                variant="outline" 
+                fullWidth 
+                onClick={handleDownloadPDF}
+              >
                 <Download className="w-4 h-4 mr-2" />
                 Download PDF
               </BreezeButton>
-              <BreezeButton variant="outline" fullWidth>
+              <BreezeButton 
+                variant="outline" 
+                fullWidth 
+                onClick={handleEmailBrief}
+                loading={isEmailingSending}
+                disabled={!userEmail}
+              >
                 <Mail className="w-4 h-4 mr-2" />
                 Email Brief
               </BreezeButton>

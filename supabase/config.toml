@@ -1,1 +1,7 @@
 project_id = "nzmvylurkvrhuzhpepqu"
+
+[functions]
+enabled = true
+
+[functions.send-brief-email]
+verify_jwt = false

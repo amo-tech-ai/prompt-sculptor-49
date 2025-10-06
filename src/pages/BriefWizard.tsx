@@ -120,6 +120,7 @@ export default function BriefWizard() {
           <div className="space-y-6">
             <ReviewStage
               data={state}
+              userEmail={userEmail}
               onEdit={(stage: BriefWizardStage) => {
                 updateStage(stage, {});
               }}
