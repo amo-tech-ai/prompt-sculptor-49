@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { CheckCircle, Download, Mail, Home } from "lucide-react";
+import { CheckCircle, Download, Mail, Home, AlertCircle } from "lucide-react";
 import { BreezeButton } from "@/components/wizard/BreezeButton";
 import { BreezeCard } from "@/components/wizard/BreezeCard";
+import { LoadingSpinner } from "@/components/wizard/LoadingSpinner";
 import { supabase } from "@/integrations/supabase/client";
 import { generateBriefPDF } from "@/lib/pdfGenerator";
 import { WizardStateData, BriefWizardStage } from "@/types/wizard";
@@ -124,6 +125,40 @@ export default function BriefSuccess() {
       setIsEmailSending(false);
     }
   };
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-breeze-bg flex items-center justify-center px-4 py-8">
+        <BreezeCard>
+          <LoadingSpinner message="Loading your brief..." />
+        </BreezeCard>
+      </div>
+    );
+  }
+
+  if (!briefId || !briefData) {
+    return (
+      <div className="min-h-screen bg-breeze-bg flex items-center justify-center px-4 py-8">
+        <div className="max-w-2xl w-full">
+          <BreezeCard>
+            <div className="text-center py-8">
+              <AlertCircle className="w-12 h-12 text-breeze-orange mx-auto mb-4" />
+              <h2 className="text-2xl font-bold text-breeze-text mb-2">
+                Brief Not Found
+              </h2>
+              <p className="text-breeze-text-muted mb-6">
+                We couldn't find your brief. It may have been deleted or the link is invalid.
+              </p>
+              <BreezeButton onClick={() => navigate("/")}>
+                <Home className="w-4 h-4 mr-2" />
+                Back to Home
+              </BreezeButton>
+            </div>
+          </BreezeCard>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-breeze-bg flex items-center justify-center px-4 py-8">

@@ -18,12 +18,15 @@ import { useDesignPreferencesStage } from "@/hooks/wizard/useDesignPreferencesSt
 import { useTimelineStage } from "@/hooks/wizard/useTimelineStage";
 import { BreezeInput } from "@/components/wizard/BreezeInput";
 import { BreezeCard } from "@/components/wizard/BreezeCard";
+import { ErrorAlert } from "@/components/wizard/ErrorAlert";
+import { validateEmail } from "@/lib/validation";
 
 export default function BriefWizard() {
   const navigate = useNavigate();
   const { state, updateStage, nextStage, previousStage, canGoBack, completedStages, reset } = useWizardState();
   const { submitBrief, isSubmitting } = useSubmitBrief();
   const [userEmail, setUserEmail] = useState("");
+  const [emailError, setEmailError] = useState<string>("");
 
   const projectVisionStage = useProjectVisionStage({
     data: state.projectVision,
@@ -51,11 +54,29 @@ export default function BriefWizard() {
   });
 
   const handleSubmit = async () => {
+    // Validate email before submitting
+    const emailValidation = validateEmail(userEmail);
+    if (!emailValidation.isValid) {
+      setEmailError(emailValidation.errors[0]?.message || "Invalid email");
+      return;
+    }
+    
+    setEmailError("");
     const result = await submitBrief(state, userEmail);
     
     if (result.success) {
       reset();
       navigate(`/brief/success?id=${result.briefId}`);
+    }
+  };
+
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newEmail = e.target.value;
+    setUserEmail(newEmail);
+    
+    // Clear error when user starts typing
+    if (emailError) {
+      setEmailError("");
     }
   };
 
@@ -126,15 +147,20 @@ export default function BriefWizard() {
               }}
             />
             <BreezeCard>
-              <BreezeInput
-                label="Your Email Address"
-                type="email"
-                placeholder="your@email.com"
-                value={userEmail}
-                onChange={(e) => setUserEmail(e.target.value)}
-                required
-                helperText="We'll use this to send you the proposal and stay in touch"
-              />
+              <div className="space-y-4">
+                <BreezeInput
+                  label="Your Email Address"
+                  type="email"
+                  placeholder="your@email.com"
+                  value={userEmail}
+                  onChange={handleEmailChange}
+                  required
+                  helperText="We'll use this to send you the proposal and stay in touch"
+                />
+                {emailError && (
+                  <ErrorAlert errors={[{ field: "email", message: emailError }]} />
+                )}
+              </div>
             </BreezeCard>
           </div>
         );

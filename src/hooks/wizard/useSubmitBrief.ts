@@ -2,6 +2,7 @@ import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { WizardStateData } from "@/types/wizard";
+import { validateCompleteWizard } from "@/lib/validation";
 
 export function useSubmitBrief() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -9,8 +10,20 @@ export function useSubmitBrief() {
 
   const submitBrief = async (data: WizardStateData, userEmail?: string) => {
     setIsSubmitting(true);
-
+    
     try {
+      // Validate complete wizard data
+      const validation = validateCompleteWizard(data, userEmail || "");
+      if (!validation.isValid) {
+        const errorMessages = validation.errors.map(e => e.message).join(", ");
+        toast({
+          title: "Validation failed",
+          description: errorMessages,
+          variant: "destructive",
+        });
+        return { success: false, error: "Validation failed" };
+      }
+      
       const { data: brief, error } = await supabase
         .from("briefs")
         .insert({
@@ -60,9 +73,21 @@ export function useSubmitBrief() {
       return { success: true, briefId: brief.id };
     } catch (error: any) {
       console.error("Error submitting brief:", error);
+      
+      // Provide more specific error messages
+      let errorMessage = "Failed to submit brief. Please try again.";
+      
+      if (error.message?.includes("duplicate key")) {
+        errorMessage = "A brief with this information already exists.";
+      } else if (error.message?.includes("network")) {
+        errorMessage = "Network error. Please check your connection and try again.";
+      } else if (error.code === "PGRST301") {
+        errorMessage = "Database error. Please contact support.";
+      }
+      
       toast({
         title: "Submission failed",
-        description: error.message || "Failed to submit brief. Please try again.",
+        description: errorMessage,
         variant: "destructive",
       });
       return { success: false, error };
