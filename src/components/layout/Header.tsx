@@ -80,6 +80,9 @@ export const Header = () => {
 
           {/* CTA Button */}
           <div className="hidden md:flex items-center space-x-4">
+            <Button variant="outline" asChild>
+              <Link to="/crm/login">CRM Login</Link>
+            </Button>
             <Button asChild>
               <Link to="/brief">Get Started</Link>
             </Button>
@@ -133,7 +136,10 @@ export const Header = () => {
                     </Link>
                   )
                 ))}
-                <div className="pt-4">
+                <div className="pt-4 space-y-2">
+                  <Button variant="outline" asChild className="w-full">
+                    <Link to="/crm/login">CRM Login</Link>
+                  </Button>
                   <Button asChild className="w-full">
                     <Link to="/brief">Get Started</Link>
                   </Button>

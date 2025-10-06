@@ -15,16 +15,23 @@ export default function DashboardPage() {
         supabase.from('invoices').select('*')
       ]);
 
-      const totalPipeline = dealsRes.data?.reduce((sum, deal) => 
-        sum + Number(deal.deal_value), 0) || 0;
+      const totalPipeline = dealsRes.data?.reduce((sum, deal) => {
+        if (deal.stage !== 'won' && deal.stage !== 'lost') {
+          return sum + Number(deal.deal_value);
+        }
+        return sum;
+      }, 0) || 0;
 
       const wonDeals = dealsRes.data?.filter(d => d.stage === 'won').length || 0;
+      const wonValue = dealsRes.data?.filter(d => d.stage === 'won').reduce((sum, d) => 
+        sum + Number(d.deal_value), 0) || 0;
 
       return {
         totalClients: clientsRes.count || 0,
-        totalDeals: dealsRes.data?.length || 0,
+        totalDeals: dealsRes.data?.filter(d => d.stage !== 'won' && d.stage !== 'lost').length || 0,
         totalPipeline,
-        wonDeals
+        wonDeals,
+        wonValue
       };
     }
   });
@@ -34,25 +41,30 @@ export default function DashboardPage() {
       title: 'Total Clients',
       value: stats?.totalClients || 0,
       icon: Users,
-      color: 'text-blue-600'
+      color: 'text-blue-600',
+      bgColor: 'bg-blue-500/10'
     },
     {
       title: 'Active Deals',
       value: stats?.totalDeals || 0,
       icon: Briefcase,
-      color: 'text-green-600'
+      color: 'text-green-600',
+      bgColor: 'bg-green-500/10'
     },
     {
       title: 'Pipeline Value',
       value: `$${(stats?.totalPipeline || 0).toLocaleString()}`,
       icon: TrendingUp,
-      color: 'text-purple-600'
+      color: 'text-purple-600',
+      bgColor: 'bg-purple-500/10'
     },
     {
       title: 'Won Deals',
       value: stats?.wonDeals || 0,
+      subtitle: stats?.wonValue ? `$${stats.wonValue.toLocaleString()} total` : undefined,
       icon: FileText,
-      color: 'text-orange-600'
+      color: 'text-orange-600',
+      bgColor: 'bg-orange-500/10'
     }
   ];
 
@@ -73,13 +85,20 @@ export default function DashboardPage() {
                 <CardTitle className="text-sm font-medium text-muted-foreground">
                   {stat.title}
                 </CardTitle>
-                <stat.icon className={`h-5 w-5 ${stat.color}`} />
+                <div className={`p-2 rounded-lg ${stat.bgColor}`}>
+                  <stat.icon className={`h-5 w-5 ${stat.color}`} />
+                </div>
               </CardHeader>
               <CardContent>
                 {isLoading ? (
                   <Skeleton className="h-8 w-24" />
                 ) : (
-                  <div className="text-2xl font-bold text-foreground">{stat.value}</div>
+                  <>
+                    <div className="text-2xl font-bold text-foreground">{stat.value}</div>
+                    {stat.subtitle && (
+                      <p className="text-xs text-muted-foreground mt-1">{stat.subtitle}</p>
+                    )}
+                  </>
                 )}
               </CardContent>
             </Card>
