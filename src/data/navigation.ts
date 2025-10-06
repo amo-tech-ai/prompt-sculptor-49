@@ -39,8 +39,7 @@ export const footerLinks = {
     { title: 'Blog', href: '/blog' }
   ],
   legal: [
-    { title: 'Privacy Policy', href: '/legal/privacy' },
-    { title: 'Terms of Service', href: '/legal/terms' },
-    { title: 'Cookie Policy', href: '/legal/cookies' }
+    { title: 'Privacy Policy', href: '/privacy' },
+    { title: 'Terms of Service', href: '/terms' }
   ]
 };

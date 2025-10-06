@@ -191,14 +191,6 @@ export const Footer = () => {
                     </Link>
                   </li>
                 ))}
-                <li>
-                  <Link 
-                    to="/legal/compliance" 
-                    className="text-primary-foreground/80 hover:text-amo-orange transition-colors font-medium block"
-                  >
-                    Compliance
-                  </Link>
-                </li>
               </ul>
             </div>
           </div>
