@@ -25,6 +25,12 @@ import TermsOfService from "./pages/TermsOfService";
 import NotFound from "./pages/NotFound";
 import BriefWizard from "./pages/BriefWizard";
 import BriefSuccess from "./pages/BriefSuccess";
+import LoginPage from "./pages/crm/LoginPage";
+import SignupPage from "./pages/crm/SignupPage";
+import DashboardPage from "./pages/crm/DashboardPage";
+import ClientsPage from "./pages/crm/ClientsPage";
+import DealsPage from "./pages/crm/DealsPage";
+import InvoicesPage from "./pages/crm/InvoicesPage";
 
 // Initialize React Query client
 const queryClient = new QueryClient({
@@ -68,6 +74,13 @@ const AppContent = () => {
                   <Route path="/terms" element={<TermsOfService />} />
                   <Route path="/brief" element={<BriefWizard />} />
                   <Route path="/brief/success" element={<BriefSuccess />} />
+                  {/* CRM Routes */}
+                  <Route path="/crm/login" element={<LoginPage />} />
+                  <Route path="/crm/signup" element={<SignupPage />} />
+                  <Route path="/crm/dashboard" element={<DashboardPage />} />
+                  <Route path="/crm/clients" element={<ClientsPage />} />
+                  <Route path="/crm/deals" element={<DealsPage />} />
+                  <Route path="/crm/invoices" element={<InvoicesPage />} />
                   {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                   <Route path="*" element={<NotFound />} />
                 </Routes>
