@@ -17,6 +17,7 @@ import { WhatsAppAutomationPage } from "./pages/WhatsAppAutomationPage";
 import CopilotKitServicesPage from "./pages/CopilotKitServicesPage";
 import CrewAIServicesPage from "./pages/CrewAIServicesPage";
 import NotFound from "./pages/NotFound";
+import BriefWizard from "./pages/BriefWizard";
 
 // Initialize React Query client
 const queryClient = new QueryClient({
@@ -50,6 +51,7 @@ const AppContent = () => (
               <Route path="/projects" element={<ProjectsPage />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/contact" element={<ContactPage />} />
+              <Route path="/brief" element={<BriefWizard />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
