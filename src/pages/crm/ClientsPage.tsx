@@ -1,16 +1,34 @@
 import { CRMLayout } from '@/components/crm/CRMLayout';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Badge } from '@/components/ui/badge';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
-import { Plus, Search } from 'lucide-react';
-import { useState } from 'react';
+import { Plus, Search, Users as UsersIcon } from 'lucide-react';
+import { useState, useEffect } from 'react';
 import { Skeleton } from '@/components/ui/skeleton';
+import { ClientDialog } from '@/components/crm/ClientDialog';
+import { ClientCard } from '@/components/crm/ClientCard';
+import { DeleteClientDialog } from '@/components/crm/DeleteClientDialog';
+
+interface Client {
+  id: string;
+  name: string;
+  company_name: string;
+  email: string | null;
+  phone: string | null;
+  website: string | null;
+  industry: string | null;
+  status: 'prospect' | 'active' | 'inactive' | 'archived';
+  notes: string | null;
+}
 
 export default function ClientsPage() {
+  const queryClient = useQueryClient();
   const [searchQuery, setSearchQuery] = useState('');
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
+  const [selectedClient, setSelectedClient] = useState<Client | null>(null);
 
   const { data: clients, isLoading } = useQuery({
     queryKey: ['clients'],
@@ -21,25 +39,67 @@ export default function ClientsPage() {
         .order('created_at', { ascending: false });
 
       if (error) throw error;
+      return data as Client[];
+    }
+  });
+
+  const { data: industries } = useQuery({
+    queryKey: ['industries'],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('industries')
+        .select('name')
+        .eq('is_active', true)
+        .order('display_order');
+
+      if (error) throw error;
       return data;
     }
   });
+
+  // Real-time subscription
+  useEffect(() => {
+    const channel = supabase
+      .channel('clients-changes')
+      .on(
+        'postgres_changes',
+        {
+          event: '*',
+          schema: 'public',
+          table: 'clients'
+        },
+        () => {
+          // Invalidate queries when changes occur
+          queryClient.invalidateQueries({ queryKey: ['clients'] });
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, [queryClient]);
+
+  const handleEdit = (client: Client) => {
+    setSelectedClient(client);
+    setDialogOpen(true);
+  };
+
+  const handleDelete = (client: Client) => {
+    setSelectedClient(client);
+    setDeleteDialogOpen(true);
+  };
+
+  const handleAddNew = () => {
+    setSelectedClient(null);
+    setDialogOpen(true);
+  };
 
   const filteredClients = clients?.filter(client =>
     client.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
     client.company_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
     client.email?.toLowerCase().includes(searchQuery.toLowerCase())
   );
-
-  const getStatusColor = (status: string) => {
-    const colors = {
-      prospect: 'bg-yellow-500/10 text-yellow-500 border-yellow-500/20',
-      active: 'bg-green-500/10 text-green-500 border-green-500/20',
-      inactive: 'bg-gray-500/10 text-gray-500 border-gray-500/20',
-      archived: 'bg-red-500/10 text-red-500 border-red-500/20'
-    };
-    return colors[status as keyof typeof colors] || colors.prospect;
-  };
 
   return (
     <CRMLayout>
@@ -51,7 +111,7 @@ export default function ClientsPage() {
               Manage your client relationships and contacts
             </p>
           </div>
-          <Button>
+          <Button onClick={handleAddNew}>
             <Plus className="mr-2 h-4 w-4" />
             Add Client
           </Button>
@@ -85,46 +145,25 @@ export default function ClientsPage() {
                 ))}
               </div>
             ) : filteredClients && filteredClients.length > 0 ? (
-              <div className="space-y-4">
+              <div className="grid gap-4 md:grid-cols-2">
                 {filteredClients.map((client) => (
-                  <div
+                  <ClientCard
                     key={client.id}
-                    className="flex items-center justify-between p-4 border border-border rounded-lg hover:bg-accent/50 transition-colors cursor-pointer"
-                  >
-                    <div className="flex items-center gap-4">
-                      <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
-                        <span className="text-lg font-semibold text-primary">
-                          {client.name.charAt(0).toUpperCase()}
-                        </span>
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-foreground">{client.name}</h3>
-                        <p className="text-sm text-muted-foreground">{client.company_name}</p>
-                        {client.email && (
-                          <p className="text-xs text-muted-foreground mt-1">{client.email}</p>
-                        )}
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-4">
-                      <Badge variant="outline" className={getStatusColor(client.status)}>
-                        {client.status}
-                      </Badge>
-                      {client.industry && (
-                        <span className="text-sm text-muted-foreground">{client.industry}</span>
-                      )}
-                    </div>
-                  </div>
+                    client={client}
+                    onEdit={handleEdit}
+                    onDelete={handleDelete}
+                  />
                 ))}
               </div>
             ) : (
               <div className="text-center py-12">
-                <Users className="mx-auto h-12 w-12 text-muted-foreground/50" />
+                <UsersIcon className="mx-auto h-12 w-12 text-muted-foreground/50" />
                 <h3 className="mt-4 text-lg font-semibold text-foreground">No clients found</h3>
                 <p className="text-muted-foreground mt-2">
                   {searchQuery ? 'Try adjusting your search' : 'Get started by adding your first client'}
                 </p>
                 {!searchQuery && (
-                  <Button className="mt-4">
+                  <Button className="mt-4" onClick={handleAddNew}>
                     <Plus className="mr-2 h-4 w-4" />
                     Add Client
                   </Button>
@@ -134,14 +173,19 @@ export default function ClientsPage() {
           </CardContent>
         </Card>
       </div>
-    </CRMLayout>
-  );
-}
 
-function Users(props: any) {
-  return (
-    <svg {...props} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-    </svg>
+      <ClientDialog
+        open={dialogOpen}
+        onOpenChange={setDialogOpen}
+        client={selectedClient}
+        industries={industries || []}
+      />
+
+      <DeleteClientDialog
+        open={deleteDialogOpen}
+        onOpenChange={setDeleteDialogOpen}
+        client={selectedClient}
+      />
+    </CRMLayout>
   );
 }
