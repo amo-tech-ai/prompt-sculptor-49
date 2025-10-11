@@ -57,11 +57,9 @@ export const initErrorTracking = () => {
       console.error('❌ Failed to initialize Sentry:', error);
     });
   } else {
-    // Fallback to console logging in development
+    // Fallback to console logging in development only
     if (import.meta.env.MODE === 'development') {
       console.log('📝 Using console-based error tracking (development mode)');
-    } else {
-      console.warn('⚠️ No error tracking configured for production');
     }
   }
 

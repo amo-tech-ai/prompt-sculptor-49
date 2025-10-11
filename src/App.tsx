@@ -46,62 +46,64 @@ const queryClient = new QueryClient({
   },
 });
 
-const AppContent = () => {
-  // Track page views automatically
+const AppRoutes = () => {
+  // Track page views automatically (must be inside Router)
   usePageTracking();
   
   return (
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <ErrorBoundary>
-          <Toaster />
-          <Sonner />
-          <BrowserRouter>
-            <SkipToContent />
-            <div className="min-h-screen flex flex-col">
-              <Header />
-              <main id="main-content" className="flex-1">
-                <Routes>
-                  <Route path="/" element={<HomePage />} />
-                  <Route path="/services" element={<ServicesPage />} />
-                  <Route path="/services/whatsapp-automation" element={<WhatsAppAutomationPage />} />
-                  <Route path="/services/copilotkit" element={<CopilotKitServicesPage />} />
-                  <Route path="/services/crewai" element={<CrewAIServicesPage />} />
-                  <Route path="/services/:serviceId" element={<ServiceDetailPage />} />
-                  <Route path="/process" element={<ProcessPage />} />
-                  <Route path="/projects" element={<ProjectsPage />} />
-                  <Route path="/about" element={<AboutPage />} />
-                  <Route path="/contact" element={<ContactPage />} />
-                  <Route path="/privacy" element={<PrivacyPolicy />} />
-                  <Route path="/terms" element={<TermsOfService />} />
-                  <Route path="/brief" element={<BriefWizard />} />
-                  <Route path="/brief/success" element={<BriefSuccess />} />
-                  {/* CRM Routes */}
-                  <Route path="/crm/login" element={<LoginPage />} />
-                  <Route path="/crm/signup" element={<SignupPage />} />
-                  <Route path="/crm/dashboard" element={<DashboardPage />} />
-                  <Route path="/crm/clients" element={<ClientsPage />} />
-                  <Route path="/crm/clients/:id" element={<ClientDetailPage />} />
-                  <Route path="/crm/deals" element={<DealsPage />} />
-                  <Route path="/crm/deals/:id" element={<DealDetailPage />} />
-                  <Route path="/crm/invoices" element={<InvoicesPage />} />
-                  {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-                  <Route path="*" element={<NotFound />} />
-                </Routes>
-              </main>
-              <Footer />
-              <CookieConsent />
-            </div>
-          </BrowserRouter>
-        </ErrorBoundary>
-      </TooltipProvider>
-    </QueryClientProvider>
+    <>
+      <SkipToContent />
+      <div className="min-h-screen flex flex-col">
+        <Header />
+        <main id="main-content" className="flex-1">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/services" element={<ServicesPage />} />
+            <Route path="/services/whatsapp-automation" element={<WhatsAppAutomationPage />} />
+            <Route path="/services/copilotkit" element={<CopilotKitServicesPage />} />
+            <Route path="/services/crewai" element={<CrewAIServicesPage />} />
+            <Route path="/services/:serviceId" element={<ServiceDetailPage />} />
+            <Route path="/process" element={<ProcessPage />} />
+            <Route path="/projects" element={<ProjectsPage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/privacy" element={<PrivacyPolicy />} />
+            <Route path="/terms" element={<TermsOfService />} />
+            <Route path="/brief" element={<BriefWizard />} />
+            <Route path="/brief/success" element={<BriefSuccess />} />
+            {/* CRM Routes */}
+            <Route path="/crm/login" element={<LoginPage />} />
+            <Route path="/crm/signup" element={<SignupPage />} />
+            <Route path="/crm/dashboard" element={<DashboardPage />} />
+            <Route path="/crm/clients" element={<ClientsPage />} />
+            <Route path="/crm/clients/:id" element={<ClientDetailPage />} />
+            <Route path="/crm/deals" element={<DealsPage />} />
+            <Route path="/crm/deals/:id" element={<DealDetailPage />} />
+            <Route path="/crm/invoices" element={<InvoicesPage />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </main>
+        <Footer />
+        <CookieConsent />
+      </div>
+    </>
   );
 };
 
 const App = () => (
   <HelmetProvider>
-    <AppContent />
+    <BrowserRouter>
+      <QueryClientProvider client={queryClient}>
+        <TooltipProvider>
+          <ErrorBoundary>
+            <Toaster />
+            <Sonner />
+            <AppRoutes />
+          </ErrorBoundary>
+        </TooltipProvider>
+      </QueryClientProvider>
+    </BrowserRouter>
   </HelmetProvider>
 );
 
